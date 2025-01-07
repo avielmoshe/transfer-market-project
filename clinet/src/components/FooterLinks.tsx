@@ -13,7 +13,7 @@ import telegram from "../assets/img/telegramRebrush.svg";
 
 const FooterLinks = () => {
   return (
-    <div className="bg-[#00193F] h-[300px] grid grid-cols-3  text-white py-[37px] px-[35px] ">
+    <div className="bg-[#00193F] h-[300px] grid grid-cols-3 gap-x-[60px] text-white py-[37px] px-[35px] ">
       <div >
         <div className="font-bold text-[15px] mb-[17px]">QUICK LINKS</div>
         <div className="text-[10px] flex flex-col gap-[3px]">
@@ -104,8 +104,9 @@ const FooterLinks = () => {
           </div>
         </div>
       </div>
-      <hr className="border-t border-gray-400 my-2" />
-      <hr className="border-t border-gray-400 my-2" />
+    
+      <hr className="bg-[hsl(196,89%,15%)] h-[0.08px] border-0 mt-3.5" />      
+      <hr className="bg-[hsl(196,89%,15%)] h-[0.08px] border-0 mt-3.5" />      
       <div></div>
       <div>
         <div className="font-bold text-[15px] mb-[17px]">CAREER</div>
