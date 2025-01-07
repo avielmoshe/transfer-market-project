@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body, html{
+html,
+body,
+#root {
   height: 100%;
 }
-
 body {
   background-color: #ccc;
   display: flex;
