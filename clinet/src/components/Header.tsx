@@ -27,33 +27,33 @@ const Header = () => {
         src={logo}
         alt='"Logo'
       />
-      <div className="h-[40px] gap-[5px] flex items-center justify-center">
+      <div className="h-[35px] gap-[5px] flex items-center justify-center">
         <form
-          className="flex bg-white p-[5px] rounded-[4px]"
+          className="flex bg-white p-[5px] rounded-[4px] w-[90%] h-[100%]"
           onSubmit={handleSubmit}
         >
           <input
-            className="text-[12px] font-bold"
+            className="text-[12px] font-bold w-[100%] h-[100%]"
             placeholder="Enter your search term"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)} // Update the state on input change
           />
           <button type="submit">
-            <GoSearch className="hover:text-[rgb(92,166,255)]" />
+            <GoSearch className="hover:text-[rgb(92,166,255)] text-[22px] p-[1px] mr-[5px]" />
           </button>
         </form>
-        <button className="bg-white p-[5px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
-          <MdPersonSearch className="text-[#00193f] text-[17px] transition-all duration-300 group-hover:text-white" />
+        <button className="bg-white p-[5px] h-[35px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
+          <MdPersonSearch className="text-[#00193f] text-[20px] transition-all duration-300 group-hover:text-white" />
         </button>
       </div>
-      <div className="h-[18px] gap-[7px] rounded-[4px] flex items-center justify-center">
-        <button className="bg-white p-[5px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
-          <BsBookmarkStarFill className="text-[#00193f] text-[17px] transition-all duration-300 group-hover:text-white" />
+      <div className="h-[40px] gap-[7px] rounded-[4px] flex items-center justify-center">
+        <button className="bg-white p-[6px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
+          <BsBookmarkStarFill className="text-[#00193f] text-[18px] transition-all duration-300 group-hover:text-white" />
         </button>
-        <button className="bg-white p-[5px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
-          <BiSolidShieldPlus className="text-[#00193f] text-[17px] transition-all duration-300 group-hover:text-white" />
+        <button className="bg-white p-[6px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
+          <BiSolidShieldPlus className="text-[#00193f] text-[18px] transition-all duration-300 group-hover:text-white" />
         </button>
-        <button className="bg-[rgb(92,166,255)] flex items-center gap-[5px] rounded-[4px] p-[4px] w-auto hover:bg-[#00193f] hover:w-[calc(25%+1px)] transition-all duration-300 ease-in-out">
+        <button className="bg-[rgb(92,166,255)] flex items-center gap-[5px] rounded-[4px] p-[6px] w-auto hover:bg-[#00193f] hover:w-[calc(33%+1px)] transition-all duration-300 ease-in-out">
           <div>
             <FaUser className="text-white" />
           </div>
