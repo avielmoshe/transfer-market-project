@@ -15,7 +15,9 @@ function App() {
       ],
     }
   ]);
-  return <RouterProvider router={router} />;
+  return <div className="max-w-[920px] ">
+    <RouterProvider router={router} />
+  </div>;
 }
 
 export default App
