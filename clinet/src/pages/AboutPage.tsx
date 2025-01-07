@@ -1,5 +1,10 @@
 function AboutPage() {
-  return <div>AboutPage</div>;
+console.log("hkdgnnhvhkd");
+
+  
+  return <div>AboutPage
+    
+  </div>;
 }
 
 export default AboutPage;
