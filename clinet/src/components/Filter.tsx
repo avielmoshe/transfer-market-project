@@ -11,7 +11,7 @@ import { RxDoubleArrowRight } from "react-icons/rx";
 const Filter = () => {
   return (
     <div className="bg-[#fff] h-[55px] p-[10px]">
-      <div className="flex gap-[15px] item-center">
+      <div className="flex gap-[18px] item-center">
         <div className="h-[35px] w-[35px] bg-[#e9e9e9] flex justify-center items-center">
           <ImHome className="text-[#00193f] text-[20px]" />
         </div>
