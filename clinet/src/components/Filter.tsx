@@ -308,6 +308,7 @@ const Filter = () => {
     setSelectedCountry(country);
     setIsCountryOpen(false);
     setSearchTerm(""); // Reset search term
+    setSelectedCompetition("Competition")
     setTimeout(() => setIsCompetitionOpen(true), 2000);
   };
   const handleCompetitionSelect = (competition: string) => {
