@@ -1,7 +1,5 @@
 import React from "react";
 import { ImHome } from "react-icons/im";
-import { IoFlagSharp } from "react-icons/io5";
-import { HiMiniTrophy } from "react-icons/hi2";
 import { FaTshirt } from "react-icons/fa";
 import player from "../assets/img/bc-players.svg";
 import flag from "../assets/img/bc-countries.svg";
