@@ -19,7 +19,6 @@ function ClubRow({ club }: ClubRowProps) {
   if (!data) {
     return null;
   }
-  console.log(data);
 
   return (
     <tr>
