@@ -25,7 +25,7 @@ const Layout = () => {
     <>
       <div>
         <div
-          className={`fixed top-0 z-50 max-w-[912px] transition-all duration-300 `}
+          className={`fixed top-0 z-50 max-w-[912px]  transition-all duration-300 `}
         >
           <Header />
           <NavBar />
