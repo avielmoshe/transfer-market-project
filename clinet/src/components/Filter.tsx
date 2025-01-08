@@ -308,9 +308,8 @@ const Filter = () => {
     setSelectedCountry(country);
     setIsCountryOpen(false);
     setSearchTerm(""); // Reset search term
-    if(selectedCountry !== "Country"){
+    setSelectedCompetition("Competition")
     setTimeout(() => setIsCompetitionOpen(true), 2000);
-  }
   };
   const handleCompetitionSelect = (competition: string) => {
     setSelectedCompetition(competition);
@@ -378,7 +377,8 @@ const Filter = () => {
           </div>
           <div
             onClick={() => {
-              setIsCompetitionOpen((prev) => !prev);
+              if(selectedCountry !== "Country"){
+              setIsCompetitionOpen((prev) => !prev);}
               setIsCountryOpen(false);
             }}
             className="text-[#1A3151] font-bold text-[12px] bg-[#F2F2F2] h-[35px] p-[10px] flex justify-center items-center cursor-pointer"
@@ -403,11 +403,11 @@ const Filter = () => {
                 {filteredCompetitions.length > 0 ? (
                   filteredCompetitions.map((competition) => (
                     <li
-                      key={competition}
-                      onClick={() => handleCompetitionSelect(competition)}
+                      key={competition.id}
+                      onClick={() => handleCompetitionSelect(competition.name)}
                       className="py-[3px] pl-[8px] hover:bg-[#F2F2F2] text-[14px] text-[hsl(196,89%,30%)] cursor-pointer"
                     >
-                      {competition}
+                      {competition.name}
                     </li>
                   ))
                 ) : (
