@@ -23,18 +23,32 @@ const SearchPage: React.FC = () => {
     <div>
       <div>
         {data.players.length > 0 ? (
-          <div>
+          <div className=" mr-2 ml-1">
             <h2 className="bg-[#00193f] text-white px-2 font-bold">{` SEARCH RESULTS FOR PLAYERS  - ${data.count.players} HITS`}</h2>
             <table className="bg-white table-auto border-collapse w-full mb-4">
               <thead>
                 <tr>
-                  <th className="border p-2 text-center">Name/Club</th>
-                  <th className="border p-2 text-center">Position</th>
-                  <th className="border p-2 text-center">Club</th>
-                  <th className="border p-2 text-center">Age</th>
-                  <th className="border p-2 text-center">Nat</th>
-                  <th className="border p-2 text-center">Market Value</th>
-                  <th className="border p-2 text-center">Agents</th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Name/Club
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Position
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Club
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Age
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Nat
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Market Value
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Agents
+                  </th>
                 </tr>
               </thead>
               <tbody>

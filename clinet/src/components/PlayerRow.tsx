@@ -13,7 +13,6 @@ function PlayerRow({ player }: PlayerRowProp) {
     queryFn: () => fetchDataOfOnePlayerForRow(playerId),
   });
 
-  if (isLoading) return null;
   if (error instanceof Error) return <div>Error: {error.message}</div>;
   if (!data) {
     return null;
@@ -33,9 +32,21 @@ function PlayerRow({ player }: PlayerRowProp) {
           <div>{player.club}</div>
         </div>
       </td>
-      <td className="border p-1 text-center">{player.position}</td>
-      <td className="border p-1 text-center">{player.club}</td>
-      <td className="border p-1 text-center">{player.age}</td>
+      <td className="border p-1 text-center text-[12px]">
+        {data.playerProfile.playerSecondPosition}
+      </td>
+      <td className="border p-1 text-center ">
+        <div className="flex justify-center">
+          <img
+            className="w-[20px] h-[20px] "
+            src={data.playerProfile.clubImage}
+            alt="clubImage"
+          />
+        </div>
+      </td>
+      <td className="border p-1 text-center text-[12px]">
+        {data.playerProfile.age}
+      </td>
       <td className="border p-1">
         <div className="flex justify-center">
           <img
@@ -45,8 +56,16 @@ function PlayerRow({ player }: PlayerRowProp) {
           />
         </div>
       </td>
-      <td className="border p-2">{player.marketValue}</td>
-      <td className="border p-2">{player.agents}</td>
+      <td className="border p-2 text-center text-[12px] font-bold text-[#57585a]">
+        {data.playerProfile.marketValue
+          ? data.playerProfile.marketValueCurrency +
+            data.playerProfile.marketValue +
+            data.playerProfile.marketValueNumeral
+          : null}
+      </td>
+      <td className="border p-2 text-center text-[12px] text-[#1d75a3]">
+        {data.playerProfile.agent}
+      </td>
     </tr>
   );
 }

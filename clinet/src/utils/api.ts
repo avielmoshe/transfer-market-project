@@ -36,11 +36,11 @@ export const fetchTransferMarketData = async (
 
 export const fetchDataOfOnePlayerForRow = async (
   id: string,
-  domain: string = "de"
+  domain: string = "com"
 ): Promise<DataType> => {
   const options = {
     method: "GET",
-    url: `https://${RAPIDAPI_HOST}/players/get-header-info`,
+    url: `https://${RAPIDAPI_HOST}/players/get-profile`,
     params: {
       id,
       domain,
