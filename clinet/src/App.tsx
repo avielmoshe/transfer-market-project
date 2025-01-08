@@ -16,7 +16,7 @@ function App() {
     },
   ]);
   return (
-    <div className=" flex items-center justify-center">
+    <div className="flex items-center justify-center">
     <div className="w-full max-w-[1030px]">
       <RouterProvider router={router} />
     </div>
