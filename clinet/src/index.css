@@ -7,16 +7,16 @@ body,
 #root {
   height: 100%;
 }
+
 body {
   background-color: #ccc;
-  display: flex;
-  justify-content: center;
+  width: 100%;
 }
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
 
 .scrollbar-hidden {
-  -ms-overflow-style: none;  
-  scrollbar-width: none;  
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

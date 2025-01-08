@@ -16,7 +16,7 @@ function App() {
     },
   ]);
   return (
-    <div className="max-w-[912px] ">
+    <div className="max-w-[1030px] ">
       <RouterProvider router={router} />
     </div>
   );

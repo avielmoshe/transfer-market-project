@@ -7,33 +7,36 @@ import FooterLinks from "../components/FooterLinks";
 import FooterInfo from "../components/FooterInfo";
 
 const Layout = () => {
-      const [isScrolled, setIsScrolled] = useState(false);
-  
-      useEffect(() => {
-            const handleScroll = () => {
-              setIsScrolled(window.scrollY > 0);
-            };
-        
-            window.addEventListener("scroll", handleScroll);
-            return () => {
-              window.removeEventListener("scroll", handleScroll);
-            };
-          }, []);
-    
-  
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <div>
         <div
-          className={`fixed top-0 z-50 max-w-[912px]  transition-all duration-300 `}
+          className={`fixed top-0 z-50 max-w-[1030px]  transition-all duration-300 `}
         >
           <Header />
           <NavBar />
         </div>
-        <div className={` ${isScrolled ? " " : " mt-[146px]"}  transition-all duration-300  ease-in-out`}>
+        <div
+          className={` ${
+            isScrolled ? " " : " mt-[146px]"
+          }  transition-all duration-300  ease-in-out`}
+        >
           <Filter />
         </div>
-        <main className="bg-[rgb(233,233,233)]">
+        <main className="bg-[rgb(233,233,233)] max-w-[1030px] ">
           <Outlet />
         </main>
         <FooterLinks />
