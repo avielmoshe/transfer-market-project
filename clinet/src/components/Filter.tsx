@@ -402,11 +402,11 @@ const Filter = () => {
                 {filteredCompetitions.length > 0 ? (
                   filteredCompetitions.map((competition) => (
                     <li
-                      key={competition}
-                      onClick={() => handleCompetitionSelect(competition)}
+                      key={competition.id}
+                      onClick={() => handleCompetitionSelect(competition.name)}
                       className="py-[3px] pl-[8px] hover:bg-[#F2F2F2] text-[14px] text-[hsl(196,89%,30%)] cursor-pointer"
                     >
-                      {competition}
+                      {competition.name}
                     </li>
                   ))
                 ) : (
