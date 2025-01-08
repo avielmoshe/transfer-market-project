@@ -4,6 +4,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchTransferMarketData } from "../utils/api";
 import PlayerRow from "../components/PlayerRow";
 import ClubRow from "../components/ClubRow";
+import CompetitionRow from "../components/CompetitionRow";
 
 const SearchPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -104,10 +105,39 @@ const SearchPage: React.FC = () => {
         {data.competitions?.length > 0 ? (
           <div>
             <h2 className="bg-[#00193f] text-white px-2 font-bold">{` SEARCH RESULTS FOR COMPETITIONS - ${data.count.competitions} HITS`}</h2>
-
-            {data.competitions.map((competition) => (
-              <div key={competition.id}></div>
-            ))}
+            <table className="bg-white table-auto border-collapse w-full mb-4">
+              <thead>
+                <tr>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]"></th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Competition
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Country
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Clubs
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Players
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Total Market Value
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Continent
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.competitions.map((competition) => (
+                  <CompetitionRow
+                    key={competition.id}
+                    competition={competition}
+                  />
+                ))}
+              </tbody>
+            </table>
           </div>
         ) : null}
       </div>

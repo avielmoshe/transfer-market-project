@@ -93,3 +93,7 @@ export interface ClubData {
 export type clubsDataFromCom = {
   clubs: Array<any>;
 };
+
+export type SquadFromClub = {
+  squad: Array<any>;
+};
