@@ -20,14 +20,43 @@ export interface User {
   password?: string;
 }
 
-export const getLeagueByName = async (search: string, page: string | "1") => {
+const RAPIDAPI_HOST = "transfermarket.p.rapidapi.com";
+const RAPIDAPI_KEY = "33cb9405dbmsh9f8f012503ce134p146775jsn436ccb2ae8b5";
+
+interface DataProps {
+  data: {
+    players: Array<any>;
+    clubs: Array<any>;
+    coaches: Array<any>;
+    agents: Array<any>;
+    referees: Array<any>;
+  };
+}
+export const fetchTransferMarketData = async (
+  query: string,
+  page: string = "1",
+  domain: string = "de"
+): Promise<DataProps> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/search`,
+    params: {
+      query,
+      page,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
   try {
-    const response = await axios.get(
-      `${base_url_transferMarket}/search/${search}?page_number=${page}`
-    );
-    return response.data;
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
   } catch (error: any) {
-    throw error.response?.data || error.message;
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
   }
 };
 
