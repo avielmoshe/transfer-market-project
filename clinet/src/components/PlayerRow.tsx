@@ -13,11 +13,10 @@ function PlayerRow({ player }: PlayerRowProp) {
     queryFn: () => fetchDataOfOnePlayerForRow(playerId),
   });
 
-  if (error instanceof Error) return <div>Error: {error.message}</div>;
+  if (error instanceof Error) return null;
   if (!data) {
     return null;
   }
-  console.log(data);
 
   return (
     <tr>
