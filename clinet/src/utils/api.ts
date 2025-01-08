@@ -1,6 +1,14 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { DataType, User, userLogin } from "../types/types";
+import {
+  ClubData,
+  clubData,
+  clubsDataFromCom,
+  DataType,
+  HeroData,
+  User,
+  userLogin,
+} from "../types/types";
 
 const RAPIDAPI_HOST = "transfermarket.p.rapidapi.com";
 const RAPIDAPI_KEY = "33cb9405dbmsh9f8f012503ce134p146775jsn436ccb2ae8b5";
@@ -9,7 +17,7 @@ const base_url = `http://localhost:3000`;
 export const fetchTransferMarketData = async (
   query: string,
   page: string = "1",
-  domain: string = "de"
+  domain: string = "com"
 ): Promise<DataType> => {
   const options = {
     method: "GET",
@@ -37,10 +45,62 @@ export const fetchTransferMarketData = async (
 export const fetchDataOfOnePlayerForRow = async (
   id: string,
   domain: string = "com"
-): Promise<DataType> => {
+): Promise<HeroData> => {
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/players/get-profile`,
+    params: {
+      id,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+export const fetchDataOfOneClubRow = async (
+  id: string,
+  domain: string = "com"
+): Promise<ClubData> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/clubs/get-header-info`,
+    params: {
+      id,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+export const fetchDataOfClubsFromCom = async (
+  id: string,
+  domain: string = "com"
+): Promise<clubsDataFromCom> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/clubs/list-by-competition`,
     params: {
       id,
       domain,

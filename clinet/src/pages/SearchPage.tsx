@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchTransferMarketData } from "../utils/api";
 import PlayerRow from "../components/PlayerRow";
+import ClubRow from "../components/ClubRow";
 
 const SearchPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -65,9 +66,36 @@ const SearchPage: React.FC = () => {
         {data.clubs?.length > 0 ? (
           <div>
             <h2 className="bg-[#00193f] text-white px-2 font-bold">{` SEARCH RESULTS FOR CLUBS - ${data.count.clubs} HITS`}</h2>
-            {data.clubs.map((club) => (
-              <div key={club.id}></div>
-            ))}
+            <table className="bg-white table-auto border-collapse w-full mb-4">
+              <thead>
+                <tr>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]"></th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    club
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Country
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Total Market Value
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Transfers
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Stadium
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    forum
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.clubs.map((club) => (
+                  <ClubRow key={club.id} club={club} />
+                ))}
+              </tbody>
+            </table>
           </div>
         ) : null}
       </div>

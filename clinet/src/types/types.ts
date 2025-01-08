@@ -74,3 +74,22 @@ export interface DataType {
   referees: Array<referees>;
   competitions: Array<competitions>;
 }
+
+export type HeroData = {
+  heroImages: Array<any>;
+  performanceSeasons: Array<any>;
+  playerProfile: any;
+  share: any; // Specify a more precise type if possible
+};
+export interface ClubData {
+  club: {
+    countryImage: string;
+    marketValueCurrency: string;
+    marketValue: string;
+    marketValueNumeral: string;
+  };
+}
+
+export type clubsDataFromCom = {
+  clubs: Array<any>;
+};
