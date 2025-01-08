@@ -7,7 +7,7 @@ import flag from "../assets/img/bc-countries.svg";
 import cup from "../assets/img/bc-competitions.svg";
 import { RxDoubleArrowRight } from "react-icons/rx";
 import { IoSearch } from "react-icons/io5";
-import { fetchDataOfClubsFromCom, fetchTransferMarketData } from "../utils/api";
+import { fetchDataOfClubsFromCom, fetchDataOfSquadFromClub, fetchTransferMarketData } from "../utils/api";
 
 const Filter = () => {
   const [isCountryOpen, setIsCountryOpen] = useState(false);
@@ -23,7 +23,7 @@ const Filter = () => {
   const [players, setPlayers] = useState([]);
   const competitionsNames: competitionsNames[] = [];
   const playerNames: String[] = [];
-  let compId : String;
+ 
   
 
   interface competitionsNames {
@@ -56,10 +56,12 @@ const Filter = () => {
   const data = await fetchDataOfClubsFromCom(competition.id)
       setClubs(data.clubs);
   };
-  
+
   const handleClubClick = async(club) => {
     handleClubSelect(club.name);
-  const data = await fetchDataOfClubsFromCom(club.id)
+    console.log(club.id);
+    
+  const data = await fetchDataOfSquadFromClub(club.id)
   console.log(data);
   
       // setPlayers(data.);
