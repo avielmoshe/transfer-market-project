@@ -104,7 +104,7 @@ export const fetchDataOfSquadFromClub = async (
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/clubs/get-squad`,
     params: {
-      domain,1
+      domain,
       id,
       saison_id,
     },
