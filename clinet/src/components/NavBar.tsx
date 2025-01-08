@@ -1,8 +1,24 @@
 import { RiMenu3Fill } from "react-icons/ri";
+import React, { useState, useEffect } from "react";
+
 
 const NavBar = () => {
+
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+          const handleScroll = () => {
+            setIsScrolled(window.scrollY > 0);
+          };
+      
+          window.addEventListener("scroll", handleScroll);
+          return () => {
+            window.removeEventListener("scroll", handleScroll);
+          };
+        }, []);
+  
   return (
-    <div className="flex bg-[#00193f] h-[53px] text-white text-[13px] font-bold items-center ">
+    <div className={`flex bg-[#00193f] ${isScrolled ? " h-[35px]" : " h-[53px]"} text-white text-[13px] font-bold items-center  transition-all duration-300  ease-in-out`}>
       <div className="grid grid-cols-7 gap-[4px]">
         <div className="relative group w-auto flex items-center justify-center">
           <button className="group-hover:text-[rgb(92,166,255)] relative">
