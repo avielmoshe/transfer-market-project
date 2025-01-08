@@ -30,7 +30,7 @@ function CompetitionRow({ competition }: CompetitionRowProps) {
           alt="logoImage"
         />
       </td>
-      <td className="border p-1 w-13 text-[12px]">
+      <td className="border p-1 w-13 text-[12px] text-[#1d75a3]">
         {competition.competitionName}
       </td>
       <td className="border p-1 text-center ">
