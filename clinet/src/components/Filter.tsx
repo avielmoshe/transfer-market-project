@@ -308,9 +308,7 @@ const Filter = () => {
     setSelectedCountry(country);
     setIsCountryOpen(false);
     setSearchTerm(""); // Reset search term
-    if(selectedCountry !== "Country"){
     setTimeout(() => setIsCompetitionOpen(true), 2000);
-  }
   };
   const handleCompetitionSelect = (competition: string) => {
     setSelectedCompetition(competition);
@@ -378,7 +376,8 @@ const Filter = () => {
           </div>
           <div
             onClick={() => {
-              setIsCompetitionOpen((prev) => !prev);
+              if(selectedCountry !== "Country"){
+              setIsCompetitionOpen((prev) => !prev);}
               setIsCountryOpen(false);
             }}
             className="text-[#1A3151] font-bold text-[12px] bg-[#F2F2F2] h-[35px] p-[10px] flex justify-center items-center cursor-pointer"
