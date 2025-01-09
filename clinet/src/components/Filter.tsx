@@ -36,7 +36,7 @@ const Filter = () => {
     queryFn: () => fetchTransferMarketData(selectedCountry, "1"),
   });
 
-  function useClubs(compId){
+  function useClubs(compId : String){
     return useQuery({    queryKey: ["transferMarketClubsData", { compId }],
       queryFn: () => fetchDataOfClubsFromCom(compId),})
   }
@@ -51,7 +51,7 @@ const Filter = () => {
     );
   }
 
-  const handleClick = async(competition) => {
+  const handleClick = async(competition : competitionsNames) => {
     handleCompetitionSelect(competition.name);
   const data = await fetchDataOfClubsFromCom(competition.id)
       setClubs(data.clubs);
