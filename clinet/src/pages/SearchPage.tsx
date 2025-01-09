@@ -116,16 +116,16 @@ const SearchPage: React.FC = () => {
                     Country
                   </th>
                   <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
-                    Clubs
+                    Most Valuable Player
                   </th>
                   <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
-                    Players
+                    Trophy
                   </th>
                   <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
                     Total Market Value
                   </th>
                   <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
-                    Continent
+                    Initials
                   </th>
                 </tr>
               </thead>
