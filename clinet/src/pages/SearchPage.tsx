@@ -5,6 +5,8 @@ import { fetchTransferMarketData } from "../utils/api";
 import PlayerRow from "../components/PlayerRow";
 import ClubRow from "../components/ClubRow";
 import CompetitionRow from "../components/CompetitionRow";
+import CoachRow from "../components/CoachRow";
+import RefereeRow from "../components/RefereeRow";
 
 const SearchPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -145,10 +147,36 @@ const SearchPage: React.FC = () => {
       <div>
         {data.coaches?.length > 0 ? (
           <div>
-            <h2 className="bg-[#00193f] text-white px-2 font-bold">{` SEARCH RESULTS FOR COACHES - ${data.count.coaches} HITS`}</h2>
-            {data.coaches.map((coach) => (
-              <div key={coach.id}></div>
-            ))}
+            <h2 className="bg-[#00193f] text-white px-2 font-bold">{` SEARCH RESULTS MANAGERS & OFFICIALS - ${data.count.coaches} HITS`}</h2>
+            <table className="bg-white table-auto border-collapse w-full mb-4">
+              <thead>
+                <tr>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Name
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Club
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Age
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Nat.
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Function{" "}
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Contract until
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.coaches.map((coach) => (
+                  <CoachRow key={coach.id} coach={coach} />
+                ))}
+              </tbody>
+            </table>
           </div>
         ) : null}
       </div>
@@ -157,9 +185,32 @@ const SearchPage: React.FC = () => {
         {data.referees?.length > 0 ? (
           <div>
             <h2 className="bg-[#00193f] text-white px-2 font-bold">{` SEARCH RESULTS FOR REFEREES- ${data.count.referees} HITS`}</h2>
-            {data.referees.map((referee) => (
-              <div key={referee.id}></div>
-            ))}
+            <table className="bg-white table-auto border-collapse w-full mb-4">
+              <thead>
+                <tr>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Name
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Residence
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Age
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    Nat.
+                  </th>
+                  <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                    FIFA referee.
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.referees.map((referee) => (
+                  <RefereeRow key={referee.id} referee={referee} />
+                ))}
+              </tbody>
+            </table>
           </div>
         ) : null}
       </div>

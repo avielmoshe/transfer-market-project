@@ -19,7 +19,6 @@ function CompetitionRow({ competition }: CompetitionRowProps) {
   if (!data) {
     return null;
   }
-  console.log(data);
 
   return (
     <tr>
