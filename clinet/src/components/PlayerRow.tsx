@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { players } from "../types/types";
 import { fetchDataOfOnePlayerForRow } from "../utils/api";
+import { Link } from "react-router-dom";
 
 interface PlayerRowProp {
   player: players;
@@ -27,8 +28,13 @@ function PlayerRow({ player }: PlayerRowProp) {
           alt="playerImage"
         />
         <div className="ml-1 flex flex-col justify-center text-[12px] text-[#1d75a3]">
-          <div className="font-bold">{player.playerName}</div>
-          <div>{player.club}</div>
+          <Link to={`/playerProfile/${player.id}`}>
+            <div className="font-bold">{player.playerName}</div>
+          </Link>
+
+          <Link to={`/playerProfile/${data.playerProfile.clubID}`}>
+            <div>{player.club}</div>
+          </Link>
         </div>
       </td>
       <td className="border p-1 text-center text-[12px]">
@@ -56,11 +62,11 @@ function PlayerRow({ player }: PlayerRowProp) {
         </div>
       </td>
       <td className="border p-2 text-center text-[12px] font-bold text-[#57585a]">
-        {data.playerProfile.marketValue
+        {data.playerProfile.marketValue > 0
           ? data.playerProfile.marketValueCurrency +
             data.playerProfile.marketValue +
             data.playerProfile.marketValueNumeral
-          : null}
+          : "--"}
       </td>
       <td className="border p-2 text-center text-[12px] text-[#1d75a3]">
         {data.playerProfile.agent}

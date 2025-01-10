@@ -3,6 +3,7 @@ import { clubs, competitions } from "../types/types";
 import { fetchDataOfOneClubRow, fetchDataOfOneComRow } from "../utils/api";
 import { MdStadium } from "react-icons/md";
 import { BiTransfer } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 interface CompetitionRowProps {
   competition: competitions;
@@ -30,7 +31,9 @@ function CompetitionRow({ competition }: CompetitionRowProps) {
         />
       </td>
       <td className="border p-1 w-13 text-[12px] text-[#1d75a3]">
-        {competition.competitionName}
+        <Link to={`/competitionProfile/${competition.id}`}>
+          {competition.competitionName}
+        </Link>
       </td>
       <td className="border p-1 text-center ">
         <div className="flex justify-center">
@@ -45,11 +48,15 @@ function CompetitionRow({ competition }: CompetitionRowProps) {
         {data.competition.mostValuablePlayerName}
       </td>
       <td className="border p-1 flex justify-center">
-        <img
-          className="w-[25px] h-[34px]"
-          src={data.competition.trophy}
-          alt="logoImage"
-        />
+        {data.competition.trophy ? (
+          <img
+            className="w-[25px] h-[34px]"
+            src={data.competition.trophy}
+            alt="logoImage"
+          />
+        ) : (
+          "N/A"
+        )}
       </td>
       <td className="border p-2 text-[12px] text-center">
         {data.competition.marketValueCurrency +

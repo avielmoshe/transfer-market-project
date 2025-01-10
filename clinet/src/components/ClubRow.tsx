@@ -3,6 +3,7 @@ import { clubs } from "../types/types";
 import { fetchDataOfOneClubRow } from "../utils/api";
 import { MdStadium } from "react-icons/md";
 import { BiTransfer } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 interface ClubRowProps {
   club: clubs;
@@ -31,8 +32,12 @@ function ClubRow({ club }: ClubRowProps) {
       </td>
       <td className="border p-1 w-13 text-[12px]">
         <div className="ml-1  text-[12px] text-[#1d75a3]">
-          <div className="font-bold">{club.name}</div>
-          <div>{club.competitionName}</div>
+          <Link to={`/clubProfile/${club.id}`}>
+            <div className="font-bold">{club.name}</div>
+          </Link>
+          <Link to={`/competitionProfile/${club.competitionID}`}>
+            <div>{club.competitionName}</div>
+          </Link>
         </div>
       </td>
       <td className="border p-1 text-center ">
@@ -45,9 +50,11 @@ function ClubRow({ club }: ClubRowProps) {
         </div>
       </td>
       <td className="border p-1 text-right text-[12px]">
-        {data.club.marketValueCurrency +
-          data.club.marketValue +
-          data.club.marketValueNumeral}
+        {data.club.marketValue > "0"
+          ? data.club.marketValueCurrency +
+            data.club.marketValue +
+            data.club.marketValueNumeral
+          : "--"}
       </td>
       <td className="border p-1">
         <BiTransfer className="text-[29px]" />
