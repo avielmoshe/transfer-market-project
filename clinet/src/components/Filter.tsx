@@ -31,7 +31,11 @@ const Filter = () => {
   const [selectedPlayer, setSelectedPlayer] = useState("Player");
   const [clubs, setClubs] = useState([]);
   const [players, setPlayers] = useState([]);
+  const [competitionId, setCompetitionId] = useState<String>("[]");
+  const [clubId , setClubId] = useState<String>("")
+  const [playerId , setPlayerId] = useState<String>("")
   const competitionsNames: competitionsNames[] = [];
+
 
   const navigate = useNavigate();
 
@@ -60,16 +64,17 @@ const Filter = () => {
 
   const handleClick = async (competition: competitionsNames) => {
     handleCompetitionSelect(competition.name);
+    setCompetitionId(competition.id)
+
     const data = await fetchDataOfClubsFromCom(competition.id);
     setClubs(data.clubs);
   };
 
   const handleClubClick = async (club) => {
     handleClubSelect(club.name);
-    console.log(club.id);
+    setClubId(club.id);
 
     const data = await fetchDataOfSquadFromClub(club.id);
-    console.log(data.squad);
     setPlayers(data.squad);
   };
 
@@ -358,6 +363,7 @@ const Filter = () => {
   };
   const handleCompetitionSelect = (competition: string) => {
     setSelectedCompetition(competition);
+    
     setIsCompetitionOpen(false);
     setSearchCompetitionTerm("");
     setSelectedClub("Club");
@@ -373,6 +379,7 @@ const Filter = () => {
     setSelectedPlayer(player);
     setIsPlayerOpen(false);
     setSearchPlayerTerm("");
+    setPlayerId(player.id)
   };
 
   return (
@@ -431,7 +438,7 @@ const Filter = () => {
             </div>
           )}
           <button className="bg-[#DDDDDD] h-[35px] w-[25px] flex justify-center items-center text-[18px] text-[#0EB1EE] hover:bg-[#0EB1EE] hover:text-[#DDDDDD]"
-            onClick={() => navigate(`/SearchPage?country=${selectedCountry}`)}
+            onClick={() => navigate(`/SearchPage?countryProfile/${selectedCountry}`)}
             disabled={selectedCountry === "Country"}
            >
             <RxDoubleArrowRight />
@@ -511,7 +518,7 @@ const Filter = () => {
                 ? "hover:bg-[#0EB1EE] hover:text-[#DDDDDD] cursor-pointer"
                 : "cursor-default"
             } `}
-            onClick={() => navigate(`/SearchPage?country=${selectedCountry}?Competition=?${selectedCompetition}`)}
+            onClick={() => navigate(`/SearchPage?competitionProfile/?${selectedCompetition}`)}
             disabled={selectedCompetition === "Competition"}
           >
             <RxDoubleArrowRight />
@@ -588,7 +595,7 @@ const Filter = () => {
                 ? "hover:bg-[#0EB1EE] hover:text-[#DDDDDD] cursor-pointer"
                 : "cursor-default"
             } `}
-            onClick={() => navigate(`/SearchPage?country=${selectedCountry}?Competition=?${selectedCompetition}?Club=${selectedClub}`)}
+            onClick={() => navigate(`/SearchPage?clubProfile=${clubId}`)}
             disabled={selectedClub === "Club"}
           >
             <RxDoubleArrowRight />
@@ -661,7 +668,7 @@ const Filter = () => {
                 ? "hover:bg-[#0EB1EE] hover:text-[#DDDDDD] cursor-pointer"
                 : "cursor-default"
             } `}
-            onClick={() => navigate(`/SearchPage?country=${selectedCountry}?Competition=?${selectedCompetition}?Club=${selectedClub}?player=${selectedPlayer.name}`)}
+            onClick={() => navigate(`/SearchPage?playerProfile/${playerId}`)}
             disabled={selectedPlayer === "Player"}
           >
             <RxDoubleArrowRight />
