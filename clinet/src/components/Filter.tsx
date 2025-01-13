@@ -518,7 +518,7 @@ const Filter = () => {
                 ? "hover:bg-[#0EB1EE] hover:text-[#DDDDDD] cursor-pointer"
                 : "cursor-default"
             } `}
-            onClick={() => navigate(`/competitionProfile/?${selectedCompetition}`)}
+            onClick={() => navigate(`/competitionProfile/${competitionId}`)}
             disabled={selectedCompetition === "Competition"}
           >
             <RxDoubleArrowRight />
@@ -595,7 +595,7 @@ const Filter = () => {
                 ? "hover:bg-[#0EB1EE] hover:text-[#DDDDDD] cursor-pointer"
                 : "cursor-default"
             } `}
-            onClick={() => navigate(`/clubProfile=${clubId}`)}
+            onClick={() => navigate(`/clubProfile/${clubId}`)}
             disabled={selectedClub === "Club"}
           >
             <RxDoubleArrowRight />
