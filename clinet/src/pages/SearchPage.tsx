@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchTransferMarketData } from "../utils/api";
@@ -7,14 +7,18 @@ import ClubRow from "../components/ClubRow";
 import CompetitionRow from "../components/CompetitionRow";
 import CoachRow from "../components/CoachRow";
 import RefereeRow from "../components/RefereeRow";
+import Pagination from "@/components/Pagination";
+import PaginationCard from "@/components/PaginationCard";
+import { count } from "@/types/types";
 
 const SearchPage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const search = searchParams.get("query") || "";
+  const [page, setPage] = useState<number>(1);
 
   const { data, error, isLoading } = useQuery({
-    queryKey: ["transferMarketData", { search }],
-    queryFn: () => fetchTransferMarketData(search, "1"),
+    queryKey: ["transferMarketData", { search, page }],
+    queryFn: () => fetchTransferMarketData(search, page.toString()),
   });
 
   if (isLoading) return <div>Loading...</div>;
@@ -22,6 +26,15 @@ const SearchPage: React.FC = () => {
   if (!data) {
     return null;
   }
+
+  function getTotalPages(data: count) {
+    const maxCount = Math.max(...Object.values(data));
+    const totalPages = Math.ceil(maxCount / 10);
+    return totalPages;
+  }
+
+  const totalPages = getTotalPages(data.count);
+
   return (
     <div>
       <div>
@@ -213,6 +226,7 @@ const SearchPage: React.FC = () => {
           </div>
         ) : null}
       </div>
+      <PaginationCard page={page} setPage={setPage} totalPages={totalPages} />
     </div>
   );
 };
