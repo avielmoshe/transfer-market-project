@@ -1,11 +1,11 @@
 import DynamicHeader from "@/components/HeaderForProfile";
+import { DataForHeader } from "@/types/types";
 import { fetchDataOfOneComRow } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
 function CompetitionPage() {
   const { id } = useParams();
-
   const { data, error, isLoading } = useQuery({
     queryKey: ["DataOfOneCom", { id }],
     queryFn: () => fetchDataOfOneComRow(id),
@@ -15,8 +15,7 @@ function CompetitionPage() {
   if (!data) {
     return null;
   }
-  console.log(data);
-  const dataForHeader = {
+  const dataForHeader: DataForHeader = {
     type: "competition",
     title: data.competition.competitionName,
     frontImg: data.competition.competitionImage,

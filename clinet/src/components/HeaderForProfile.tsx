@@ -1,4 +1,10 @@
-const DynamicHeader = ({ dataForHeader }) => {
+import { DataForHeader } from "@/types/types";
+
+interface DynamicHeaderProp {
+  dataForHeader: DataForHeader;
+}
+
+const DynamicHeader = ({ dataForHeader }: DynamicHeaderProp) => {
   const secondImgClassName =
     dataForHeader.type === "competition"
       ? "w-[20px] h-[20px]"
@@ -78,7 +84,11 @@ const DynamicHeader = ({ dataForHeader }) => {
               return (
                 <div key={index} className="text-[12px]">
                   {key === "trophy" ? (
-                    <img src={value as string} alt="Trophy" className="mt-2" />
+                    <img
+                      src={value as string}
+                      alt="Trophy"
+                      className="mt-2 w-[80px] h-[70px]"
+                    />
                   ) : (
                     <>
                       <span className="text-[#645d5d]">{formatKey(key)}:</span>{" "}

@@ -97,3 +97,15 @@ export type clubsDataFromCom = {
 export type SquadFromClub = {
   squad: Array<any>;
 };
+
+export interface DataForHeader {
+  type: string;
+  title: string;
+  frontImg: string;
+  secondImg: string;
+  secondTitle: string;
+  marketValue: string;
+  firstData: Array<Record<string, string | number | null>>;
+  secondData: Array<Record<string, string | number | null>>;
+  thirdData: Array<Record<string, string>>;
+}

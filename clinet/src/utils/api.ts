@@ -150,7 +150,7 @@ export const fetchDataOfClubsFromCom = async (
 };
 
 export const fetchDataOfOneComRow = async (
-  id: string,
+  id: String | undefined,
   domain: string = "com"
 ): Promise<any> => {
   const options = {
