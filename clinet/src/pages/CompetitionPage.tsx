@@ -26,7 +26,32 @@ function CompetitionPage() {
       data.competition.marketValueCurrency +
       data.competition.marketValue +
       data.competition.marketValueNumeral,
-    firstArray: [{}, {}, {}],
+    firstData: [
+      { leagueLevel: data.competition.leagueLevel },
+      { currentChampionName: data.competition.currentChampionName },
+      { currentMatchDay: data.competition.currentMatchDay },
+      { Initials: data.competition.id },
+    ],
+    secondData: [
+      { season: data.competition.season },
+      {
+        mostValuableClub:
+          data.competition.mostValuableClubName +
+          " " +
+          data.competition.mostValuableClubMarketValueCurrency +
+          data.competition.mostValuableClubMarketValue +
+          data.competition.mostValuableClubMarketValueNumeral,
+      },
+      {
+        mostValuablePlayer:
+          data.competition.mostValuablePlayerName +
+          " " +
+          data.competition.mostValuableClubMarketValueCurrency +
+          data.competition.mostValuablePlayerMarketValue +
+          data.competition.mostValuablePlayerMarketValueNumeral,
+      },
+    ],
+    thirdData: [{ trophy: data.competition.trophy }],
   };
   return (
     <>
