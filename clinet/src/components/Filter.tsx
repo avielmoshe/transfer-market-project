@@ -438,7 +438,7 @@ const Filter = () => {
             </div>
           )}
           <button className="bg-[#DDDDDD] h-[35px] w-[25px] flex justify-center items-center text-[18px] text-[#0EB1EE] hover:bg-[#0EB1EE] hover:text-[#DDDDDD]"
-            onClick={() => navigate(`/SearchPage?countryProfile/${selectedCountry}`)}
+            onClick={() => navigate(`/SearchPage?query=${selectedCountry}`)}
             disabled={selectedCountry === "Country"}
            >
             <RxDoubleArrowRight />
@@ -518,7 +518,7 @@ const Filter = () => {
                 ? "hover:bg-[#0EB1EE] hover:text-[#DDDDDD] cursor-pointer"
                 : "cursor-default"
             } `}
-            onClick={() => navigate(`/SearchPage?competitionProfile/?${selectedCompetition}`)}
+            onClick={() => navigate(`/competitionProfile/?${selectedCompetition}`)}
             disabled={selectedCompetition === "Competition"}
           >
             <RxDoubleArrowRight />
@@ -595,7 +595,7 @@ const Filter = () => {
                 ? "hover:bg-[#0EB1EE] hover:text-[#DDDDDD] cursor-pointer"
                 : "cursor-default"
             } `}
-            onClick={() => navigate(`/SearchPage?clubProfile=${clubId}`)}
+            onClick={() => navigate(`/clubProfile=${clubId}`)}
             disabled={selectedClub === "Club"}
           >
             <RxDoubleArrowRight />
@@ -668,7 +668,7 @@ const Filter = () => {
                 ? "hover:bg-[#0EB1EE] hover:text-[#DDDDDD] cursor-pointer"
                 : "cursor-default"
             } `}
-            onClick={() => navigate(`/SearchPage?playerProfile/${playerId}`)}
+            onClick={() => navigate(`/playerProfile/${playerId}`)}
             disabled={selectedPlayer === "Player"}
           >
             <RxDoubleArrowRight />
