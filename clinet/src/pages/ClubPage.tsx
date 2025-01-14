@@ -1,4 +1,5 @@
 import DynamicHeader from "@/components/HeaderForProfile";
+import NavSearch from "@/components/NavSearch";
 import { DataForHeader, DataForNavSearch } from "@/types/types";
 import {
   fetchDataOfOneClubProfile,
@@ -69,8 +70,23 @@ function ClubPage() {
     successesData: profileData.successes,
   };
 
-  const dataForNavSearch: DataForNavSearch = ["", ""];
-  return <>{<DynamicHeader dataForHeader={dataForHeader} />}</>;
+  const dataOfNavSearch: DataForNavSearch = [
+    "OVERVIEW",
+    " SQUAD",
+    "FIXTURES",
+    "TRANSFERS & RUMOURS",
+    "INFORMATION & FACTS",
+    "STADIUM",
+    "HISTORY",
+    "NEWS",
+    "FORUM",
+  ];
+  return (
+    <>
+      <DynamicHeader dataForHeader={dataForHeader} />
+      <NavSearch dataOfNavSearch={dataOfNavSearch} />
+    </>
+  );
 }
 
 export default ClubPage;
