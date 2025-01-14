@@ -377,6 +377,7 @@ const Filter = () => {
   };
   const handlePlayersSelect = (player: string) => {
     setSelectedPlayer(player);
+    console.log(player);
     setIsPlayerOpen(false);
     setSearchPlayerTerm("");
     setPlayerId(player.id)
@@ -438,7 +439,14 @@ const Filter = () => {
             </div>
           )}
           <button className="bg-[#DDDDDD] h-[35px] w-[25px] flex justify-center items-center text-[18px] text-[#0EB1EE] hover:bg-[#0EB1EE] hover:text-[#DDDDDD]"
-            onClick={() => navigate(`/SearchPage?query=${selectedCountry}`)}
+           onClick={() => {
+            navigate(`/SearchPage?query=${selectedCountry}`);
+            setIsCountryOpen(false);
+            setIsCompetitionOpen(false);
+            setIsClubsOpen(false);
+            setIsPlayerOpen(false);
+          }}
+          
             disabled={selectedCountry === "Country"}
            >
             <RxDoubleArrowRight />
@@ -518,7 +526,12 @@ const Filter = () => {
                 ? "hover:bg-[#0EB1EE] hover:text-[#DDDDDD] cursor-pointer"
                 : "cursor-default"
             } `}
-            onClick={() => navigate(`/competitionProfile/${competitionId}`)}
+            onClick={() => {navigate(`/competitionProfile/${competitionId}`)
+            setIsCountryOpen(false);
+            setIsCompetitionOpen(false);
+            setIsClubsOpen(false);
+            setIsPlayerOpen(false);
+          }}
             disabled={selectedCompetition === "Competition"}
           >
             <RxDoubleArrowRight />
@@ -589,17 +602,24 @@ const Filter = () => {
               </ul>
             </div>
           )}
-          <button
-            className={`bg-[#DDDDDD] h-[35px] w-[25px] flex justify-center items-center text-[18px] text-[#0EB1EE]  ${
-              selectedCompetition !== "Competition"
-                ? "hover:bg-[#0EB1EE] hover:text-[#DDDDDD] cursor-pointer"
-                : "cursor-default"
-            } `}
-            onClick={() => navigate(`/clubProfile/${clubId}`)}
-            disabled={selectedClub === "Club"}
-          >
-            <RxDoubleArrowRight />
-          </button>
+<button
+  className={`bg-[#DDDDDD] h-[35px] w-[25px] flex justify-center items-center text-[18px] text-[#0EB1EE]  ${
+    selectedCompetition !== "Competition"
+      ? "hover:bg-[#0EB1EE] hover:text-[#DDDDDD] cursor-pointer"
+      : "cursor-default"
+  } `}
+  onClick={() => {
+    navigate(`/clubProfile/${clubId}`);
+    setIsCountryOpen(false);
+    setIsCompetitionOpen(false);
+    setIsClubsOpen(false);
+    setIsPlayerOpen(false);
+  }}
+  disabled={selectedClub === "Club"} 
+>
+  <RxDoubleArrowRight />
+</button>
+
         </div>
         <div
           className={`flex relative ${selectedClub === "Club" && "opacity-50"}`}
@@ -668,7 +688,12 @@ const Filter = () => {
                 ? "hover:bg-[#0EB1EE] hover:text-[#DDDDDD] cursor-pointer"
                 : "cursor-default"
             } `}
-            onClick={() => navigate(`/playerProfile/${playerId}`)}
+            onClick={() => {navigate(`/playerProfile/${playerId}`)
+            setIsCountryOpen(false);
+            setIsCompetitionOpen(false);
+            setIsClubsOpen(false);
+            setIsPlayerOpen(false);
+          }}
             disabled={selectedPlayer === "Player"}
           >
             <RxDoubleArrowRight />
