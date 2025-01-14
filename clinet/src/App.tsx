@@ -15,7 +15,7 @@ function App() {
       children: [
         { path: "/", element: <HomePage /> },
         { path: "/SearchPage", element: <SearchPage /> },
-        { path: "/competitionProfile/:id", element: <CompetitionPage /> },
+        { path: "/competitionProfile/:category/:id", element: <CompetitionPage /> },
         { path: "/clubProfile/:id", element: <ClubPage /> },
         { path: "/playerProfile/:id", element: <PlayerPage /> },
         { path: "/refereeProfile/:id", element: <RefereePage /> },
