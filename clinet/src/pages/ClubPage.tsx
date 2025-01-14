@@ -10,7 +10,6 @@ import { useParams } from "react-router-dom";
 
 function ClubPage() {
   const { id } = useParams();
-  console.log(id);
 
   const { data, error, isLoading } = useQuery({
     queryKey: ["dataOfOneClub", { id }],
@@ -25,8 +24,9 @@ function ClubPage() {
   if (!data) {
     return null;
   }
-  console.log(data);
-  console.log(profileData);
+  if (!profileData) {
+    return null;
+  }
 
   const dataForHeader: DataForHeader = {
     type: "club",
@@ -66,7 +66,7 @@ function ClubPage() {
       },
       { founding: profileData.mainFacts.founding },
     ],
-    successesData: [],
+    successesData: profileData.successes,
   };
 
   const dataForNavSearch: DataForNavSearch = ["", ""];
