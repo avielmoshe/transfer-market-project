@@ -68,7 +68,6 @@ function CompetitionPage() {
     { name: "NEWS", onClick: () => { navigate(`/competitionProfile/${id}/news`); }},
   ];
   
-  console.log(category);
   
   return (
     <>

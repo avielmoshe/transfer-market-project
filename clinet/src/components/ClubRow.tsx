@@ -20,14 +20,14 @@ function ClubRow({ club }: ClubRowProps) {
   if (!data) {
     return null;
   }
+console.log(data);
 
   return (
     <tr>
       <td className="border p-1 w-10">
         <img
           className="w-[25px] h-[34px]"
-          src={club.logoImage}
-          alt="logoImage"
+          src={data.club.image}   alt="logoImage"
         />
       </td>
       <td className="border p-1 w-13 text-[12px]">
@@ -35,8 +35,8 @@ function ClubRow({ club }: ClubRowProps) {
           <Link to={`/clubProfile/${club.id}/overview`}>
             <div className="font-bold">{club.name}</div>
           </Link>
-          <Link to={`/competitionProfile/${club.competitionID}/overview`}>
-            <div>{club.competitionName}</div>
+          <Link to={`/competitionProfile/${data.club.leagueID}/overview`}>
+            <div>{data.club.clubnameEN}</div>
           </Link>
         </div>
       </td>
