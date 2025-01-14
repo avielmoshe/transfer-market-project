@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { clubs } from "../types/types";
-import { fetchDataOfOneClubRow } from "../utils/api";
+import { clubs } from "../../types/types";
+import { fetchDataOfOneClubRow } from "../../utils/api";
 import { MdStadium } from "react-icons/md";
 import { BiTransfer } from "react-icons/bi";
 import { Link } from "react-router-dom";

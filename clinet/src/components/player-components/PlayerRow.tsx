@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { players } from "../types/types";
-import { fetchDataOfOnePlayerForRow } from "../utils/api";
+import { players } from "../../types/types";
+import { fetchDataOfOnePlayerForRow } from "../../utils/api";
 import { Link } from "react-router-dom";
 
 interface PlayerRowProp {
