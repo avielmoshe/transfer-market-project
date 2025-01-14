@@ -1,5 +1,5 @@
 import DynamicHeader from "@/components/HeaderForProfile";
-import { DataForHeader } from "@/types/types";
+import { DataForHeader, DataForNavSearch } from "@/types/types";
 import { fetchDataOfOneComRow } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
@@ -53,10 +53,11 @@ function CompetitionPage() {
     ],
     thirdData: [{ trophy: data.competition.trophy }],
   };
+  const dataOfNavSearch : DataForNavSearch = ["OVERVIEW" , " TABLES" , "TRANSFERS" , "MARKET VALUES" , "PLAYERS" , "CLUBS" , "INFORMATION & FACTS" , "HISTORY" , "NEWS"]
   return (
     <>
       <DynamicHeader dataForHeader={dataForHeader} />
-      <NavSearch/>
+      <NavSearch dataOfNavSearch={dataOfNavSearch}/>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eveniet ab inventore quasi quia animi fugiat eius quae soluta est quam vero maxime, aut ipsum voluptas laboriosam voluptatem, unde commodi?
       Incidunt accusantium esse temporibus repudiandae necessitatibus maxime rem iste aliquam alias itaque unde dolorum enim quisquam vel dicta neque nobis porro, sequi ducimus quo ex libero. Maxime nisi ullam quia?
       Distinctio quis modi inventore voluptatem eveniet nisi magni alias, et, corporis neque officiis a, sit suscipit aperiam ea cupiditate explicabo officia ullam exercitationem fugit delectus laudantium sequi. Id, nostrum obcaecati!
