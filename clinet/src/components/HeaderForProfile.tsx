@@ -78,7 +78,7 @@ const DynamicHeader = ({ dataForHeader }: DynamicHeaderProp) => {
               );
             })}
           </div>
-          <div>
+          <div className="ml-4">
             {dataForHeader.thirdData.map((item: object, index: number) => {
               const [key, value] = Object.entries(item)[0]; // Extract the key and value
               return (

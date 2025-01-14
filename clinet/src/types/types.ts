@@ -115,4 +115,6 @@ export interface DataForHeader {
   firstData: Array<Record<string, string | number | null>>;
   secondData: Array<Record<string, string | number | null>>;
   thirdData: Array<Record<string, string>>;
+  successesData?: Array<Record<string, string>>;
 }
+export interface DataForNavSearch extends Array<string> {}
