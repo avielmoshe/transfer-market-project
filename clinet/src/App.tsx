@@ -15,9 +15,12 @@ function App() {
       children: [
         { path: "/", element: <HomePage /> },
         { path: "/SearchPage", element: <SearchPage /> },
-        { path: "/competitionProfile/:category/:id", element: <CompetitionPage /> },
-        { path: "/clubProfile/:id", element: <ClubPage /> },
-        { path: "/playerProfile/:id", element: <PlayerPage /> },
+        {
+          path: "/competitionProfile/:category/:id",
+          element: <CompetitionPage />,
+        },
+        { path: "/clubProfile/:category/:id", element: <ClubPage /> },
+        { path: "/playerProfile/:category/:id", element: <PlayerPage /> },
         { path: "/refereeProfile/:id", element: <RefereePage /> },
         { path: "/about", element: <AboutPage /> },
       ],
