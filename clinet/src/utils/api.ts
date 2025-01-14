@@ -2,6 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import {
   ClubData,
+  ClubProfile,
   clubsDataFromCom,
   DataType,
   HeroData,
@@ -97,7 +98,7 @@ export const fetchDataOfOneClubRow = async (
 export const fetchDataOfOneClubProfile = async (
   id: string | undefined,
   domain: string = "com"
-): Promise<ClubData> => {
+): Promise<ClubProfile> => {
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/clubs/get-profile`,

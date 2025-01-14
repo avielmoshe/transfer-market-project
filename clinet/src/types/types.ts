@@ -104,6 +104,12 @@ export type clubsDataFromCom = {
 export type SquadFromClub = {
   squad: Array<any>;
 };
+export interface SuccessData {
+  number: string; // Assuming the number is a string (e.g., '9', '6', etc.)
+  name: string; // The name of the achievement
+  id: string; // Assuming the id is a string
+  additionalData: Record<string, any>; // Placeholder for the structure of additionalData
+}
 
 export interface DataForHeader {
   type: string;
@@ -115,6 +121,35 @@ export interface DataForHeader {
   firstData: Array<Record<string, string | number | null>>;
   secondData: Array<Record<string, string | number | null>>;
   thirdData: Array<Record<string, string>>;
-  successesData?: Array<Record<string, string>>;
+  successesData?: SuccessData[];
 }
+
 export interface DataForNavSearch extends Array<string> {}
+
+export interface ClubProfile {
+  additionalTeams: Array<Record<string, any>>; // Array of objects with unknown structure
+  historicImages: string[]; // Array of image URLs as strings
+  internationalTeamFlag: string; // A string, potentially empty
+  mainFacts: {
+    id: string;
+    fullName: string;
+    street: string;
+    postalCode: string;
+    city: string;
+    [key: string]: any; // Optional for additional unknown properties
+  };
+  share: {
+    title: string;
+    url: string;
+    description: string;
+  };
+  stadium: {
+    id: string;
+    name: string;
+    street: string;
+    postalCode: string;
+    city: string;
+    [key: string]: any; // Optional for additional unknown properties
+  };
+  successes: SuccessData[]; // Optional property for successes, if it exists
+}
