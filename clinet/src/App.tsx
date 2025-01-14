@@ -8,6 +8,14 @@ import ClubPage from "./pages/ClubPage.js";
 import PlayerPage from "./pages/PlayerPage.js";
 import RefereePage from "./pages/RefereePage.js";
 import CompetitionOverview from "./components/competition-components/CompetitionOverview.js";
+import CompetitionnHistory from "./components/competition-components/CompetitionnHistory.js";
+import CompetitionInformationFacts from "./components/competition-components/CompetitionInformationFacts.js";
+import CompetitionTransfers from "./components/competition-components/CompetitionTransfers.js";
+import CompetitionClubs from "./components/competition-components/CompetitionClubs.js";
+import CompetitionTables from "./components/competition-components/CompetitionTables.js";
+import CompetitionPlayers from "./components/competition-components/CompetitionPlayers.js";
+import CompetitionNews from "./components/competition-components/CompetitionNews.js";
+import CompetitionMarketValues from "./components/competition-components/CmpotitionMarketValues.js";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +31,42 @@ function App() {
             {
               path: "/competitionProfile/:id/overview",
               element: <CompetitionOverview />,
+            },
+            {
+              path: "/competitionProfile/:id/history",
+              element: <CompetitionnHistory />,
+            },
+            {
+              path: "/competitionProfile/:id/InformationFacts",
+              element: <CompetitionInformationFacts />,
+            },
+            {
+              path: "/competitionProfile/:id/Transfers",
+              element: <CompetitionTransfers />,
+            },
+            {
+              path: "/competitionProfile/:id/Clubs",
+              element: <CompetitionClubs />,
+            },
+            {
+              path: "/competitionProfile/:id/Tables",
+              element: <CompetitionTables />,
+            },
+            {
+              path: "/competitionProfile/:id/Players",
+              element: <CompetitionPlayers />,
+            },
+            {
+              path: "/competitionProfile/:id/Tables",
+              element: <CompetitionTables />,
+            },
+            {
+              path: "/competitionProfile/:id/News",
+              element: <CompetitionNews />,
+            },
+            {
+              path: "/competitionProfile/:id/MarketValues",
+              element: <CompetitionMarketValues />,
             },
           ],
         },
