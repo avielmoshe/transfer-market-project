@@ -528,7 +528,7 @@ const Filter = () => {
                 : "cursor-default"
             } `}
             onClick={() => {
-              navigate(`/competitionProfile/Overview/${competitionId}`);
+              navigate(`/competitionProfile/${competitionId}/overview`);
               setIsCountryOpen(false);
               setIsCompetitionOpen(false);
               setIsClubsOpen(false);

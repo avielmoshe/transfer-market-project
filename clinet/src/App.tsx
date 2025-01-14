@@ -16,8 +16,12 @@ function App() {
         { path: "/", element: <HomePage /> },
         { path: "/SearchPage", element: <SearchPage /> },
         {
-          path: "/competitionProfile/:category/:id",
+          path: "/competitionProfile/:id",
           element: <CompetitionPage />,
+          children: [
+            { path: "/competitionProfile/:id/overview",
+             element: <div>baba</div> },
+          ]
         },
         { path: "/clubProfile/:category/:id", element: <ClubPage /> },
         { path: "/playerProfile/:category/:id", element: <PlayerPage /> },

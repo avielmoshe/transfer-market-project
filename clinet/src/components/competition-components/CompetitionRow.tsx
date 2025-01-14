@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { clubs, competitions } from "../types/types";
-import { fetchDataOfOneClubRow, fetchDataOfOneComRow } from "../utils/api";
+import { clubs, competitions } from "../../types/types"
 import { MdStadium } from "react-icons/md";
 import { BiTransfer } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { fetchDataOfOneComRow } from "@/utils/api";
 
 interface CompetitionRowProps {
   competition: competitions;

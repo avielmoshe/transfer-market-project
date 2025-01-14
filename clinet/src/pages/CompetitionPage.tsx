@@ -2,9 +2,8 @@ import DynamicHeader from "@/components/HeaderForProfile";
 import { DataForHeader, DataForNavSearch } from "@/types/types";
 import { fetchDataOfOneComRow } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import NavSearch from "../components/NavSearch"
-import { log } from "console";
 
 
 function CompetitionPage() {
@@ -75,8 +74,8 @@ function CompetitionPage() {
     <>
       <DynamicHeader dataForHeader={dataForHeader} />
       <NavSearch dataOfNavSearch={dataOfNavSearch}/>
-      {/* <Competition+{category}/> */}
-    </>
+      <Outlet/>
+ </>
   );
 }
 

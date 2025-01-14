@@ -10,6 +10,7 @@ import {
   User,
   userLogin,
 } from "../types/types";
+import { log } from "console";
 
 const RAPIDAPI_HOST = "transfermarket.p.rapidapi.com";
 const RAPIDAPI_KEY = "33cb9405dbmsh9f8f012503ce134p146775jsn436ccb2ae8b5";
@@ -47,6 +48,8 @@ export const fetchDataOfOnePlayerForRow = async (
   id: string,
   domain: string = "com"
 ): Promise<HeroData> => {
+  console.log("fetchDataOfOnePlayerForRow");
+  
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/players/get-profile`,

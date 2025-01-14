@@ -4,7 +4,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchTransferMarketData } from "../utils/api";
 import PlayerRow from "../components/PlayerRow";
 import ClubRow from "../components/ClubRow";
-import CompetitionRow from "../components/CompetitionRow";
+import CompetitionRow from "@/components/competition-components/CompetitionRow";
 import CoachRow from "../components/CoachRow";
 import RefereeRow from "../components/RefereeRow";
 import Pagination from "@/components/Pagination";
