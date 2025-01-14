@@ -1,17 +1,20 @@
 import NavSearch from "@/components/NavSearch";
 import { DataForNavSearch } from "@/types/types";
+import { useNavigate, useParams } from "react-router-dom";
 
 function PlayerPage() {
+  const navigate = useNavigate();
+  const { id } = useParams();
   const dataOfNavSearch: DataForNavSearch = [
-    "PROFILE",
-    " STATS",
-    "MARKET VALUES",
-    "TRANSFERS",
-    "RUMOURS",
-    "NATIONAL TEAM",
-    "NEWS",
-    "ACHIEVEMENTS",
-    "CAREER",
+    { name: "PROFILE", onClick: () => { navigate(`/playerProfile/Profile/${id}`); }},
+    { name: "STATS", onClick: () => { navigate(`/playerProfile/Stats/${id}`); }},
+    { name: "MARKET VALUES", onClick: () => { navigate(`/playerProfile/MarketValues/${id}`); }},
+    { name: "TRANSFERS", onClick: () => { navigate(`/playerProfile/Transfers/${id}`); }},
+    { name: "RUMOURS", onClick: () => { navigate(`/playerProfile/Rumours/${id}`); }},
+    { name: "NATIONAL TEAM", onClick: () => { navigate(`/playerProfile/NationalTeam/${id}`); }},
+    { name: "NEWS", onClick: () => { navigate(`/playerProfile/News/${id}`); }},
+    { name: "ACHIEVEMENTS", onClick: () => { navigate(`/playerProfile/Achievements/${id}`); }},
+    { name: "CAREER", onClick: () => { navigate(`/playerProfile/Career/${id}`); }},
   ];
   return (
     <>

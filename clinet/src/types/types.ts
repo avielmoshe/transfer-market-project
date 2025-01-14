@@ -123,8 +123,12 @@ export interface DataForHeader {
   thirdData: Array<Record<string, string>>;
   successesData?: SuccessData[];
 }
+interface NavCategory {
+  name: string;
+  onClick: () => void;
+}
 
-export interface DataForNavSearch extends Array<string> {}
+export interface DataForNavSearch extends Array<NavCategory> {}
 
 export interface ClubProfile {
   additionalTeams: Array<Record<string, any>>; // Array of objects with unknown structure

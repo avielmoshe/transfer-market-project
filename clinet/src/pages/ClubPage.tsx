@@ -7,9 +7,10 @@ import {
   fetchDataOfOneComRow,
 } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function ClubPage() {
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const { data, error, isLoading } = useQuery({
@@ -71,15 +72,15 @@ function ClubPage() {
   };
 
   const dataOfNavSearch: DataForNavSearch = [
-    "OVERVIEW",
-    " SQUAD",
-    "FIXTURES",
-    "TRANSFERS & RUMOURS",
-    "INFORMATION & FACTS",
-    "STADIUM",
-    "HISTORY",
-    "NEWS",
-    "FORUM",
+    { name: "OVERVIEW", onClick: () => { navigate(`/clubProfile/Overview/${id}`); }},
+    { name: "SQUAD", onClick: () => { navigate(`/clubProfile/Squad/${id}`); }},
+    { name: "FIXTURES", onClick: () => { navigate(`/clubProfile/Fixtures/${id}`); }},
+    { name: "TRANSFERS & RUMOURS", onClick: () => { navigate(`/clubProfile/TransfersRumours/${id}`); }},
+    { name: "INFORMATION & FACTS", onClick: () => { navigate(`/clubProfile/InformationFacts/${id}`); }},
+    { name: "STADIUM", onClick: () => { navigate(`/clubProfile/Stadium/${id}`); }},
+    { name: "HISTORY", onClick: () => { navigate(`/clubProfile/History/${id}`); }},
+    { name: "NEWS", onClick: () => { navigate(`/clubProfile/News/${id}`); }},
+    { name: "FORUM", onClick: () => { navigate(`/clubProfile/Forum/${id}`); }},
   ];
   return (
     <>

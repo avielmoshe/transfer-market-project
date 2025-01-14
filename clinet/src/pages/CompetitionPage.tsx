@@ -57,10 +57,18 @@ function CompetitionPage() {
     ],
     thirdData: [{ trophy: data.competition.trophy }],
   };
-  const dataOfNavSearch  = [{name: "OVERVIEW",
-    onClick:()=> {navigate(`/competitionProfile/Overview/${id}`)}
-  } , 
-  " TABLES" , "TRANSFERS" , "MARKET VALUES" , "PLAYERS" , "CLUBS" , "INFORMATION & FACTS" , "HISTORY" , "NEWS"]
+  const dataOfNavSearch : DataForNavSearch = [
+    { name: "OVERVIEW", onClick: () => { navigate(`/competitionProfile/Overview/${id}`); }},
+    { name: "TABLES", onClick: () => { navigate(`/competitionProfile/Tables/${id}`); }},
+    { name: "TRANSFERS", onClick: () => { navigate(`/competitionProfile/Transfers/${id}`); }},
+    { name: "MARKET VALUES", onClick: () => { navigate(`/competitionProfile/MarketValues/${id}`); }},
+    { name: "PLAYERS", onClick: () => { navigate(`/competitionProfile/Players/${id}`); }},
+    { name: "CLUBS", onClick: () => { navigate(`/competitionProfile/Clubs/${id}`); }},
+    { name: "INFORMATION & FACTS", onClick: () => { navigate(`/competitionProfile/InformationFacts/${id}`); }},
+    { name: "HISTORY", onClick: () => { navigate(`/competitionProfile/History/${id}`); }},
+    { name: "NEWS", onClick: () => { navigate(`/competitionProfile/News/${id}`); }},
+  ];
+  
   console.log(category);
   
   return (
