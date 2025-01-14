@@ -72,15 +72,15 @@ function ClubPage() {
   };
 
   const dataOfNavSearch: DataForNavSearch = [
-    { name: "OVERVIEW", onClick: () => { navigate(`/clubProfile/Overview/${id}`); }},
-    { name: "SQUAD", onClick: () => { navigate(`/clubProfile/Squad/${id}`); }},
-    { name: "FIXTURES", onClick: () => { navigate(`/clubProfile/Fixtures/${id}`); }},
-    { name: "TRANSFERS & RUMOURS", onClick: () => { navigate(`/clubProfile/TransfersRumours/${id}`); }},
-    { name: "INFORMATION & FACTS", onClick: () => { navigate(`/clubProfile/InformationFacts/${id}`); }},
-    { name: "STADIUM", onClick: () => { navigate(`/clubProfile/Stadium/${id}`); }},
-    { name: "HISTORY", onClick: () => { navigate(`/clubProfile/History/${id}`); }},
-    { name: "NEWS", onClick: () => { navigate(`/clubProfile/News/${id}`); }},
-    { name: "FORUM", onClick: () => { navigate(`/clubProfile/Forum/${id}`); }},
+    { name: "OVERVIEW", onClick: () => { navigate(`/clubProfile/${id}/overview`); }},
+    { name: "SQUAD", onClick: () => { navigate(`/clubProfile/${id}/squad`); }},
+    { name: "FIXTURES", onClick: () => { navigate(`/clubProfile/${id}/fixtures`); }},
+    { name: "TRANSFERS & RUMOURS", onClick: () => { navigate(`/clubProfile/${id}/transfersRumours`); }},
+    { name: "INFORMATION & FACTS", onClick: () => { navigate(`/clubProfile/${id}/informationFacts`); }},
+    { name: "STADIUM", onClick: () => { navigate(`/clubProfile/${id}/stadium`); }},
+    { name: "HISTORY", onClick: () => { navigate(`/clubProfile/${id}/history`); }},
+    { name: "NEWS", onClick: () => { navigate(`/clubProfile/${id}/news`); }},
+    { name: "FORUM", onClick: () => { navigate(`/clubProfile/${id}/forum`); }},
   ];
   return (
     <>

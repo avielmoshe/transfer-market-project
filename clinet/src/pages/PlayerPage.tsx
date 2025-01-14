@@ -6,15 +6,15 @@ function PlayerPage() {
   const navigate = useNavigate();
   const { id } = useParams();
   const dataOfNavSearch: DataForNavSearch = [
-    { name: "PROFILE", onClick: () => { navigate(`/playerProfile/Profile/${id}`); }},
-    { name: "STATS", onClick: () => { navigate(`/playerProfile/Stats/${id}`); }},
-    { name: "MARKET VALUES", onClick: () => { navigate(`/playerProfile/MarketValues/${id}`); }},
-    { name: "TRANSFERS", onClick: () => { navigate(`/playerProfile/Transfers/${id}`); }},
-    { name: "RUMOURS", onClick: () => { navigate(`/playerProfile/Rumours/${id}`); }},
-    { name: "NATIONAL TEAM", onClick: () => { navigate(`/playerProfile/NationalTeam/${id}`); }},
-    { name: "NEWS", onClick: () => { navigate(`/playerProfile/News/${id}`); }},
-    { name: "ACHIEVEMENTS", onClick: () => { navigate(`/playerProfile/Achievements/${id}`); }},
-    { name: "CAREER", onClick: () => { navigate(`/playerProfile/Career/${id}`); }},
+    { name: "PROFILE", onClick: () => { navigate(`/playerProfile/${id}/profile`); }},
+    { name: "STATS", onClick: () => { navigate(`/playerProfile/${id}/stats`); }},
+    { name: "MARKET VALUES", onClick: () => { navigate(`/playerProfile/${id}/marketValues`); }},
+    { name: "TRANSFERS", onClick: () => { navigate(`/playerProfile/${id}/transfers`); }},
+    { name: "RUMOURS", onClick: () => { navigate(`/playerProfile/${id}/rumours`); }},
+    { name: "NATIONAL TEAM", onClick: () => { navigate(`/playerProfile/${id}/nationalTeam`); }},
+    { name: "NEWS", onClick: () => { navigate(`/playerProfile/${id}/news`); }},
+    { name: "ACHIEVEMENTS", onClick: () => { navigate(`/playerProfile/${id}/achievements`); }},
+    { name: "CAREER", onClick: () => { navigate(`/playerProfile/${id}/career`); }},
   ];
   return (
     <>

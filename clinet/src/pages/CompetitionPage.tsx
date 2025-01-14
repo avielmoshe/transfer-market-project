@@ -57,15 +57,15 @@ function CompetitionPage() {
     thirdData: [{ trophy: data.competition.trophy }],
   };
   const dataOfNavSearch : DataForNavSearch = [
-    { name: "OVERVIEW", onClick: () => { navigate(`/competitionProfile/Overview/${id}`); }},
-    { name: "TABLES", onClick: () => { navigate(`/competitionProfile/Tables/${id}`); }},
-    { name: "TRANSFERS", onClick: () => { navigate(`/competitionProfile/Transfers/${id}`); }},
-    { name: "MARKET VALUES", onClick: () => { navigate(`/competitionProfile/MarketValues/${id}`); }},
-    { name: "PLAYERS", onClick: () => { navigate(`/competitionProfile/Players/${id}`); }},
-    { name: "CLUBS", onClick: () => { navigate(`/competitionProfile/Clubs/${id}`); }},
-    { name: "INFORMATION & FACTS", onClick: () => { navigate(`/competitionProfile/InformationFacts/${id}`); }},
-    { name: "HISTORY", onClick: () => { navigate(`/competitionProfile/History/${id}`); }},
-    { name: "NEWS", onClick: () => { navigate(`/competitionProfile/News/${id}`); }},
+    { name: "OVERVIEW", onClick: () => { navigate(`/competitionProfile/${id}/overview`); }},
+    { name: "TABLES", onClick: () => { navigate(`/competitionProfile/${id}/tables`); }},
+    { name: "TRANSFERS", onClick: () => { navigate(`/competitionProfile/${id}/transfers`); }},
+    { name: "MARKET VALUES", onClick: () => { navigate(`/competitionProfile/${id}/marketValues`); }},
+    { name: "PLAYERS", onClick: () => { navigate(`/competitionProfile/${id}/players`); }},
+    { name: "CLUBS", onClick: () => { navigate(`/competitionProfile/${id}/clubs`); }},
+    { name: "INFORMATION & FACTS", onClick: () => { navigate(`/competitionProfile/${id}/informationFacts`); }},
+    { name: "HISTORY", onClick: () => { navigate(`/competitionProfile/${id}/history`); }},
+    { name: "NEWS", onClick: () => { navigate(`/competitionProfile/${id}/news`); }},
   ];
   
   console.log(category);
