@@ -94,6 +94,8 @@ export interface ClubData {
     rank: string;
     coachName: string;
     leagueName: string;
+    leagueID : string
+    
   };
 }
 

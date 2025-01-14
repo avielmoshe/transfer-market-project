@@ -34,11 +34,12 @@ const SearchPage: React.FC = () => {
   }
 
   const totalPages = getTotalPages(data.count);
+  
 
   return (
     <div>
       <div>
-        {data.players.length > 0 ? (
+        {data.players?.length > 0 ? (
           <div className=" mr-2 ml-1">
             <h2 className="bg-[#00193f] text-white px-2 font-bold">{` SEARCH RESULTS FOR PLAYERS  - ${data.count.players} HITS`}</h2>
             <table className="bg-white table-auto border-collapse w-full mb-4">
