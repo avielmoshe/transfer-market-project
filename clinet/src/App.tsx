@@ -7,6 +7,7 @@ import CompetitionPage from "./pages/CompetitionPage.js";
 import ClubPage from "./pages/ClubPage.js";
 import PlayerPage from "./pages/PlayerPage.js";
 import RefereePage from "./pages/RefereePage.js";
+import CompetitionOverview from "./components/competition-components/CompetitionOverview.js";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,12 +20,32 @@ function App() {
           path: "/competitionProfile/:id",
           element: <CompetitionPage />,
           children: [
-            { path: "/competitionProfile/:id/overview",
-             element: <div>baba</div> },
-          ]
+            {
+              path: "/competitionProfile/:id/overview",
+              element: <CompetitionOverview />,
+            },
+          ],
         },
-        { path: "/clubProfile/:category/:id", element: <ClubPage /> },
-        { path: "/playerProfile/:category/:id", element: <PlayerPage /> },
+        {
+          path: "/clubProfile/:id",
+          element: <ClubPage />,
+          children: [
+            {
+              path: "/clubProfile/:id/overview",
+              element: <div>baba</div>,
+            },
+          ],
+        },
+        {
+          path: "/playerProfile/:id",
+          element: <PlayerPage />,
+          children: [
+            {
+              path: "/playerProfile/:id/profile",
+              element: <div>baba</div>,
+            },
+          ],
+        },
         { path: "/refereeProfile/:id", element: <RefereePage /> },
         { path: "/about", element: <AboutPage /> },
       ],

@@ -611,7 +611,7 @@ const Filter = () => {
                 : "cursor-default"
             } `}
             onClick={() => {
-              navigate(`/clubProfile/Overview/${clubId}`);
+              navigate(`/clubProfile/${clubId}/overview`);
               setIsCountryOpen(false);
               setIsCompetitionOpen(false);
               setIsClubsOpen(false);
@@ -690,7 +690,7 @@ const Filter = () => {
                 : "cursor-default"
             } `}
             onClick={() => {
-              navigate(`/playerProfile/Profile/${playerId}`);
+              navigate(`/playerProfile/${playerId}/profile`);
               setIsCountryOpen(false);
               setIsCompetitionOpen(false);
               setIsClubsOpen(false);

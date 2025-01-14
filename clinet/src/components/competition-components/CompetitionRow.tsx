@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { clubs, competitions } from "../../types/types"
-import { MdStadium } from "react-icons/md";
-import { BiTransfer } from "react-icons/bi";
+import { competitions } from "../../types/types";
+
 import { Link } from "react-router-dom";
 import { fetchDataOfOneComRow } from "@/utils/api";
 
@@ -31,7 +30,7 @@ function CompetitionRow({ competition }: CompetitionRowProps) {
         />
       </td>
       <td className="border p-1 w-13 text-[12px] text-[#1d75a3]">
-        <Link to={`/competitionProfile/Overview/${competition.id}`}>
+        <Link to={`/competitionProfile/${competition.id}/overview`}>
           {competition.competitionName}
         </Link>
       </td>
@@ -46,7 +45,7 @@ function CompetitionRow({ competition }: CompetitionRowProps) {
       </td>
       <td className="border p-1  text-[12px] text-center text-[#1d75a3]">
         <Link
-          to={`/playerProfile/Profile/${data.competition.mostValuablePlayerID}`}
+          to={`/playerProfile/${data.competition.mostValuablePlayerID}/profile`}
         >
           {data.competition.mostValuablePlayerName}
         </Link>

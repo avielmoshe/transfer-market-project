@@ -32,10 +32,10 @@ function ClubRow({ club }: ClubRowProps) {
       </td>
       <td className="border p-1 w-13 text-[12px]">
         <div className="ml-1  text-[12px] text-[#1d75a3]">
-          <Link to={`/clubProfile/Overview/${club.id}`}>
+          <Link to={`/clubProfile/${club.id}/overview`}>
             <div className="font-bold">{club.name}</div>
           </Link>
-          <Link to={`/competitionProfile/Overview/${club.competitionID}`}>
+          <Link to={`/competitionProfile/${club.competitionID}/overview`}>
             <div>{club.competitionName}</div>
           </Link>
         </div>
