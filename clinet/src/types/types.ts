@@ -87,6 +87,13 @@ export interface ClubData {
     marketValueCurrency: string;
     marketValue: string;
     marketValueNumeral: string;
+    clubnameEN: string;
+    image: string;
+    leagueImage: string;
+    leagueLevel: string;
+    rank: string;
+    coachName: string;
+    leagueName: string;
   };
 }
 

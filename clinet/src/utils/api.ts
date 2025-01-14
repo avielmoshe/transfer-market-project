@@ -2,7 +2,6 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import {
   ClubData,
-  clubData,
   clubsDataFromCom,
   DataType,
   HeroData,
@@ -70,12 +69,38 @@ export const fetchDataOfOnePlayerForRow = async (
 };
 
 export const fetchDataOfOneClubRow = async (
-  id: string,
+  id: string | undefined,
   domain: string = "com"
 ): Promise<ClubData> => {
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/clubs/get-header-info`,
+    params: {
+      id,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+export const fetchDataOfOneClubProfile = async (
+  id: string | undefined,
+  domain: string = "com"
+): Promise<ClubData> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/clubs/get-profile`,
     params: {
       id,
       domain,
