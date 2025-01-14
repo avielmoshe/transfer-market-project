@@ -7,7 +7,7 @@ import {
   fetchDataOfOneComRow,
 } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 
 function ClubPage() {
   const navigate = useNavigate();
@@ -72,20 +72,66 @@ function ClubPage() {
   };
 
   const dataOfNavSearch: DataForNavSearch = [
-    { name: "OVERVIEW", onClick: () => { navigate(`/clubProfile/${id}/overview`); }},
-    { name: "SQUAD", onClick: () => { navigate(`/clubProfile/${id}/squad`); }},
-    { name: "FIXTURES", onClick: () => { navigate(`/clubProfile/${id}/fixtures`); }},
-    { name: "TRANSFERS & RUMOURS", onClick: () => { navigate(`/clubProfile/${id}/transfersRumours`); }},
-    { name: "INFORMATION & FACTS", onClick: () => { navigate(`/clubProfile/${id}/informationFacts`); }},
-    { name: "STADIUM", onClick: () => { navigate(`/clubProfile/${id}/stadium`); }},
-    { name: "HISTORY", onClick: () => { navigate(`/clubProfile/${id}/history`); }},
-    { name: "NEWS", onClick: () => { navigate(`/clubProfile/${id}/news`); }},
-    { name: "FORUM", onClick: () => { navigate(`/clubProfile/${id}/forum`); }},
+    {
+      name: "OVERVIEW",
+      onClick: () => {
+        navigate(`/clubProfile/${id}/overview`);
+      },
+    },
+    {
+      name: "SQUAD",
+      onClick: () => {
+        navigate(`/clubProfile/${id}/squad`);
+      },
+    },
+    {
+      name: "FIXTURES",
+      onClick: () => {
+        navigate(`/clubProfile/${id}/fixtures`);
+      },
+    },
+    {
+      name: "TRANSFERS & RUMOURS",
+      onClick: () => {
+        navigate(`/clubProfile/${id}/transfersRumours`);
+      },
+    },
+    {
+      name: "INFORMATION & FACTS",
+      onClick: () => {
+        navigate(`/clubProfile/${id}/informationFacts`);
+      },
+    },
+    {
+      name: "STADIUM",
+      onClick: () => {
+        navigate(`/clubProfile/${id}/stadium`);
+      },
+    },
+    {
+      name: "HISTORY",
+      onClick: () => {
+        navigate(`/clubProfile/${id}/history`);
+      },
+    },
+    {
+      name: "NEWS",
+      onClick: () => {
+        navigate(`/clubProfile/${id}/news`);
+      },
+    },
+    {
+      name: "FORUM",
+      onClick: () => {
+        navigate(`/clubProfile/${id}/forum`);
+      },
+    },
   ];
   return (
     <>
       <DynamicHeader dataForHeader={dataForHeader} />
       <NavSearch dataOfNavSearch={dataOfNavSearch} />
+      <Outlet />
     </>
   );
 }

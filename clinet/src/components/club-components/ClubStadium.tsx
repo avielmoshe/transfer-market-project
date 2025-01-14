@@ -1,9 +1,5 @@
-import React from 'react'
-
 const ClubStadium = () => {
-  return (
-    <div>ClubStadium</div>
-  )
-}
+  return <div>ClubStadium</div>;
+};
 
-export default ClubStadium
+export default ClubStadium;

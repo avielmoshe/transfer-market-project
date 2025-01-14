@@ -1,9 +1,5 @@
-import React from 'react'
-
 const ClubSquad = () => {
-  return (
-    <div>ClubSquad</div>
-  )
-}
+  return <div>ClubSquad</div>;
+};
 
-export default ClubSquad
+export default ClubSquad;

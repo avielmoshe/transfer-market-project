@@ -16,6 +16,17 @@ import CompetitionTables from "./components/competition-components/CompetitionTa
 import CompetitionPlayers from "./components/competition-components/CompetitionPlayers.js";
 import CompetitionNews from "./components/competition-components/CompetitionNews.js";
 import CompetitionMarketValues from "./components/competition-components/CmpotitionMarketValues.js";
+import ClubHistory from "./components/club-components/ClubHistory.js";
+import ClubOverview from "./components/club-components/ClubOverview.js";
+import ClubFixtures from "./components/club-components/ClubFixtures.js";
+import ClubForum from "./components/club-components/ClubForum.js";
+import ClubNews from "./components/club-components/ClubNews.js";
+import ClubSquad from "./components/club-components/ClubSquad.js";
+import ClubStadium from "./components/club-components/ClubStadium.js";
+import ClubTransfersRumours from "./components/club-components/ClubTransfersRumours.js";
+import ClubInformationFacts from "./components/club-components/ClubInformationFacts.js";
+import PlayerAchievements from "./components/player-components/PlayerAchievements.js";
+import PlayerProfile from "./components/player-components/PlayerProfile.js";
 
 function App() {
   const router = createBrowserRouter([
@@ -75,8 +86,40 @@ function App() {
           element: <ClubPage />,
           children: [
             {
-              path: "/clubProfile/:id/overview",
-              element: <div>baba</div>,
+              path: "history",
+              element: <ClubHistory />,
+            },
+            {
+              path: "overview",
+              element: <ClubOverview />,
+            },
+            {
+              path: "fixtures",
+              element: <ClubFixtures />,
+            },
+            {
+              path: "forum",
+              element: <ClubForum />,
+            },
+            {
+              path: "news",
+              element: <ClubNews />,
+            },
+            {
+              path: "squad",
+              element: <ClubSquad />,
+            },
+            {
+              path: "stadium",
+              element: <ClubStadium />,
+            },
+            {
+              path: "transfersRumours",
+              element: <ClubTransfersRumours />,
+            },
+            {
+              path: "informationFacts",
+              element: <ClubInformationFacts />,
             },
           ],
         },
@@ -85,8 +128,40 @@ function App() {
           element: <PlayerPage />,
           children: [
             {
-              path: "/playerProfile/:id/profile",
-              element: <div>baba</div>,
+              path: "achievements",
+              element: <PlayerAchievements />,
+            },
+            {
+              path: "profile",
+              element: <PlayerProfile />,
+            },
+            {
+              path: "fixtures",
+              element: <ClubFixtures />,
+            },
+            {
+              path: "forum",
+              element: <ClubForum />,
+            },
+            {
+              path: "news",
+              element: <ClubNews />,
+            },
+            {
+              path: "squad",
+              element: <ClubSquad />,
+            },
+            {
+              path: "stadium",
+              element: <ClubStadium />,
+            },
+            {
+              path: "transfersRumours",
+              element: <ClubTransfersRumours />,
+            },
+            {
+              path: "informationFacts",
+              element: <ClubInformationFacts />,
             },
           ],
         },

@@ -1,9 +1,5 @@
-import React from 'react'
-
 const ClubOverview = () => {
-  return (
-    <div>ClubOverview</div>
-  )
-}
+  return <div>ClubOvervisadsadasdasdasdew</div>;
+};
 
-export default ClubOverview
+export default ClubOverview;

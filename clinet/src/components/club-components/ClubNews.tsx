@@ -1,9 +1,5 @@
-import React from 'react'
-
 const ClubNews = () => {
-  return (
-    <div>ClubNews</div>
-  )
-}
+  return <div>ClubNews</div>;
+};
 
-export default ClubNews
+export default ClubNews;

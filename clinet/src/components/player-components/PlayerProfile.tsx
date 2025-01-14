@@ -1,9 +1,5 @@
-import React from 'react'
-
 const PlayerProfile = () => {
-  return (
-    <div>PlayerProfile</div>
-  )
-}
+  return <div>PlayerProfile</div>;
+};
 
-export default PlayerProfile
+export default PlayerProfile;
