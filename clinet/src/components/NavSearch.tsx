@@ -26,9 +26,11 @@ const NavSearch = (dataOfNavSearch : DynamicNavProp) => {
   {dataOfNavSearch.dataOfNavSearch.map((category) => {
     return (
       <button
-        key={category}
-        className={`${isScrolled ? "py-1.5" : "py-3"} px-3.2 hover:bg-[#1a3151] transition-colors duration-200`}>
-        {category}
+        key={category.name}
+        className={`${isScrolled ? "py-1.5" : "py-3"} px-3.2 hover:bg-[#1a3151] transition-colors duration-200`}
+        onClick={category.onClick}
+        >
+        {category.name}
       </button>
     );
   })}
