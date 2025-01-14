@@ -28,11 +28,11 @@ function PlayerRow({ player }: PlayerRowProp) {
           alt="playerImage"
         />
         <div className="ml-1 flex flex-col justify-center text-[12px] text-[#1d75a3]">
-          <Link to={`/playerProfile/${player.id}`}>
+          <Link to={`/playerProfile/Profile/${player.id}`}>
             <div className="font-bold">{player.playerName}</div>
           </Link>
 
-          <Link to={`/playerProfile/${data.playerProfile.clubID}`}>
+          <Link to={`/clubProfile/Overview/${data.playerProfile.clubID}`}>
             <div>{player.club}</div>
           </Link>
         </div>

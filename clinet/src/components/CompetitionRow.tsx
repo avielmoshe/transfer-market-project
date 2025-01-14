@@ -31,7 +31,7 @@ function CompetitionRow({ competition }: CompetitionRowProps) {
         />
       </td>
       <td className="border p-1 w-13 text-[12px] text-[#1d75a3]">
-        <Link to={`/competitionProfile/${competition.id}`}>
+        <Link to={`/competitionProfile/Overview/${competition.id}`}>
           {competition.competitionName}
         </Link>
       </td>
@@ -44,8 +44,12 @@ function CompetitionRow({ competition }: CompetitionRowProps) {
           />
         </div>
       </td>
-      <td className="border p-1  text-[12px] text-center">
-        {data.competition.mostValuablePlayerName}
+      <td className="border p-1  text-[12px] text-center text-[#1d75a3]">
+        <Link
+          to={`/playerProfile/Profile/${data.competition.mostValuablePlayerID}`}
+        >
+          {data.competition.mostValuablePlayerName}
+        </Link>
       </td>
       <td className="border p-1 flex justify-center">
         {data.competition.trophy ? (
