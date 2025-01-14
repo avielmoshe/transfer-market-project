@@ -150,7 +150,7 @@ export const fetchDataOfSquadFromClub = async (
 };
 
 export const fetchDataOfClubsFromCom = async (
-  id: string,
+  id: string | undefined,
   domain: string = "com"
 ): Promise<clubsDataFromCom> => {
   const options = {

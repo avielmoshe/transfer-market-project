@@ -501,7 +501,7 @@ const Filter = () => {
               {/* Country List */}
               <ul className="max-h-[225px] overflow-y-scroll scrollbar-hidden">
                 {filteredCompetitions.length > 0 ? (
-                  filteredCompetitions.map((competition) => (
+                  filteredCompetitions.map((competition : competitionsNames) => (
                     <li
                       key={competition.id}
                       onClick={() => {
