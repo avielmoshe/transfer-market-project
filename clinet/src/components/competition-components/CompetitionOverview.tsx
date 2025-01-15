@@ -74,7 +74,8 @@ const CompetitionOverview = () => {
     { input: "92/93", id: "1992" },
   ];
 
-  const competitio
+  const competitionName = data.share.title
+
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedId = event.target.value;
@@ -120,7 +121,7 @@ const CompetitionOverview = () => {
       </div>
 
       <div>
-        <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${selectedSeason.input}`}</h2>
+        <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${competitionName} ${selectedSeason.input}`}</h2>
         <table className="bg-white table-auto border-collapse w-full mb-4">
           <thead>
             <tr>
