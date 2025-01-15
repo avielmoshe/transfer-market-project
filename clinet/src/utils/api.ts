@@ -204,6 +204,35 @@ export const fetchDataOfClubsFromCom = async (
   }
 };
 
+
+export const fetchLiveTable = async (
+  id: string | undefined,
+  seasonID: String,
+  domain: string = "com"
+): Promise<clubsDataFromCom> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/competitions/get-table`,
+    params: {
+      id,
+      seasonID,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
 export const fetchDataOfOneComRow = async (
   id: String | undefined,
   domain: string = "com"
