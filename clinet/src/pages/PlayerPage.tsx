@@ -1,7 +1,10 @@
 import DynamicHeader from "@/components/HeaderForProfile";
 import NavSearch from "@/components/NavSearch";
 import { DataForHeader, DataForNavSearch } from "@/types/types";
-import { fetchDataOfOnePlayerForRow } from "@/utils/api";
+import {
+  fetchDataOfOnePlayerAchievements,
+  fetchDataOfOnePlayerForRow,
+} from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 
@@ -14,7 +17,7 @@ function PlayerPage() {
   });
   const { data: profileData } = useQuery({
     queryKey: ["dataOfClubProfile", { id }],
-    queryFn: () => fetchDataOfOneClubProfile(id),
+    queryFn: () => fetchDataOfOnePlayerAchievements(id),
   });
 
   if (error instanceof Error) return null;
@@ -24,6 +27,7 @@ function PlayerPage() {
   if (!profileData) {
     return null;
   }
+  console.log(data);
 
   const dataOfNavSearch: DataForNavSearch = [
     {
@@ -83,15 +87,21 @@ function PlayerPage() {
   ];
   const dataForHeader: DataForHeader = {
     type: "player",
-    // title: data,
-    // frontImg: data,
-    // secondImg: data,
-    // secondTitle: data,
-    // marketValue:
-    //   data +
-    //   data.club.marketValue +
-    //   data.club.marketValueNumeral,
-    firstData: [],
+    title: data.playerProfile.playerName,
+    frontImg: data.playerProfile.playerImage,
+    secondImg: data.playerProfile.clubImage,
+    secondTitle: data.playerProfile.clubnameEN,
+    marketValue:
+      data.playerProfile.marketValueCurrency +
+      data.playerProfile.marketValue +
+      data.playerProfile.marketValueNumeral,
+    firstData: [
+      { league: data.playerProfile.league },
+      { contractExpiryDate: data.playerProfile.contractExpiryDate },
+      { agent: data.playerProfile.agent },
+      {},
+      {},
+    ],
     secondData: [],
     thirdData: [],
     // successesData: profileData.successes,
