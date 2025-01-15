@@ -207,7 +207,7 @@ export const fetchDataOfClubsFromCom = async (
 
 export const fetchLiveTable = async (
   id: string | undefined,
-  seasonID: String,
+  seasonId: String,
   domain: string = "com"
 ): Promise<clubsDataFromCom> => {
   const options = {
@@ -215,7 +215,7 @@ export const fetchLiveTable = async (
     url: `https://${RAPIDAPI_HOST}/competitions/get-table`,
     params: {
       id,
-      seasonID,
+      seasonId,
       domain,
     },
     headers: {

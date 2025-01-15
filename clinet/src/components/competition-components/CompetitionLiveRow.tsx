@@ -1,19 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import { clubs } from "../../types/types";
-import { fetchDataOfOneClubRow } from "../../utils/api";
+import { fetchDataOfOneClubRow, fetchLiveTable } from "../../utils/api";
 import { MdStadium } from "react-icons/md";
 import { BiTransfer } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-interface ClubRowProps {
+interface CompetitionLiveTableRow {
   clubId:string|undefined ;
+  seasonId:string|undefined ;
 }
 
-function CompetitionLiveTableRow({ clubId }: ClubRowProps) {
+function CompetitionLiveTableRow({ clubId }: CompetitionLiveTableRow) {
   
   const { data, error, isLoading } = useQuery({
-    queryKey: ["dataOfOneClub", { clubId }],
-    queryFn: () => fetchDataOfOneClubRow(clubId),
+    queryKey: ["dataOfLiveTable", { clubId }],
+    queryFn: () => fetchLiveTable(clubId , seasonId),
   });
 
   if (error instanceof Error) return null;
