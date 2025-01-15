@@ -28,6 +28,8 @@ const CompetitionOverview = () => {
     queryFn: () => fetchDataOfClubsFromTable(id, selectedSeason.id),
     enabled: !!id,
   });
+  console.log(selectedSeason);
+  
 
   if (error) {
     console.error(error);
@@ -74,7 +76,13 @@ const CompetitionOverview = () => {
     { input: "92/93", id: "1992" },
   ];
 
-  const competitionName = data.share.title
+  const competitionName = data.share.title;
+  const removeAfterDash = (input: string): string => {
+    const index = input.indexOf("-");
+    return index !== -1 ? input.slice(0, index).trim() : input.trim();
+  };
+  const cleanedTitle = removeAfterDash(competitionName);
+
 
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -121,7 +129,7 @@ const CompetitionOverview = () => {
       </div>
 
       <div>
-        <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${competitionName} ${selectedSeason.input}`}</h2>
+        <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${cleanedTitle} ${selectedSeason.input}`}</h2>
         <table className="bg-white table-auto border-collapse w-full mb-4">
           <thead>
             <tr>
@@ -148,7 +156,7 @@ const CompetitionOverview = () => {
           </thead>
           <tbody>
             {data.table.map((club) => (
-              <ClubRow key={club.id} clubId={club.id} />
+              <ClubRow key={club.id} clubId={club.id}  />
             ))}
           </tbody>
         </table>
@@ -181,7 +189,7 @@ const CompetitionOverview = () => {
           </thead>
           <tbody>
             {data.table.map((club) => (
-              <CompetitionLiveTableRow key={club.id} clubId={club.id} />
+              <CompetitionLiveTableRow key={club.id} clubId={club.id} seasonId={selectedSeason.id} />
             ))}
           </tbody>
         </table>
