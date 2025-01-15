@@ -48,8 +48,6 @@ export const fetchDataOfOnePlayerForRow = async (
   id: string,
   domain: string = "com"
 ): Promise<HeroData> => {
-  console.log("fetchDataOfOnePlayerForRow");
-  
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/players/get-profile`,
