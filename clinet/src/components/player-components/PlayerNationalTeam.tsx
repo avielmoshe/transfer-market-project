@@ -1,9 +1,5 @@
-import React from 'react'
-
 const PlayerNationalTeam = () => {
-  return (
-    <div>PlayerNationalTeam</div>
-  )
-}
+  return <div>PlayerNationalTeam</div>;
+};
 
-export default PlayerNationalTeam
+export default PlayerNationalTeam;

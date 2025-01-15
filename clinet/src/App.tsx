@@ -27,6 +27,13 @@ import ClubTransfersRumours from "./components/club-components/ClubTransfersRumo
 import ClubInformationFacts from "./components/club-components/ClubInformationFacts.js";
 import PlayerAchievements from "./components/player-components/PlayerAchievements.js";
 import PlayerProfile from "./components/player-components/PlayerProfile.js";
+import PlayerCareer from "./components/player-components/PlayerCareer.js";
+import PlayerMarketValue from "./components/player-components/PlayerMarketValue.js";
+import PlayerNationalTeam from "./components/player-components/PlayerNationalTeam.js";
+import PlayerNews from "./components/player-components/PlayerNews.js";
+import PlayerRumours from "./components/player-components/PlayerRumours.js";
+import PlayerStats from "./components/player-components/PlayerStats.js";
+import PlayerTransfers from "./components/player-components/PlayerTransfers.js";
 
 function App() {
   const router = createBrowserRouter([
@@ -136,32 +143,32 @@ function App() {
               element: <PlayerProfile />,
             },
             {
-              path: "fixtures",
-              element: <ClubFixtures />,
+              path: "career",
+              element: <PlayerCareer />,
             },
             {
-              path: "forum",
-              element: <ClubForum />,
+              path: "marketValues",
+              element: <PlayerMarketValue />,
+            },
+            {
+              path: "nationalTeam",
+              element: <PlayerNationalTeam />,
             },
             {
               path: "news",
-              element: <ClubNews />,
+              element: <PlayerNews />,
             },
             {
-              path: "squad",
-              element: <ClubSquad />,
+              path: "rumours",
+              element: <PlayerRumours />,
             },
             {
-              path: "stadium",
-              element: <ClubStadium />,
+              path: "stats",
+              element: <PlayerStats />,
             },
             {
-              path: "transfersRumours",
-              element: <ClubTransfersRumours />,
-            },
-            {
-              path: "informationFacts",
-              element: <ClubInformationFacts />,
+              path: "transfers",
+              element: <PlayerTransfers />,
             },
           ],
         },

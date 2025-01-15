@@ -1,9 +1,5 @@
-import React from 'react'
-
 const PlayerStats = () => {
-  return (
-    <div>PlayerStats</div>
-  )
-}
+  return <div>PlayerStats</div>;
+};
 
-export default PlayerStats
+export default PlayerStats;
