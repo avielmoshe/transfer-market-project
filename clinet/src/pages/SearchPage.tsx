@@ -108,7 +108,7 @@ const SearchPage: React.FC = () => {
               </thead>
               <tbody>
                 {data.clubs.map((club) => (
-                  <ClubRow key={club.id} club={club} />
+                  <ClubRow key={club.id} clubId={club.id} />
                 ))}
               </tbody>
             </table>

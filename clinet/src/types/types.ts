@@ -95,6 +95,7 @@ export interface ClubData {
     coachName: string;
     leagueName: string;
     leagueID : string
+    name : string
     
   };
 }
@@ -125,9 +126,41 @@ export interface DataForHeader {
   thirdData: Array<Record<string, string>>;
   successesData?: SuccessData[];
 }
+
 interface NavCategory {
   name: string;
   onClick: () => void;
+}
+
+interface NavCategory {
+  name: string;
+  onClick: () => void;
+}
+interface LegendItem {
+  // Define the properties of each item in the `legend` array
+  // Example: Replace `key` and `value` with the actual property names and types
+  key: string;
+  value: string;
+}
+
+interface Share {
+  title: string;
+  url: string;
+  description: string;
+}
+
+interface TableItem {
+  // Define the properties of each item in the `table` array
+  // Example: Replace `id` and `name` with the actual property names and types
+  id: string;
+  name: string;
+  [key: string]: any; // Additional dynamic properties if needed
+}
+
+export interface DataStructure {
+  legend: LegendItem[];
+  share: Share;
+  table: TableItem[];
 }
 
 export interface DataForNavSearch extends Array<NavCategory> {}

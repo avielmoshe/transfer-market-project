@@ -6,11 +6,11 @@ import { BiTransfer } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 interface ClubRowProps {
-  club: clubs;
+  clubId:string|undefined ;
 }
 
-function ClubRow({ club }: ClubRowProps) {
-  const clubId = club.id;
+function ClubRow({ clubId }: ClubRowProps) {
+  
   const { data, error, isLoading } = useQuery({
     queryKey: ["dataOfOneClub", { clubId }],
     queryFn: () => fetchDataOfOneClubRow(clubId),
@@ -20,7 +20,6 @@ function ClubRow({ club }: ClubRowProps) {
   if (!data) {
     return null;
   }
-console.log(data);
 
   return (
     <tr>
@@ -32,8 +31,8 @@ console.log(data);
       </td>
       <td className="border p-1 w-13 text-[12px]">
         <div className="ml-1  text-[12px] text-[#1d75a3]">
-          <Link to={`/clubProfile/${club.id}/overview`}>
-            <div className="font-bold">{club.name}</div>
+          <Link to={`/clubProfile/${clubId}/overview`}>
+            <div className="font-bold">{data.club.name}</div>
           </Link>
           <Link to={`/competitionProfile/${data.club.leagueID}/overview`}>
             <div>{data.club.clubnameEN}</div>
