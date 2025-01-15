@@ -3,6 +3,7 @@ import ClubRow from "../club-components/ClubRow";
 import { fetchDataOfClubsFromTable } from "@/utils/api";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import CompetitionLiveTableRow from "./CompetitionLiveRow";
 
 type Year = {
   input: string;
@@ -73,6 +74,8 @@ const CompetitionOverview = () => {
     { input: "92/93", id: "1992" },
   ];
 
+  const competitio
+
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedId = event.target.value;
     const selected = years.find((year) => year.id === selectedId);
@@ -80,6 +83,8 @@ const CompetitionOverview = () => {
       setSeason(selected);
     }
   };
+  console.log(data);
+  
 
   const handleShowClick = () => {
     setSelectedSeason(season);
@@ -115,7 +120,7 @@ const CompetitionOverview = () => {
       </div>
 
       <div>
-        <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - Premier League ${selectedSeason.input}`}</h2>
+        <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${selectedSeason.input}`}</h2>
         <table className="bg-white table-auto border-collapse w-full mb-4">
           <thead>
             <tr>
@@ -143,6 +148,39 @@ const CompetitionOverview = () => {
           <tbody>
             {data.table.map((club) => (
               <ClubRow key={club.id} clubId={club.id} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div>
+      <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${selectedSeason.input}`}</h2>
+        <table className="bg-white table-auto border-collapse w-full mb-4">
+          <thead>
+            <tr>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]"></th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Club
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Country
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Total Market Value
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Transfers
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Stadium
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Forum
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.table.map((club) => (
+              <CompetitionLiveTableRow key={club.id} clubId={club.id} />
             ))}
           </tbody>
         </table>
