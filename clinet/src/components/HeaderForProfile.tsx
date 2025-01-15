@@ -9,7 +9,7 @@ const DynamicHeader = ({ dataForHeader }: DynamicHeaderProp) => {
   const secondImgClassName =
     dataForHeader.type === "competition"
       ? "w-[20px] h-[20px]"
-      : "w-[74px] h-[74px]";
+      : "w-[80px] h-[90px]";
 
   const formatKey = (key: String) => {
     return key.replace(/([a-z])([A-Z])/g, "$1 $2");

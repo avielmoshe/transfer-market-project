@@ -97,10 +97,10 @@ function PlayerPage() {
       data.playerProfile.marketValueNumeral,
     firstData: [
       { league: data.playerProfile.league },
+      { leagueLogo: data.playerProfile.leagueLogo },
       { contractExpiryDate: data.playerProfile.contractExpiryDate },
       { agent: data.playerProfile.agent },
-      {},
-      {},
+      // {},
     ],
     secondData: [],
     thirdData: [],
