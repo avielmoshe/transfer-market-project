@@ -70,6 +70,32 @@ export const fetchDataOfOnePlayerForRow = async (
   }
 };
 
+export const fetchDataOfOnePlayerAchievements = async (
+  id: string,
+  domain: string = "com"
+): Promise<HeroData> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/players/get-achievements`,
+    params: {
+      id,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
 export const fetchDataOfOneClubRow = async (
   id: string | undefined,
   domain: string = "com"
@@ -203,7 +229,6 @@ export const fetchDataOfClubsFromCom = async (
     throw error; // Rethrow the error for the caller to handle
   }
 };
-
 
 export const fetchLiveTable = async (
   id: string | undefined,

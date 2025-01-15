@@ -1,7 +1,10 @@
 import DynamicHeader from "@/components/HeaderForProfile";
 import NavSearch from "@/components/NavSearch";
 import { DataForHeader, DataForNavSearch } from "@/types/types";
-import { fetchDataOfOnePlayerForRow } from "@/utils/api";
+import {
+  fetchDataOfOnePlayerAchievements,
+  fetchDataOfOnePlayerForRow,
+} from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 
@@ -14,7 +17,7 @@ function PlayerPage() {
   });
   const { data: profileData } = useQuery({
     queryKey: ["dataOfClubProfile", { id }],
-    queryFn: () => fetchDataOfOneClubProfile(id),
+    queryFn: () => fetchDataOfOnePlayerAchievements(id),
   });
 
   if (error instanceof Error) return null;
@@ -24,6 +27,7 @@ function PlayerPage() {
   if (!profileData) {
     return null;
   }
+  console.log(data);
 
   const dataOfNavSearch: DataForNavSearch = [
     {
