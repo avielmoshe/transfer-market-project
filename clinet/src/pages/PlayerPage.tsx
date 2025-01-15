@@ -10,13 +10,13 @@ import { Outlet, useNavigate, useParams } from "react-router-dom";
 
 function PlayerPage() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id } = useParams<string>();
   const { data, error, isLoading } = useQuery({
     queryKey: ["fetchDataOfOnePlayerForRow", { id }],
     queryFn: () => fetchDataOfOnePlayerForRow(id),
   });
-  const { data: profileData } = useQuery({
-    queryKey: ["dataOfClubProfile", { id }],
+  const { data: achievementsData } = useQuery({
+    queryKey: ["achievementsData", { id }],
     queryFn: () => fetchDataOfOnePlayerAchievements(id),
   });
 
@@ -24,10 +24,9 @@ function PlayerPage() {
   if (!data) {
     return null;
   }
-  if (!profileData) {
+  if (!achievementsData) {
     return null;
   }
-  console.log(data);
 
   const dataOfNavSearch: DataForNavSearch = [
     {
@@ -87,6 +86,7 @@ function PlayerPage() {
   ];
   const dataForHeader: DataForHeader = {
     type: "player",
+    num: data.playerProfile.playerShirtNumber,
     title: data.playerProfile.playerName,
     frontImg: data.playerProfile.playerImage,
     secondImg: data.playerProfile.clubImage,
@@ -97,14 +97,44 @@ function PlayerPage() {
       data.playerProfile.marketValueNumeral,
     firstData: [
       { league: data.playerProfile.league },
-      { leagueLogo: data.playerProfile.leagueLogo },
       { contractExpiryDate: data.playerProfile.contractExpiryDate },
       { agent: data.playerProfile.agent },
-      // {},
     ],
-    secondData: [],
-    thirdData: [],
-    // successesData: profileData.successes,
+    secondData: [
+      {
+        dateOfBirth:
+          data.playerProfile.dateOfBirth + ` (${data.playerProfile.age})`,
+      },
+      { contractExpiryDate: data.playerProfile.contractExpiryDate },
+      {
+        birthplace:
+          data.playerProfile.birthplace +
+          " " +
+          data.playerProfile.birthplaceCountry,
+      },
+
+      {
+        Citizenship: data.playerProfile.birthplaceCountryImage,
+      },
+    ],
+    thirdData: [
+      {
+        Height: data.playerProfile.height,
+      },
+      {
+        Position: data.playerProfile.playerMainPosition,
+      },
+      {
+        internationalTeam: data.playerProfile.internationalTeam,
+      },
+      {
+        CurrentInternational:
+          data.playerProfile.internationalGames +
+          "/" +
+          data.playerProfile.internationalGoals,
+      },
+    ],
+    successesData: achievementsData.playerAchievements,
   };
   return (
     <>

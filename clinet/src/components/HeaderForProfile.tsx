@@ -9,22 +9,30 @@ const DynamicHeader = ({ dataForHeader }: DynamicHeaderProp) => {
   const secondImgClassName =
     dataForHeader.type === "competition"
       ? "w-[20px] h-[20px]"
-      : "w-[80px] h-[90px]";
+      : "w-[75px] h-[100px]";
 
   const formatKey = (key: String) => {
     return key.replace(/([a-z])([A-Z])/g, "$1 $2");
   };
   if (!dataForHeader) return null;
-  console.log(dataForHeader.successesData);
 
   return (
     <div>
       <div className="relative bg-white">
         <div className="shadow bg-[linear-gradient(to_bottom,_#fff_0%,_#ddd_60%)]  font-bold h-[150px]">
           <div className="p-1 flex justify-between  ">
-            <h1 className="text-[38px] ml-2">{dataForHeader.title}</h1>
+            <div className="flex">
+              {dataForHeader.type === "player" ? (
+                <div className="text-[38px] text-[#00193f]">
+                  #{dataForHeader.num}
+                </div>
+              ) : null}
+              <h1 className="text-[38px] ml-2 text-[#00193f]">
+                {dataForHeader.title}
+              </h1>
+            </div>
             <div className="bg-white flex shadow">
-              <div className="p-3 ">
+              <div className="px-2 ">
                 <img
                   src={dataForHeader.secondImg}
                   alt="secondImg"
@@ -76,7 +84,17 @@ const DynamicHeader = ({ dataForHeader }: DynamicHeaderProp) => {
                 const [key, value] = Object.entries(item)[0]; // Extract the key and value
                 return (
                   <div key={index} className="text-[12px]">
-                    {key === "trophy" ? null : ( //   <img src={value as string} alt="Trophy" className="flex" />
+                    {key === "Citizenship" ? (
+                      <div className="flex gap-2 items-center">
+                        <span className="text-[#645d5d]">{key}</span>
+
+                        <img
+                          src={value as string}
+                          alt="Citizenship"
+                          className="mt-2 w-[20px] h-[15px]"
+                        />
+                      </div>
+                    ) : (
                       <>
                         <span className="text-[#645d5d]">
                           {formatKey(key)}:
@@ -88,7 +106,7 @@ const DynamicHeader = ({ dataForHeader }: DynamicHeaderProp) => {
                 );
               })}
             </div>
-            <div className="ml-4">
+            <div className="ml-2">
               {dataForHeader.thirdData.map((item: object, index: number) => {
                 const [key, value] = Object.entries(item)[0]; // Extract the key and value
                 return (
@@ -120,8 +138,12 @@ const DynamicHeader = ({ dataForHeader }: DynamicHeaderProp) => {
         dataForHeader.successesData &&
         dataForHeader.successesData.length > 0 && (
           <div className="min-h-[80px] bg-white flex">
-            {dataForHeader.successesData.map((success) => (
-              <TrophyCom key={success.id} successData={success} />
+            {dataForHeader.successesData.map((success, index) => (
+              <TrophyCom
+                key={index}
+                successData={success}
+                type={dataForHeader.type}
+              />
             ))}
           </div>
         )}
