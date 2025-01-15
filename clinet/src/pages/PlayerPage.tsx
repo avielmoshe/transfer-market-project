@@ -87,15 +87,21 @@ function PlayerPage() {
   ];
   const dataForHeader: DataForHeader = {
     type: "player",
-    // title: data,
-    // frontImg: data,
-    // secondImg: data,
-    // secondTitle: data,
-    // marketValue:
-    //   data +
-    //   data.club.marketValue +
-    //   data.club.marketValueNumeral,
-    firstData: [],
+    title: data.playerProfile.playerName,
+    frontImg: data.playerProfile.playerImage,
+    secondImg: data.playerProfile.clubImage,
+    secondTitle: data.playerProfile.clubnameEN,
+    marketValue:
+      data.playerProfile.marketValueCurrency +
+      data.playerProfile.marketValue +
+      data.playerProfile.marketValueNumeral,
+    firstData: [
+      { league: data.playerProfile.league },
+      { contractExpiryDate: data.playerProfile.contractExpiryDate },
+      { agent: data.playerProfile.agent },
+      {},
+      {},
+    ],
     secondData: [],
     thirdData: [],
     // successesData: profileData.successes,
