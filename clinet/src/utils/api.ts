@@ -4,13 +4,13 @@ import {
   ClubData,
   ClubProfile,
   clubsDataFromCom,
+  DataStructure,
   DataType,
   HeroData,
   SquadFromClub,
   User,
   userLogin,
 } from "../types/types";
-import { log } from "console";
 
 const RAPIDAPI_HOST = "transfermarket.p.rapidapi.com";
 const RAPIDAPI_KEY = "33cb9405dbmsh9f8f012503ce134p146775jsn436ccb2ae8b5";
@@ -82,6 +82,34 @@ export const fetchDataOfOneClubRow = async (
     params: {
       id,
       domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+export const fetchDataOfClubsFromTable = async (
+  id: string | undefined,
+  seasonID: string | undefined,
+  domain: string = "com"
+): Promise<DataStructure> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/competitions/get-table`,
+    params: {
+      id,
+      domain,
+      seasonID,
     },
     headers: {
       "x-rapidapi-key": RAPIDAPI_KEY,
