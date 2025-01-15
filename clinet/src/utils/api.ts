@@ -232,7 +232,7 @@ export const fetchDataOfClubsFromCom = async (
 
 export const fetchLiveTable = async (
   id: string | undefined,
-  seasonId: String,
+  seasonId: String | undefined,
   domain: string = "com"
 ): Promise<clubsDataFromCom> => {
   const options = {

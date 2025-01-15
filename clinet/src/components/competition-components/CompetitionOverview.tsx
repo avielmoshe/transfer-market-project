@@ -28,7 +28,7 @@ const CompetitionOverview = () => {
     queryFn: () => fetchDataOfClubsFromTable(id, selectedSeason.id),
     enabled: !!id,
   });
-  console.log(selectedSeason);
+
   
 
   if (error) {
@@ -92,7 +92,7 @@ const CompetitionOverview = () => {
       setSeason(selected);
     }
   };
-  console.log(data);
+ 
   
 
   const handleShowClick = () => {

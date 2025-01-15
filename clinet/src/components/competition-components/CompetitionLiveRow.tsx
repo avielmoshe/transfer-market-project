@@ -10,12 +10,15 @@ interface CompetitionLiveTableRow {
   seasonId:string|undefined ;
 }
 
-function CompetitionLiveTableRow({ clubId }: CompetitionLiveTableRow) {
+function CompetitionLiveTableRow({ clubId , seasonId }: CompetitionLiveTableRow) {
   
   const { data, error, isLoading } = useQuery({
-    queryKey: ["dataOfLiveTable", { clubId }],
+    queryKey: ["dataOfLiveTable", { clubId, seasonId }],
     queryFn: () => fetchLiveTable(clubId , seasonId),
   });
+
+  console.log(data);
+  
 
   if (error instanceof Error) return null;
   if (!data) {
