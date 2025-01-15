@@ -9,9 +9,19 @@ import {
 
 interface TrophyComProp {
   successData: SuccessData;
+  type: string;
 }
-function TrophyCom({ successData }: TrophyComProp) {
-  const compId = successData.additionalData.competitionId;
+function TrophyCom({ successData, type }: TrophyComProp) {
+  let compId: string;
+  let numberOfTimes: string;
+  if (type === "player") {
+    compId = successData.additionalData[0].competitionID;
+    numberOfTimes = successData.additionalData.length;
+  } else {
+    compId = successData.additionalData.competitionId;
+    numberOfTimes = successData.number;
+  }
+
   const { data, error, isLoading } = useQuery({
     queryKey: ["DataOfOneCom", { compId }],
     queryFn: () => fetchDataOfOneComRow(compId),
@@ -21,11 +31,9 @@ function TrophyCom({ successData }: TrophyComProp) {
   if (!data) {
     return null;
   }
-  console.log(successData);
 
   const trophyImg = data.competition.trophy;
-  const numberOfTimes = successData.number;
-  const name = successData.name;
+  const name = data.competition.competitionNameEN;
   return (
     <div className="flex items-end relative p-2">
       <HoverCard>

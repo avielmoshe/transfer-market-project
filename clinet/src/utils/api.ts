@@ -1,6 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import {
+  achievementData,
   ClubData,
   ClubProfile,
   clubsDataFromCom,
@@ -47,7 +48,7 @@ export const fetchTransferMarketData = async (
 };
 
 export const fetchDataOfOnePlayerForRow = async (
-  id: string,
+  id: string | undefined,
   domain: string = "com"
 ): Promise<HeroData> => {
   const options = {
@@ -73,9 +74,9 @@ export const fetchDataOfOnePlayerForRow = async (
 };
 
 export const fetchDataOfOnePlayerAchievements = async (
-  id: string,
+  id: string | undefined,
   domain: string = "com"
-): Promise<HeroData> => {
+): Promise<achievementData> => {
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/players/get-achievements`,

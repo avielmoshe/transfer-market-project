@@ -11,7 +11,7 @@ const Layout = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      setIsScrolled(window.scrollY > 30);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -31,7 +31,7 @@ const Layout = () => {
         </div>
         <div
           className={` ${
-            isScrolled ? " " : " mt-[146px]"
+            isScrolled ? " mt-[146px] " : " mt-[146px]"
           }  transition-all duration-300  ease-in-out`}
         >
           <Filter />

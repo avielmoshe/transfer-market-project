@@ -81,6 +81,9 @@ export type HeroData = {
   playerProfile: any;
   share: any; // Specify a more precise type if possible
 };
+export type achievementData = {
+  playerAchievements: Array<any>;
+};
 export interface ClubData {
   club: {
     countryImage: string;
@@ -94,9 +97,8 @@ export interface ClubData {
     rank: string;
     coachName: string;
     leagueName: string;
-    leagueID : string
-    name : string
-    
+    leagueID: string;
+    name: string;
   };
 }
 
@@ -150,6 +152,7 @@ export interface DataForHeader {
   secondData: Array<Record<string, string | number | null>>;
   thirdData: Array<Record<string, string>>;
   successesData?: SuccessData[];
+  num?: string;
 }
 
 interface NavCategory {
