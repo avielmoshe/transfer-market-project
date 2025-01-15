@@ -47,7 +47,7 @@ function App() {
           element: <CompetitionPage />,
           children: [
             {
-              path: "/competitionProfile/:id/overview",
+              path: "/competitionProfile/:id/overview/:seasonId",
               element: <CompetitionOverview />,
             },
             {

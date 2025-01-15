@@ -8,9 +8,11 @@ import {
   DataType,
   HeroData,
   SquadFromClub,
+  TableData,
   User,
   userLogin,
 } from "../types/types";
+import { log } from "console";
 
 const RAPIDAPI_HOST = "transfermarket.p.rapidapi.com";
 const RAPIDAPI_KEY = "33cb9405dbmsh9f8f012503ce134p146775jsn436ccb2ae8b5";
@@ -232,15 +234,17 @@ export const fetchDataOfClubsFromCom = async (
 
 export const fetchLiveTable = async (
   id: string | undefined,
-  seasonId: String | undefined,
+  seasonID: String | undefined,
   domain: string = "com"
-): Promise<clubsDataFromCom> => {
+): Promise<TableData> => {
+  
+  
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/competitions/get-table`,
     params: {
       id,
-      seasonId,
+      seasonID,
       domain,
     },
     headers: {

@@ -5,25 +5,21 @@ import { MdStadium } from "react-icons/md";
 import { BiTransfer } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-interface CompetitionLiveTableRow {
-  clubId:string|undefined ;
-  seasonId:string|undefined ;
-}
-
-function CompetitionLiveTableRow({ clubId , seasonId }: CompetitionLiveTableRow) {
-  
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["dataOfLiveTable", { clubId, seasonId }],
-    queryFn: () => fetchLiveTable(clubId , seasonId),
-  });
-
-  console.log(data);
-  
-
-  if (error instanceof Error) return null;
-  if (!data) {
-    return null;
+interface TableRow {
+    id: string; // Assuming each row has a unique identifier
+    name: string; // Example property for club or entity name
+    country: string; // Country name or code
+    totalMarketValue: number; // Numeric value for market value
+    transfers: number; // Number of transfers
+    stadium: string; // Name of the stadium
+    forum: string; // Link or identifier for forum
   }
+  
+  interface TableData {
+    table: TableRow[];
+  }
+
+function CompetitionLiveTableRow() {
 
   return (
     <tr>

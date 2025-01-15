@@ -103,6 +103,31 @@ export interface ClubData {
 export type clubsDataFromCom = {
   clubs: Array<any>;
 };
+interface TableRow {
+  id: string; // Unique identifier for the club
+  clubName: string; // Name of the club
+  clubImage: string; // URL of the club's image
+  matches: number; // Total number of matches played
+  wins: number; // Total number of wins
+  draw: number; // Total number of draws
+  losses: number; // Total number of losses
+  goals: number; // Total goals scored
+  goalsConceded: number; // Total goals conceded
+  goalDifference: number; // Difference between goals scored and conceded
+  points: number; // Total points
+  rank: number; // Current rank of the club
+  oldRank: number; // Previous rank
+  markClass: string; // Class name for marking
+  markColor: string; // Color code for marking
+  markDescription: string; // Description of the marking
+  markID: string; // ID for the marking
+  group: string | null;
+}
+
+export interface TableData {
+  table: TableRow[];
+}
+
 
 export type SquadFromClub = {
   squad: Array<any>;

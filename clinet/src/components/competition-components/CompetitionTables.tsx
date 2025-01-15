@@ -1,5 +1,133 @@
+import { fetchLiveTable } from "@/utils/api";
+import { useQuery } from "@tanstack/react-query";
+import { Link, useParams } from "react-router-dom";
+import { Params } from "../InputSeason";
+import { TbSoccerField } from "react-icons/tb";
+import { ImArrowDown } from "react-icons/im";
+import { ImArrowUp } from "react-icons/im";
+import { FaSquare } from "react-icons/fa";
+interface TableRow {
+  id: string;
+  name: string;
+  country: string;
+  totalMarketValue: number;
+  transfers: number;
+  stadium: string;
+  forum: string;
+}
+
+interface TableData {
+  table: TableRow[];
+}
+
 function CompetitionTables() {
-  return <div>CmpotitionTables</div>;
+  const { id } = useParams<Params>();
+  const { seasonId } = useParams<Params>();
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["dataOfLiveTable", { id, seasonId }],
+    queryFn: () => fetchLiveTable(id, seasonId),
+  });
+  if (error) return null;
+  if (!data) {
+    return null;
+  }
+  console.log(data);
+  console.log(456);
+  return (
+    <div>
+      {" "}
+      <div>
+        <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${seasonId}`}</h2>
+        <table className="bg-white table-auto border-collapse w-full mb-4">
+          <thead>
+            <tr>
+              <th className="border text-center text-[12px] bg-[#f2f2f2]">#</th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Club
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2] flex justify-center items-center">
+                <TbSoccerField className="text-[#147da3] text-[20px]" />
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                W
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                D
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                L
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Goals
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                +/-
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Pts
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.table.map((club) => (
+              <tr>
+                <td
+                  className="border w-[70px] text-[13px]"
+                  style={{ backgroundColor: club.markColor }}
+                >
+                  <div className="flex justify-center items-center gap-[7px]">
+                    <div className="flex justify-end">{club.rank}</div>
+                    <div>
+                      {club.rank > club.oldRank && <ImArrowUp />}
+                      {club.rank < club.oldRank && <ImArrowDown />}
+                      {club.rank === club.oldRank && <FaSquare className="text-[#cac7c7] border border-[#b8b4b4]"/>}
+                    </div>
+                  </div>
+                </td>
+                <td className="border p-1 w-[300px] ">
+                  <div className="flex p-[5px] gap-[15px] items-center">
+                    <img
+                      className="w-[20px] h-[25px]"
+                      src={club.clubImage}
+                      alt="logoImage"
+                    />
+                    <Link to={`/clubProfile/${club.id}/overview`}>
+                      <div className="ml-2 text-[12px] text-[#1d75a3] font-bold">
+                        {club.clubName}
+                      </div>
+                    </Link>
+                  </div>
+                </td>
+                <td className="border p-1 w-13 text-[12px]">
+                  <div className="flex justify-center">{club.matches}</div>
+                </td>
+                <td className="border p-1 w-13 text-[12px]">
+                  <div className="flex justify-center">{club.wins}</div>
+                </td>
+                <td className="border p-1 w-13 text-[12px]">
+                  <div className="flex justify-center">{club.draw}</div>
+                </td>
+                <td className="border p-1 w-13 text-[12px]">
+                  <div className="flex justify-center">{club.losses}</div>
+                </td>
+                <td className="border p-1 w-13 text-[12px]">
+                  <div className="flex justify-center">{club.goals}</div>
+                </td>
+                <td className="border p-1 text-right text-[12px] ">
+                  <div className="flex justify-center">
+                    {club.goalDifference}
+                  </div>
+                </td>
+                <td className="border p-1 text-right text-[12px]">
+                  <div className="flex justify-center">{club.points}</div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }
 
 export default CompetitionTables;
