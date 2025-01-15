@@ -1,9 +1,5 @@
-import React from 'react'
-
 const PlayerTransfers = () => {
-  return (
-    <div>PlayerTransfers</div>
-  )
-}
+  return <div>PlayerTransfers</div>;
+};
 
-export default PlayerTransfers
+export default PlayerTransfers;

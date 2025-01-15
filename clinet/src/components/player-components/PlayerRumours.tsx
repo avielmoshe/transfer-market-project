@@ -1,9 +1,5 @@
-import React from 'react'
-
 const PlayerRumours = () => {
-  return (
-    <div>PlayerRumours</div>
-  )
-}
+  return <div>PlayerRumours</div>;
+};
 
-export default PlayerRumours
+export default PlayerRumours;

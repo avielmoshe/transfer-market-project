@@ -1,9 +1,5 @@
-import React from 'react'
-
 const PlayerMarketValue = () => {
-  return (
-    <div>PlayerMarketValue</div>
-  )
-}
+  return <div>PlayerMarketValue</div>;
+};
 
-export default PlayerMarketValue
+export default PlayerMarketValue;
