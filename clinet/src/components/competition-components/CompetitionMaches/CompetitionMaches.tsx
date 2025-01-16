@@ -1,4 +1,6 @@
 import { Params } from "@/components/InputSeason";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { IoMdArrowRoundForward } from "react-icons/io";
 import {
   fetchDataOfOneComRow,
   getGamePlan,
@@ -25,9 +27,12 @@ const CompetitionMatches = () => {
     queryFn: () => fetchDataOfOneComRow(id),
   });
   const currentMatchDay = data.competition.currentMatchDay;
+const competitionName= data.competition.competitionName
 
+ 
+  
   const [gameDate, setGameDate] = useState<number>(currentMatchDay);
-
+  
   const {
     data: gameListData,
     error: gameListError,
@@ -36,7 +41,7 @@ const CompetitionMatches = () => {
     queryKey: ["gameList", { id, seasonIdInNum, gameDate }],
     queryFn: () => getListGamePlan(seasonIdInNum, id, gameDate, "com"),
   });
-
+  
   if (error instanceof Error) return null;
   if (!data) {
     return null;
@@ -45,58 +50,55 @@ const CompetitionMatches = () => {
   if (!gameListData) {
     return null;
   }
-
+  
   function handleOnClick(e: React.MouseEvent<HTMLButtonElement>) {
-    const buttonValue = e.currentTarget.innerText.toLowerCase();
-    if (buttonValue === "last matchday") {
-      setGameDate(gameDate - 1); // הקטנה של היום הנבחר
-    } else if (buttonValue === "current matchday") {
-      setGameDate(gameDate); // הצגת המשחק הנוכחי
-    } else if (buttonValue === "next matchday") {
-      setGameDate(gameDate + 1); // הגדלת היום הנבחר
+    const buttonValue = e.currentTarget.getAttribute('data-action'); // Use a data attribute
+  
+    if (buttonValue === "previous") {
+      setGameDate(gameDate - 1); // Decrease the selected matchday
+    } else if (buttonValue === "current") {
+      setGameDate(currentMatchDay); // Show the current matchday
+    } else if (buttonValue === "next") {
+      setGameDate(gameDate + 1); // Increase the selected matchday
     }
   }
+  
 
   return (
     <div>
-      <div className="flex justify-center gap-[25px]">
+      <div className="flex justify-center gap-[30px]">
         <button
-          className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
-          transition-colors duration-200
-          ${
-            gameDate === currentMatchDay - 1
-              ? "bg-[#00193f]"
-              : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"
-          }`}
+          className={`py-[3px] px-[15px] text-white my-[7px] rounded-sm 
+          transition-colors duration-200 bg-[rgb(92,166,255)] hover:bg-[#00193f]`}
+           data-action="previous"
           onClick={handleOnClick}
         >
-          Last matchday
+          <IoMdArrowRoundBack className="text-[22px]"/>
         </button>
         <button
-          className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
+          className={`py-[3px] px-[40px] text-white my-[7px] rounded-sm 
           transition-colors duration-200 
           ${
             gameDate === currentMatchDay
               ? "bg-[#00193f]"
               : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"
           }`}
+          data-action="current"
           onClick={handleOnClick}
         >
           Current matchday
         </button>
         <button
-          className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
-          transition-colors duration-200 
-          ${
-            gameDate === currentMatchDay + 1
-              ? "bg-[#00193f]"
-              : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"
-          }`}
+          className={`py-[3px] px-[15px] text-white my-[7px] rounded-sm 
+          transition-colors duration-200 bg-[rgb(92,166,255)] hover:bg-[#00193f] `}
+           data-action="next"
           onClick={handleOnClick}
         >
-          Next matchday
+          <IoMdArrowRoundForward className="text-[22px]"/>
+         
         </button>
       </div>
+      <h2 className="bg-[#00193f] text-white px-2 font-bold flex justify-center">{`Round number ${gameDate} in ${competitionName}`}</h2>
       <table className="bg-white table-auto border-collapse w-full mb-4">
         <thead>
           <tr>
