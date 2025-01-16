@@ -9,7 +9,7 @@ import {
 
 interface TrophyComProp {
   successData: SuccessData;
-  type: string;
+  type?: string;
 }
 function TrophyCom({ successData, type }: TrophyComProp) {
   let compId: string;

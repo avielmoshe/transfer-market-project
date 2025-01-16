@@ -12,6 +12,15 @@ export interface User {
   password?: string;
 }
 
+export interface gameListData {
+  clubName: string;
+  id: string;
+  playClubMatches: Array<any>;
+  seasonID: string;
+  email: string;
+  password?: string;
+}
+
 export interface players {
   alias: string;
   club: string;
@@ -228,9 +237,6 @@ export interface PlayerProfile {
     matches: string;
   };
 }
-
-
-
 
 export interface DataForHeader {
   type: string;

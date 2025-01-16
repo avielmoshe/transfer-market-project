@@ -3,6 +3,7 @@ import CompetitionTables from "../competition-components/CompetitionTables";
 import InputSeason from "../InputSeason";
 import { useQuery } from "@tanstack/react-query";
 import { fetchDataOfOneClubRow } from "@/utils/api";
+import CompetitionMatches from "./ClubMaches";
 
 const ClubFixtures = () => {
   const { clubId } = useParams<Params>();
@@ -29,6 +30,7 @@ const ClubFixtures = () => {
       <InputSeason category={"fixtures"} profile={"clubProfile"} />
 
       <CompetitionTables competition={data.club.leagueID} />
+      <CompetitionMatches competition={data.club.leagueID} />
     </div>
   );
 };
