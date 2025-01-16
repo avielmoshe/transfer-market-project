@@ -10,6 +10,7 @@ import {
   GameListData,
   GamePlanData,
   HeroData,
+  PlayerProfile,
   SquadFromClub,
   TableData,
   User,
@@ -322,17 +323,15 @@ export const getGamePlan = async (
     throw error; // Rethrow the error for the caller to handle
   }
 };
-export const getTopScorer = async (
-  id: string | undefined,
-  seasonID: String | undefined,
+export const getPlayerProfile = async (
+  id: number | undefined,
   domain: string = "com"
-): Promise<GamePlanData> => {
+): Promise<PlayerProfile> => {
   const options = {
     method: "GET",
-    url: `https://${RAPIDAPI_HOST}/competitions/get-game-plan`,
+    url: `https://${RAPIDAPI_HOST}/players/get-profile`,
     params: {
       id,
-      seasonID,
       domain,
     },
     headers: {

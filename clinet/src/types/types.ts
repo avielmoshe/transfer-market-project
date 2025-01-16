@@ -149,6 +149,82 @@ export interface SuccessData {
   id: string; // Assuming the id is a string
   additionalData: Record<string, any>; // Placeholder for the structure of additionalData
 }
+export interface PlayerProfile {
+  playerID: string;
+  playerImage: string;
+  playerName: string;
+  playerFullName: string;
+  birthplace: string;
+  dateOfBirth: string;
+  dateOfDeath: string | null;
+  playerShirtNumber: string;
+  birthplaceCountry: string;
+  birthplaceCountryImage: string;
+  age: string;
+  height: string;
+  foot: string;
+  internationalTeam: string;
+  internationalTeamImage: string;
+  internationalTeamStatus: string;
+  internationalGames: string;
+  internationalGoals: string;
+  internationalTeamShortTag: string;
+  internationalShirtNumber: string;
+  internationalWmMember: boolean;
+  internationalValueRank: number;
+  country: string;
+  countrynameEN: string;
+  countryImage: string;
+  countryShortName: string;
+  secondCountry: string;
+  secondCountryImage: string;
+  league: string;
+  leaguenameEN: string;
+  leagueLogo: string;
+  clubImage: string;
+  club: string;
+  clubnameEN: string;
+  clubID: string;
+  loan: {
+    loan: string;
+    loanStart: string;
+    loanUntil: string;
+  };
+  contractOptions: string;
+  ownerName: string;
+  ownerID: string;
+  ownerImage: string;
+  ownerContractUntil: string;
+  contractExpiryDate: string;
+  agent: string;
+  agentId: string;
+  agentVerificationStatus: string;
+  agentVerificationDate: number;
+  outfitter: string;
+  positionGroup: string;
+  playerMainPosition: string;
+  playerSecondPosition: string;
+  playerThirdPosition: string;
+  marketValue: string;
+  marketValueCurrency: string;
+  marketValueNumeral: string;
+  marketValueLastChange: string;
+  relatedness?: unknown; // Specify the type if you have details about relatedness
+  injury: {
+    id: string;
+    title: string;
+    until: string;
+    rehabilitationFlag: string;
+  };
+  absence: {
+    id: string;
+    title: string;
+    until: string;
+    competitionID: string;
+    matches: string;
+  };
+}
+
 
 export interface DataForHeader {
   type: string;
