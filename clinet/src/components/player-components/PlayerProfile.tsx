@@ -17,7 +17,7 @@ const PlayerProfile = () => {
 
   console.log(data);
   const rowCss = "flex gap-[25px] text-[15px] mb-[15px]";
-  const categoryCss = "w-[150px] font-bold";
+  const categoryCss = "w-[125px] font-bold";
   const towCategoryCss = "flex gap-[7px] justify-center items-center";
   return (
       <div>
@@ -100,7 +100,7 @@ const PlayerProfile = () => {
             <div>{data.playerProfile.contractExpiryDate}</div>
           </div>
         </div>
-        <div className={`flex ml-[40px] bg-[#cccc] px-[20px]`}>
+        <div className={`flex ml-[40px] bg-[#cccc] px-[20px] gap-[10px] justify-center items-center`}>
           <div className="flex flex-col">
             <div className={`${categoryCss} mt-[20px]`}>Position:</div>
             <div>
