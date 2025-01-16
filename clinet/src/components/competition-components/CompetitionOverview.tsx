@@ -42,10 +42,10 @@ const CompetitionOverview = () => {
 
 
 
-
+//profile{"competitionProfile"}
   return (
     <div>
-     <InputSeason category={"overview"}/>
+     <InputSeason category={"overview"} />
 
       <div>
         <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${cleanedTitle} ${seasonId}`}</h2>
