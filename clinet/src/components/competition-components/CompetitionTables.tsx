@@ -8,14 +8,23 @@ import { ImArrowUp } from "react-icons/im";
 import { FaSquare } from "react-icons/fa";
 import { useState } from "react";
 import CompetitionMatches from "./CompetitionMaches/CompetitionMaches";
-
-function CompetitionTables() {
-  const { competitionId } = useParams<Params>();
+interface CompetitionTablesProps {
+  competition?: string;
+}
+function CompetitionTables({ competition }: CompetitionTablesProps) {
   const { seasonId } = useParams<Params>();
+  let competition_Id;
+  const { competitionId } = useParams<Params>();
+  if (!competitionId) {
+    competition_Id = competition;
+  } else {
+    competition_Id = competitionId;
+  }
+
   const [homeAway, setHomeAway] = useState<string | undefined>("");
   const { data, error, isLoading } = useQuery({
-    queryKey: ["dataOfLiveTable", { competitionId, seasonId, homeAway }],
-    queryFn: () => fetchLiveTable(competitionId, seasonId, "com", homeAway),
+    queryKey: ["dataOfLiveTable", { competition_Id, seasonId, homeAway }],
+    queryFn: () => fetchLiveTable(competition_Id, seasonId, "com", homeAway),
   });
   if (error) return null;
   if (!data) {
@@ -30,7 +39,7 @@ function CompetitionTables() {
     <div>
       {" "}
       <div>
-        <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${seasonId}`}</h2>
+        <h2 className="bg-[#00193f] text-white px-2 font-bold">{`TABLE - ${seasonId}`}</h2>
         <div className="flex justify-center gap-[25px]">
           <button
             className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
@@ -117,7 +126,7 @@ function CompetitionTables() {
                       src={club.clubImage}
                       alt="logoImage"
                     />
-                    <Link to={`/clubProfile/${club.id}/overview`}>
+                    <Link to={`/clubProfile/${club.id}/overview/2024`}>
                       <div className="ml-2 text-[12px] text-[#1d75a3] font-bold">
                         {club.clubName}
                       </div>
@@ -152,7 +161,6 @@ function CompetitionTables() {
           </tbody>
         </table>
       </div>
-      <CompetitionMatches />
     </div>
   );
 }

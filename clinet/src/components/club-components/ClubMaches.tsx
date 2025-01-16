@@ -21,12 +21,11 @@ interface CompetitionMatchesProps {
 }
 const CompetitionMatches = ({ competition }: CompetitionMatchesProps) => {
   const { seasonId } = useParams<Params>();
-  const { competitionId } = useParams<Params>();
 
   const seasonIdInNum = Number(seasonId);
   const { data, error, isLoading } = useQuery({
-    queryKey: ["DataOfOneCom", { competitionId }],
-    queryFn: () => fetchDataOfOneComRow(competitionId),
+    queryKey: ["DataOfOneCom", { competition }],
+    queryFn: () => fetchDataOfOneComRow(competition),
   });
 
   if (error instanceof Error) return null;
@@ -42,9 +41,8 @@ const CompetitionMatches = ({ competition }: CompetitionMatchesProps) => {
     error: gameListError,
     isLoading: isGameListLoading,
   } = useQuery({
-    queryKey: ["gameList", { competitionId, seasonIdInNum, gameDate }],
-    queryFn: () =>
-      getListGamePlan(seasonIdInNum, competitionId, gameDate, "com"),
+    queryKey: ["gameList", { competition, seasonIdInNum, gameDate }],
+    queryFn: () => getListGamePlan(seasonIdInNum, competition, gameDate, "com"),
   });
 
   function handleOnClick(e: React.MouseEvent<HTMLButtonElement>) {
