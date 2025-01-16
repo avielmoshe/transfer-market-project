@@ -149,6 +149,10 @@ export interface SuccessData {
   id: string; // Assuming the id is a string
   additionalData: Record<string, any>; // Placeholder for the structure of additionalData
 }
+export interface PlayerProfileInfo {
+  playerProfile: PlayerProfile;
+}
+
 export interface PlayerProfile {
   playerID: string;
   playerImage: string;
@@ -224,6 +228,8 @@ export interface PlayerProfile {
     matches: string;
   };
 }
+
+
 
 
 export interface DataForHeader {
