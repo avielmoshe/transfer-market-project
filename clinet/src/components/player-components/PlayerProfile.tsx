@@ -106,10 +106,19 @@ const PlayerProfile = () => {
             <div>
               {data.playerProfile.playerMainPosition}
             </div>
+            {data.playerProfile.playerSecondPosition && (
+                          <div>
+                            <div className={`${categoryCss} mt-[20px]`}>Second Position:</div>
+                            <div>
+                              {data.playerProfile.playerSecondPosition}
+                            </div>
+                          </div>
+            )}
           </div>
           <div className="">
             <FootballField
               playerMainPosition={data.playerProfile.playerMainPosition}
+              secondPosition = {data.playerProfile.playerSecondPosition}
             />
           </div>
         </div>
