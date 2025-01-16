@@ -5,16 +5,16 @@ import { fetchDataOfSquadFromClub } from "@/utils/api";
 import InputSeason from "../InputSeason";
 
 const ClubOverview = () => {
-  const { id } = useParams<Params>();
+  const { clubId } = useParams<Params>();
   const { seasonId } = useParams<Params>();
-  if (!id) {
+  if (!clubId) {
     throw new Error("ID is required");
   }
 
   const { data, error, isLoading } = useQuery({
-    queryKey: ["fetchDataOfSquadFromClub", { id, seasonId }],
-    queryFn: () => fetchDataOfSquadFromClub(id, seasonId),
-    enabled: !!id,
+    queryKey: ["fetchDataOfSquadFromClub", { clubId, seasonId }],
+    queryFn: () => fetchDataOfSquadFromClub(clubId, seasonId),
+    enabled: !!clubId,
   });
 
   if (error) {
@@ -25,7 +25,6 @@ const ClubOverview = () => {
   if (!data || isLoading) {
     return <p>Loading...</p>;
   }
-  console.log(data);
 
   return (
     <div>

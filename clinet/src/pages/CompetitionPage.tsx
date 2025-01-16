@@ -3,16 +3,15 @@ import { DataForHeader, DataForNavSearch } from "@/types/types";
 import { fetchDataOfOneComRow } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
-import NavSearch from "../components/NavSearch"
-
+import NavSearch from "../components/NavSearch";
 
 function CompetitionPage() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { competitionId } = useParams();
   const { category } = useParams();
   const { data, error, isLoading } = useQuery({
-    queryKey: ["DataOfOneCom", { id }],
-    queryFn: () => fetchDataOfOneComRow(id),
+    queryKey: ["DataOfOneCom", { competitionId }],
+    queryFn: () => fetchDataOfOneComRow(competitionId),
   });
 
   if (error instanceof Error) return null;
@@ -56,25 +55,69 @@ function CompetitionPage() {
     ],
     thirdData: [{ trophy: data.competition.trophy }],
   };
-  const dataOfNavSearch : DataForNavSearch = [
-    { name: "OVERVIEW", onClick: () => { navigate(`/competitionProfile/${id}/overview`); }},
-    { name: "TABLES", onClick: () => { navigate(`/competitionProfile/${id}/tables`); }},
-    { name: "TRANSFERS", onClick: () => { navigate(`/competitionProfile/${id}/transfers`); }},
-    { name: "MARKET VALUES", onClick: () => { navigate(`/competitionProfile/${id}/marketValues`); }},
-    { name: "PLAYERS", onClick: () => { navigate(`/competitionProfile/${id}/players`); }},
-    { name: "CLUBS", onClick: () => { navigate(`/competitionProfile/${id}/clubs`); }},
-    { name: "INFORMATION & FACTS", onClick: () => { navigate(`/competitionProfile/${id}/informationFacts`); }},
-    { name: "HISTORY", onClick: () => { navigate(`/competitionProfile/${id}/history`); }},
-    { name: "NEWS", onClick: () => { navigate(`/competitionProfile/${id}/news`); }},
+  const dataOfNavSearch: DataForNavSearch = [
+    {
+      name: "OVERVIEW",
+      onClick: () => {
+        navigate(`/competitionProfile/${competitionId}/overview/2024`);
+      },
+    },
+    {
+      name: "TABLES",
+      onClick: () => {
+        navigate(`/competitionProfile/${competitionId}/tables/2024`);
+      },
+    },
+    {
+      name: "TRANSFERS",
+      onClick: () => {
+        navigate(`/competitionProfile/${competitionId}/transfers/2024`);
+      },
+    },
+    {
+      name: "MARKET VALUES",
+      onClick: () => {
+        navigate(`/competitionProfile/${competitionId}/marketValues/2024`);
+      },
+    },
+    {
+      name: "PLAYERS",
+      onClick: () => {
+        navigate(`/competitionProfile/${competitionId}/players/2024`);
+      },
+    },
+    {
+      name: "CLUBS",
+      onClick: () => {
+        navigate(`/competitionProfile/${competitionId}/clubs/2024`);
+      },
+    },
+    {
+      name: "INFORMATION & FACTS",
+      onClick: () => {
+        navigate(`/competitionProfile/${competitionId}/informationFacts/2024`);
+      },
+    },
+    {
+      name: "HISTORY",
+      onClick: () => {
+        navigate(`/competitionProfile/${competitionId}/history/2024`);
+      },
+    },
+    {
+      name: "NEWS",
+      onClick: () => {
+        navigate(`/competitionProfile/${competitionId}/news/2024`);
+      },
+    },
   ];
-  
-  
+
   return (
     <>
       <DynamicHeader dataForHeader={dataForHeader} />
-      <NavSearch dataOfNavSearch={dataOfNavSearch}/>
-      <Outlet/>
- </>
+      <NavSearch dataOfNavSearch={dataOfNavSearch} />
+      <Outlet />
+    </>
   );
 }
 

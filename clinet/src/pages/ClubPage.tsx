@@ -11,15 +11,15 @@ import { Outlet, useNavigate, useParams } from "react-router-dom";
 
 function ClubPage() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { clubId } = useParams();
 
   const { data, error, isLoading } = useQuery({
-    queryKey: ["dataOfOneClub", { id }],
-    queryFn: () => fetchDataOfOneClubRow(id),
+    queryKey: ["dataOfOneClub", { clubId }],
+    queryFn: () => fetchDataOfOneClubRow(clubId),
   });
   const { data: profileData } = useQuery({
-    queryKey: ["dataOfClubProfile", { id }],
-    queryFn: () => fetchDataOfOneClubProfile(id),
+    queryKey: ["dataOfClubProfile", { clubId }],
+    queryFn: () => fetchDataOfOneClubProfile(clubId),
   });
 
   if (error instanceof Error) return null;
@@ -75,55 +75,55 @@ function ClubPage() {
     {
       name: "OVERVIEW",
       onClick: () => {
-        navigate(`/clubProfile/${id}/overview`);
+        navigate(`/clubProfile/${clubId}/overview/2024`);
       },
     },
     {
       name: "SQUAD",
       onClick: () => {
-        navigate(`/clubProfile/${id}/squad`);
+        navigate(`/clubProfile/${clubId}/squad/2024`);
       },
     },
     {
       name: "FIXTURES",
       onClick: () => {
-        navigate(`/clubProfile/${id}/fixtures`);
+        navigate(`/clubProfile/${clubId}/fixtures/2024`);
       },
     },
     {
       name: "TRANSFERS & RUMOURS",
       onClick: () => {
-        navigate(`/clubProfile/${id}/transfersRumours`);
+        navigate(`/clubProfile/${clubId}/transfersRumours/2024`);
       },
     },
     {
       name: "INFORMATION & FACTS",
       onClick: () => {
-        navigate(`/clubProfile/${id}/informationFacts`);
+        navigate(`/clubProfile/${clubId}/informationFacts/2024`);
       },
     },
     {
       name: "STADIUM",
       onClick: () => {
-        navigate(`/clubProfile/${id}/stadium`);
+        navigate(`/clubProfile/${clubId}/stadium/2024`);
       },
     },
     {
       name: "HISTORY",
       onClick: () => {
-        navigate(`/clubProfile/${id}/history`);
+        navigate(`/clubProfile/${clubId}/history/2024`);
       },
     },
     {
       name: "NEWS",
       onClick: () => {
-        navigate(`/clubProfile/${id}/news`);
+        navigate(`/clubProfile/${clubId}/news/2024`);
       },
     },
     {
       name: "FORUM",
       onClick: () => {
-        navigate(`/clubProfile/${id}/forum`);
+        navigate(`/clubProfile/${clubId}/forum/2024`);
       },
     },
   ];

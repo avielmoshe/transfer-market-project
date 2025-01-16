@@ -7,6 +7,8 @@ type Year = {
 };
 
 export type Params = {
+  competitionId: string | undefined;
+  clubId: string | undefined;
   id: string | undefined;
   seasonId: string | undefined;
 };
@@ -52,7 +54,7 @@ interface InputSeasonProp {
 }
 export default function InputSeason({ category, profile }: InputSeasonProp) {
   const navigate = useNavigate();
-  const { id } = useParams<Params>();
+  const { competitionId, clubId, id } = useParams<Params>();
   const { seasonId } = useParams<Params>();
   const curruntInput = years.find((year) => year.id === seasonId)?.input;
 
@@ -71,7 +73,11 @@ export default function InputSeason({ category, profile }: InputSeasonProp) {
   };
 
   const handleShowClick = () => {
-    navigate(`/${profile}/${id}/${category}/${season.id}`);
+    navigate(
+      `/${profile}/${
+        competitionId ? competitionId : clubId ? clubId : id
+      }/${category}/${season.id}`
+    );
     setSelectedSeason(season);
   };
   return (

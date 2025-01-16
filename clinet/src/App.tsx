@@ -43,53 +43,53 @@ function App() {
         { path: "/", element: <HomePage /> },
         { path: "/SearchPage", element: <SearchPage /> },
         {
-          path: "/competitionProfile/:id",
+          path: "/competitionProfile/:competitionId",
           element: <CompetitionPage />,
           children: [
             {
-              path: "/competitionProfile/:id/overview/:seasonId",
+              path: "overview/:seasonId",
               element: <CompetitionOverview />,
             },
             {
-              path: "/competitionProfile/:id/history/:seasonId",
+              path: "history/:seasonId",
               element: <CompetitionnHistory />,
             },
             {
-              path: "/competitionProfile/:id/InformationFacts/:seasonId",
+              path: "InformationFacts/:seasonId",
               element: <CompetitionInformationFacts />,
             },
             {
-              path: "/competitionProfile/:id/Transfers/:seasonId",
+              path: "Transfers/:seasonId",
               element: <CompetitionTransfers />,
             },
             {
-              path: "/competitionProfile/:id/Clubs/:seasonId",
+              path: "Clubs/:seasonId",
               element: <CompetitionClubs />,
             },
             {
-              path: "/competitionProfile/:id/Tables/:seasonId",
+              path: "Tables/:seasonId",
               element: <CompetitionTables />,
             },
             {
-              path: "/competitionProfile/:id/Players/:seasonId",
+              path: "Players/:seasonId",
               element: <CompetitionPlayers />,
             },
             {
-              path: "/competitionProfile/:id/Tables/:seasonId",
+              path: "Tables/:seasonId",
               element: <CompetitionTables />,
             },
             {
-              path: "/competitionProfile/:id/News/:seasonId",
+              path: "News/:seasonId",
               element: <CompetitionNews />,
             },
             {
-              path: "/competitionProfile/:id/MarketValues/:seasonId",
+              path: "MarketValues/:seasonId",
               element: <CompetitionMarketValues />,
             },
           ],
         },
         {
-          path: "/clubProfile/:id",
+          path: "/clubProfile/:clubId",
           element: <ClubPage />,
           children: [
             {

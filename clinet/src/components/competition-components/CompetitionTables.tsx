@@ -10,12 +10,12 @@ import { useState } from "react";
 import CompetitionMatches from "./CompetitionMaches/CompetitionMaches";
 
 function CompetitionTables() {
-  const { id } = useParams<Params>();
+  const { competitionId } = useParams<Params>();
   const { seasonId } = useParams<Params>();
   const [homeAway, setHomeAway] = useState<string | undefined>("");
   const { data, error, isLoading } = useQuery({
-    queryKey: ["dataOfLiveTable", { id, seasonId, homeAway }],
-    queryFn: () => fetchLiveTable(id, seasonId, "com", homeAway),
+    queryKey: ["dataOfLiveTable", { competitionId, seasonId, homeAway }],
+    queryFn: () => fetchLiveTable(competitionId, seasonId, "com", homeAway),
   });
   if (error) return null;
   if (!data) {
@@ -32,31 +32,43 @@ function CompetitionTables() {
       <div>
         <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${seasonId}`}</h2>
         <div className="flex justify-center gap-[25px]">
-    <button
-      className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
+          <button
+            className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
       transition-colors duration-200 
-      ${homeAway === "" ? "bg-[#00193f]" : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"}`}
-      onClick={handleOnClick}
-    >
-      All
-    </button>
-    <button
-      className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
+      ${
+        homeAway === ""
+          ? "bg-[#00193f]"
+          : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"
+      }`}
+            onClick={handleOnClick}
+          >
+            All
+          </button>
+          <button
+            className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
       transition-colors duration-200 
-      ${homeAway === "home" ? "bg-[#00193f]" : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"}`}
-      onClick={handleOnClick}
-    >
-      Home
-    </button>
-    <button
-      className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
+      ${
+        homeAway === "home"
+          ? "bg-[#00193f]"
+          : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"
+      }`}
+            onClick={handleOnClick}
+          >
+            Home
+          </button>
+          <button
+            className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
       transition-colors duration-200 
-      ${homeAway === "away" ? "bg-[#00193f]" : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"}`}
-      onClick={handleOnClick}
-    >
-      Away
-    </button>
-  </div>
+      ${
+        homeAway === "away"
+          ? "bg-[#00193f]"
+          : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"
+      }`}
+            onClick={handleOnClick}
+          >
+            Away
+          </button>
+        </div>
         <table className="bg-white table-auto border-collapse w-full mb-4">
           <thead>
             <tr>
@@ -140,7 +152,7 @@ function CompetitionTables() {
           </tbody>
         </table>
       </div>
-      <CompetitionMatches/>
+      <CompetitionMatches />
     </div>
   );
 }

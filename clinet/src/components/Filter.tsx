@@ -611,7 +611,7 @@ const Filter = () => {
                 : "cursor-default"
             } `}
             onClick={() => {
-              navigate(`/clubProfile/${clubId}/overview`);
+              navigate(`/clubProfile/${clubId}/overview/2024`);
               setIsCountryOpen(false);
               setIsCompetitionOpen(false);
               setIsClubsOpen(false);

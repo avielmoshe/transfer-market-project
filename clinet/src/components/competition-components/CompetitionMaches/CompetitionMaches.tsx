@@ -18,30 +18,29 @@ interface GamePlanPlayDay {
 }
 
 const CompetitionMatches = () => {
-  const { id } = useParams<Params>();
+  const { competitionId } = useParams<Params>();
   const { seasonId } = useParams<Params>();
 
   const seasonIdInNum = Number(seasonId);
   const { data, error, isLoading } = useQuery({
-    queryKey: ["DataOfOneCom", { id }],
-    queryFn: () => fetchDataOfOneComRow(id),
+    queryKey: ["DataOfOneCom", { competitionId }],
+    queryFn: () => fetchDataOfOneComRow(competitionId),
   });
   const currentMatchDay = data.competition.currentMatchDay;
-const competitionName= data.competition.competitionName
+  const competitionName = data.competition.competitionName;
 
- 
-  
   const [gameDate, setGameDate] = useState<number>(currentMatchDay);
-  
+
   const {
     data: gameListData,
     error: gameListError,
     isLoading: isGameListLoading,
   } = useQuery({
-    queryKey: ["gameList", { id, seasonIdInNum, gameDate }],
-    queryFn: () => getListGamePlan(seasonIdInNum, id, gameDate, "com"),
+    queryKey: ["gameList", { competitionId, seasonIdInNum, gameDate }],
+    queryFn: () =>
+      getListGamePlan(seasonIdInNum, competitionId, gameDate, "com"),
   });
-  
+
   if (error instanceof Error) return null;
   if (!data) {
     return null;
@@ -50,10 +49,10 @@ const competitionName= data.competition.competitionName
   if (!gameListData) {
     return null;
   }
-  
+
   function handleOnClick(e: React.MouseEvent<HTMLButtonElement>) {
-    const buttonValue = e.currentTarget.getAttribute('data-action'); // Use a data attribute
-  
+    const buttonValue = e.currentTarget.getAttribute("data-action"); // Use a data attribute
+
     if (buttonValue === "previous") {
       setGameDate(gameDate - 1); // Decrease the selected matchday
     } else if (buttonValue === "current") {
@@ -62,7 +61,6 @@ const competitionName= data.competition.competitionName
       setGameDate(gameDate + 1); // Increase the selected matchday
     }
   }
-  
 
   return (
     <div>
@@ -70,10 +68,10 @@ const competitionName= data.competition.competitionName
         <button
           className={`py-[3px] px-[15px] text-white my-[7px] rounded-sm 
           transition-colors duration-200 bg-[rgb(92,166,255)] hover:bg-[#00193f]`}
-           data-action="previous"
+          data-action="previous"
           onClick={handleOnClick}
         >
-          <IoMdArrowRoundBack className="text-[22px]"/>
+          <IoMdArrowRoundBack className="text-[22px]" />
         </button>
         <button
           className={`py-[3px] px-[40px] text-white my-[7px] rounded-sm 
@@ -91,11 +89,10 @@ const competitionName= data.competition.competitionName
         <button
           className={`py-[3px] px-[15px] text-white my-[7px] rounded-sm 
           transition-colors duration-200 bg-[rgb(92,166,255)] hover:bg-[#00193f] `}
-           data-action="next"
+          data-action="next"
           onClick={handleOnClick}
         >
-          <IoMdArrowRoundForward className="text-[22px]"/>
-         
+          <IoMdArrowRoundForward className="text-[22px]" />
         </button>
       </div>
       <h2 className="bg-[#00193f] text-white px-2 font-bold flex justify-center">{`Round number ${gameDate} in ${competitionName}`}</h2>

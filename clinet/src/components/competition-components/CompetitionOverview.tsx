@@ -7,20 +7,21 @@ import CompetitionLiveTableRow from "./CompetitionLiveRow";
 import InputSeason from "../InputSeason";
 import CompetitionTables from "./CompetitionTables";
 
-
 const CompetitionOverview = () => {
-  const { id } = useParams<Params>();
+  const { competitionId } = useParams<Params>();
   const { seasonId } = useParams<Params>();
-  if (!id) {
+  if (!competitionId) {
     throw new Error("ID is required");
   }
 
   const { data, error, isLoading } = useQuery({
-    queryKey: ["fetchDataOfClubsFromTable", { id, seasonId: seasonId }],
-    queryFn: () => fetchDataOfClubsFromTable(id,seasonId ),
-    enabled: !!id,
+    queryKey: [
+      "fetchDataOfClubsFromTable",
+      { competitionId, seasonId: seasonId },
+    ],
+    queryFn: () => fetchDataOfClubsFromTable(competitionId, seasonId),
+    enabled: !!competitionId,
   });
-  
 
   if (error) {
     console.error(error);
@@ -31,7 +32,6 @@ const CompetitionOverview = () => {
     return <p>Loading...</p>;
   }
 
-
   const competitionName = data.share.title;
   const removeAfterDash = (input: string): string => {
     const index = input.indexOf("-");
@@ -39,13 +39,9 @@ const CompetitionOverview = () => {
   };
   const cleanedTitle = removeAfterDash(competitionName);
 
-
-
-
-//profile{"competitionProfile"}
   return (
     <div>
-     <InputSeason category={"overview"} />
+      <InputSeason category={"overview"} profile={"competitionProfile"} />
 
       <div>
         <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${cleanedTitle} ${seasonId}`}</h2>
@@ -75,12 +71,12 @@ const CompetitionOverview = () => {
           </thead>
           <tbody>
             {data.table.map((club) => (
-              <ClubRow key={club.id} clubId={club.id}  />
+              <ClubRow key={club.id} clubId={club.id} />
             ))}
           </tbody>
         </table>
       </div>
-    <CompetitionTables/>
+      <CompetitionTables />
     </div>
   );
 };
