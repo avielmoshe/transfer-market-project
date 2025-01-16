@@ -20,6 +20,26 @@ export interface gameListData {
   email: string;
   password?: string;
 }
+export interface Transfer {
+  id: string;
+  playerName: string;
+  playerImage: string;
+  position: string;
+  positionsdetail?: string;
+  age: number;
+  clubName: string;
+  clubImage: string;
+  countryImage: string;
+  transferFee: string;
+  loan: string;
+  transferFeeUnformatted: string;
+  clubID: string;
+}
+
+export interface CurrentSeason {
+  transferArrivals: Transfer[];
+  transferDepartures: Transfer[];
+}
 
 export interface players {
   alias: string;

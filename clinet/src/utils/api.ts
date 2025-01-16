@@ -158,6 +158,34 @@ export const fetchDataOfClubsFromTable = async (
   }
 };
 
+export const fetchDataOfClubsTransfers = async (
+  id: string | undefined,
+  seasonID: string | undefined,
+  domain: string = "com"
+): Promise<DataStructure> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/transfers/list-by-club`,
+    params: {
+      id,
+      domain,
+      seasonID,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
 export const fetchDataOfOneClubProfile = async (
   id: string | undefined,
   domain: string = "com"

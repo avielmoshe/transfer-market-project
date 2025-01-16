@@ -78,12 +78,7 @@ function ClubPage() {
         navigate(`/clubProfile/${clubId}/overview/2024`);
       },
     },
-    {
-      name: "SQUAD",
-      onClick: () => {
-        navigate(`/clubProfile/${clubId}/squad/2024`);
-      },
-    },
+
     {
       name: "FIXTURES",
       onClick: () => {
