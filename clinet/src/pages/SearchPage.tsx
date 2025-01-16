@@ -34,7 +34,6 @@ const SearchPage: React.FC = () => {
   }
 
   const totalPages = getTotalPages(data.count);
-  
 
   return (
     <div>
@@ -108,7 +107,7 @@ const SearchPage: React.FC = () => {
               </thead>
               <tbody>
                 {data.clubs.map((club) => (
-                  <ClubRow key={club.id} clubId={club.id} />
+                  <ClubRow key={club.id} clubId={club.id} type="search" />
                 ))}
               </tbody>
             </table>

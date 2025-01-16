@@ -30,7 +30,7 @@ function CompetitionRow({ competition }: CompetitionRowProps) {
         />
       </td>
       <td className="border p-1 w-13 text-[12px] text-[#1d75a3]">
-        <Link to={`/competitionProfile/${competition.id}/overview`}>
+        <Link to={`/competitionProfile/${competition.id}/overview/2024`}>
           {competition.competitionName}
         </Link>
       </td>

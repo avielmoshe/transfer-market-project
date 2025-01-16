@@ -51,39 +51,39 @@ function App() {
               element: <CompetitionOverview />,
             },
             {
-              path: "/competitionProfile/:id/history",
+              path: "/competitionProfile/:id/history/:seasonId",
               element: <CompetitionnHistory />,
             },
             {
-              path: "/competitionProfile/:id/InformationFacts",
+              path: "/competitionProfile/:id/InformationFacts/:seasonId",
               element: <CompetitionInformationFacts />,
             },
             {
-              path: "/competitionProfile/:id/Transfers",
+              path: "/competitionProfile/:id/Transfers/:seasonId",
               element: <CompetitionTransfers />,
             },
             {
-              path: "/competitionProfile/:id/Clubs",
+              path: "/competitionProfile/:id/Clubs/:seasonId",
               element: <CompetitionClubs />,
             },
             {
-              path: "/competitionProfile/:id/Tables",
+              path: "/competitionProfile/:id/Tables/:seasonId",
               element: <CompetitionTables />,
             },
             {
-              path: "/competitionProfile/:id/Players",
+              path: "/competitionProfile/:id/Players/:seasonId",
               element: <CompetitionPlayers />,
             },
             {
-              path: "/competitionProfile/:id/Tables",
+              path: "/competitionProfile/:id/Tables/:seasonId",
               element: <CompetitionTables />,
             },
             {
-              path: "/competitionProfile/:id/News",
+              path: "/competitionProfile/:id/News/:seasonId",
               element: <CompetitionNews />,
             },
             {
-              path: "/competitionProfile/:id/MarketValues",
+              path: "/competitionProfile/:id/MarketValues/:seasonId",
               element: <CompetitionMarketValues />,
             },
           ],
