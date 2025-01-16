@@ -164,7 +164,7 @@ const CompetitionMatches = () => {
                   />
                 </div>
               </td>
-              <td className="border p-1 w-[70px] text-[15px]">
+              <td className="border p-1 w-[100px] text-[15px]">
                 <div
                   className={`flex justify-center font-bold text-white py-[3px] ${
                     match.result === "-:-"
