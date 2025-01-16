@@ -102,15 +102,23 @@ const PlayerProfile = () => {
         </div>
         <div className={`flex ml-[40px] bg-[#cccc] px-[20px] gap-[10px] justify-center items-center`}>
           <div className="flex flex-col">
-            <div className={`${categoryCss} mt-[20px]`}>Position:</div>
+            <div className={`${categoryCss} mt-[20px] text-[#910404cc]`}>Position:</div>
             <div>
               {data.playerProfile.playerMainPosition}
             </div>
             {data.playerProfile.playerSecondPosition && (
                           <div>
-                            <div className={`${categoryCss} mt-[20px]`}>Second Position:</div>
+                            <div className={`${categoryCss} mt-[20px]  text-[#942929cc]`}>Second Position:</div>
                             <div>
                               {data.playerProfile.playerSecondPosition}
+                            </div>
+                          </div>
+            )}
+            {data.playerProfile.playerThirdPosition && (
+                          <div>
+                            <div className={`${categoryCss} mt-[20px] text-[#914444cc]`}>Third Position:</div>
+                            <div>
+                              {data.playerProfile.playerThirdPosition}
                             </div>
                           </div>
             )}
@@ -119,6 +127,7 @@ const PlayerProfile = () => {
             <FootballField
               playerMainPosition={data.playerProfile.playerMainPosition}
               secondPosition = {data.playerProfile.playerSecondPosition}
+              thirdPosition = {data.playerProfile.playerThirdPosition}
             />
           </div>
         </div>
