@@ -140,7 +140,7 @@ function CompetitionTables() {
           </tbody>
         </table>
       </div>
-      <CompetitionMatches/>
+      
     </div>
   );
 }
