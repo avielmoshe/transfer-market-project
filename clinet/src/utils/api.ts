@@ -7,6 +7,7 @@ import {
   clubsDataFromCom,
   DataStructure,
   DataType,
+  gameListData,
   GameListData,
   GamePlanData,
   HeroData,
@@ -308,6 +309,33 @@ export const getGamePlan = async (
     params: {
       id,
       seasonID,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+export const getMatchesbyClub = async (
+  id: string | undefined,
+  domain: string = "com"
+): Promise<gameListData> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/matches/list-by-club`,
+    params: {
+      id,
+
       domain,
     },
     headers: {
