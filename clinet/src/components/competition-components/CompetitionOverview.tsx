@@ -6,6 +6,7 @@ import { useState } from "react";
 import CompetitionLiveTableRow from "./CompetitionLiveRow";
 import InputSeason from "../InputSeason";
 import CompetitionTables from "./CompetitionTables";
+import CompetitionMatches from "./CompetitionMaches/CompetitionMaches";
 
 const CompetitionOverview = () => {
   const { competitionId } = useParams<Params>();
@@ -77,6 +78,7 @@ const CompetitionOverview = () => {
         </table>
       </div>
       <CompetitionTables />
+      <CompetitionMatches />
     </div>
   );
 };
