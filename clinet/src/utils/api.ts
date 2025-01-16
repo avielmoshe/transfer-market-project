@@ -241,8 +241,6 @@ export const fetchLiveTable = async (
   domain: string = "com",
   homeAway: string | undefined
 ): Promise<TableData> => {
-  
-  
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/competitions/get-table`,
@@ -250,7 +248,7 @@ export const fetchLiveTable = async (
       id,
       seasonID,
       domain,
-      homeAway
+      homeAway,
     },
     headers: {
       "x-rapidapi-key": RAPIDAPI_KEY,
@@ -268,13 +266,11 @@ export const fetchLiveTable = async (
 };
 
 export const getListGamePlan = async (
-  seasonID: String | undefined,
+  seasonID: number | undefined,
   leagueID: String | undefined,
-  dayID: String | undefined,
-  domain: string = "com",
+  dayID: number | undefined,
+  domain: string = "com"
 ): Promise<GameListData> => {
-  
-  
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/matches/list-by-game-plan`,
@@ -302,10 +298,8 @@ export const getListGamePlan = async (
 export const getGamePlan = async (
   id: string | undefined,
   seasonID: String | undefined,
-  domain: string = "com",
+  domain: string = "com"
 ): Promise<GamePlanData> => {
-  
-  
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/competitions/get-game-plan`,
@@ -331,10 +325,8 @@ export const getGamePlan = async (
 export const getTopScorer = async (
   id: string | undefined,
   seasonID: String | undefined,
-  domain: string = "com",
+  domain: string = "com"
 ): Promise<GamePlanData> => {
-  
-  
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/competitions/get-game-plan`,

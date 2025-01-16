@@ -1,5 +1,9 @@
 import { Params } from "@/components/InputSeason";
-import { getGamePlan, getListGamePlan } from "@/utils/api";
+import {
+  fetchDataOfOneComRow,
+  getGamePlan,
+  getListGamePlan,
+} from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -11,96 +15,59 @@ interface GamePlanPlayDay {
   dateString: string;
 }
 
-const findClosestPlayDay = (
-  playDays: GamePlanPlayDay[],
-  today: Date
-): string => {
-  const todayTime = today.getTime();
-  
-
-  const parsedPlayDays = playDays.map((playDay) => {
-    const [start, end] = playDay.dateString
-      .split(" - ")
-      .map((date) => new Date(date.trim()));
-    return { ...playDay, start, end };
-  });
-  
-
-  const exactMatch = parsedPlayDays.find(
-    (playDay) =>
-      todayTime >= playDay.start.getTime() && todayTime <= playDay.end.getTime()
-  );
-  if (exactMatch) return exactMatch.id;
-
-  const closestMatch = parsedPlayDays.reduce((prev, curr) => {
-    const prevDistance = Math.abs(todayTime - prev.start.getTime());
-    const currDistance = Math.abs(todayTime - curr.start.getTime());
-    return currDistance < prevDistance ? curr : prev;
-  });
-
-  return closestMatch.id;
-};
-
 const CompetitionMatches = () => {
   const { id } = useParams<Params>();
   const { seasonId } = useParams<Params>();
 
-  const [selectedPlayDayId, setSelectedPlayDayId] = useState<string>("");
-  const [gameDate, setGameDate] = useState<string>("");
-
-  const {
-    data: gamePlanData,
-    error: gamePlanError,
-    isLoading: isGamePlanLoading,
-  } = useQuery({
-    queryKey: ["gamePlan", { id, seasonId }],
-    queryFn: () => getGamePlan(id, seasonId),
+  const seasonIdInNum = Number(seasonId);
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["DataOfOneCom", { id }],
+    queryFn: () => fetchDataOfOneComRow(id),
   });
+  const currentMatchDay = data.competition.currentMatchDay;
+
+  const [gameDate, setGameDate] = useState<number>(currentMatchDay);
 
   const {
     data: gameListData,
     error: gameListError,
     isLoading: isGameListLoading,
   } = useQuery({
-    queryKey: ["gameList", { id, seasonId, gameDate }],
-    queryFn: () => getListGamePlan(seasonId, id, gameDate, "com"),
-    enabled: Boolean(selectedPlayDayId),
+    queryKey: ["gameList", { id, seasonIdInNum, gameDate }],
+    queryFn: () => getListGamePlan(seasonIdInNum, id, gameDate, "com"),
   });
 
-  useEffect(() => {
-    if (gamePlanData?.gamePlanPlayDays) {
-      const today = new Date();
-      const closestId = findClosestPlayDay(gamePlanData.gamePlanPlayDays, today);
-      setSelectedPlayDayId(closestId);
-      setGameDate(closestId);  // עדכן את gameDate באותו ID של פליידי
-    }
-  }, [gamePlanData]);
-
-  if (isGamePlanLoading || isGameListLoading) return <p>Loading...</p>;
-  if (gamePlanError || gameListError) return <p>Error loading data</p>;
+  if (error instanceof Error) return null;
+  if (!data) {
+    return null;
+  }
+  if (gameListError) return null;
+  if (!gameListData) {
+    return null;
+  }
 
   function handleOnClick(e: React.MouseEvent<HTMLButtonElement>) {
     const buttonValue = e.currentTarget.innerText.toLowerCase();
-    const playDayId = parseInt(selectedPlayDayId, 10); // קרא את ה-ID באופן תקני
     if (buttonValue === "last matchday") {
-      setGameDate((playDayId - 1).toString()); // הקטנה של היום הנבחר
+      setGameDate(gameDate - 1); // הקטנה של היום הנבחר
     } else if (buttonValue === "current matchday") {
-      setGameDate(playDayId.toString()); // הצגת המשחק הנוכחי
+      setGameDate(gameDate); // הצגת המשחק הנוכחי
     } else if (buttonValue === "next matchday") {
-      setGameDate((playDayId + 1).toString()); // הגדלת היום הנבחר
+      setGameDate(gameDate + 1); // הגדלת היום הנבחר
     }
   }
-  
 
   return (
     <div>
       <div className="flex justify-center gap-[25px]">
         <button
           className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
-          transition-colors duration-200 
-          ${gameDate === selectedPlayDayId
-            ? "bg-[#00193f]"
-            : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"}`}
+          transition-colors duration-200
+          ${
+            gameDate === currentMatchDay - 1
+              ? "bg-[#00193f]"
+              : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"
+          }`}
           onClick={handleOnClick}
         >
           Last matchday
@@ -108,9 +75,11 @@ const CompetitionMatches = () => {
         <button
           className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
           transition-colors duration-200 
-          ${gameDate === selectedPlayDayId
-            ? "bg-[#00193f]"
-            : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"}`}
+          ${
+            gameDate === currentMatchDay
+              ? "bg-[#00193f]"
+              : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"
+          }`}
           onClick={handleOnClick}
         >
           Current matchday
@@ -118,9 +87,11 @@ const CompetitionMatches = () => {
         <button
           className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
           transition-colors duration-200 
-          ${gameDate === selectedPlayDayId
-            ? "bg-[#00193f]"
-            : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"}`}
+          ${
+            gameDate === currentMatchDay + 1
+              ? "bg-[#00193f]"
+              : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"
+          }`}
           onClick={handleOnClick}
         >
           Next matchday
@@ -193,4 +164,3 @@ const CompetitionMatches = () => {
 };
 
 export default CompetitionMatches;
-
