@@ -16,7 +16,6 @@ const findClosestPlayDay = (
   today: Date
 ): string => {
   const todayTime = today.getTime();
-  console.log(todayTime);
   
 
   const parsedPlayDays = playDays.map((playDay) => {
@@ -25,7 +24,6 @@ const findClosestPlayDay = (
       .map((date) => new Date(date.trim()));
     return { ...playDay, start, end };
   });
-  console.log(parsedPlayDays);
   
 
   const exactMatch = parsedPlayDays.find(
@@ -92,7 +90,6 @@ const CompetitionMatches = () => {
       setGameDate((playDayId + 1).toString()); // הגדלת היום הנבחר
     }
   }
-  console.log(gameDate);
   
 
   return (
