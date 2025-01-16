@@ -66,17 +66,17 @@ const competitionName= data.competition.competitionName
 
   return (
     <div>
-      <div className="flex justify-center gap-[25px]">
+      <div className="flex justify-center gap-[30px]">
         <button
-          className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
+          className={`py-[3px] px-[15px] text-white my-[7px] rounded-sm 
           transition-colors duration-200 bg-[rgb(92,166,255)] hover:bg-[#00193f]`}
            data-action="previous"
           onClick={handleOnClick}
         >
-          <IoMdArrowRoundBack className="text-[20px]"/>
+          <IoMdArrowRoundBack className="text-[22px]"/>
         </button>
         <button
-          className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
+          className={`py-[3px] px-[40px] text-white my-[7px] rounded-sm 
           transition-colors duration-200 
           ${
             gameDate === currentMatchDay
@@ -89,12 +89,12 @@ const competitionName= data.competition.competitionName
           Current matchday
         </button>
         <button
-          className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
+          className={`py-[3px] px-[15px] text-white my-[7px] rounded-sm 
           transition-colors duration-200 bg-[rgb(92,166,255)] hover:bg-[#00193f] `}
            data-action="next"
           onClick={handleOnClick}
         >
-          <IoMdArrowRoundForward className="text-[20px]"/>
+          <IoMdArrowRoundForward className="text-[22px]"/>
          
         </button>
       </div>
