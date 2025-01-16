@@ -21,6 +21,16 @@ export interface players {
   nationImage: string;
   playerImage: string;
   playerName: string;
+  suspension: string;
+  captain: string;
+  injury: {
+    description: string;
+    until: string;
+  };
+  marketValue: {
+    currency: string;
+    value: number;
+  };
 }
 
 export interface clubs {
@@ -129,7 +139,6 @@ interface TableRow {
 export interface TableData {
   table: TableRow[];
 }
-
 
 export type SquadFromClub = {
   squad: Array<any>;
@@ -260,7 +269,6 @@ interface PlayDayMatch {
 export interface GameListData {
   playDayMatches: PlayDayMatch[]; // מערך משחקים של היום
 }
-
 
 interface GamePlanPlayDay {
   id: string; // The unique identifier of the play day

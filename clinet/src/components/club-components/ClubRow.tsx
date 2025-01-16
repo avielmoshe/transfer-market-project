@@ -32,7 +32,7 @@ function ClubRow({ clubId, type }: ClubRowProps) {
       </td>
       <td className="border p-1 w-13 text-[12px]">
         <div className="ml-1  text-[12px] text-[#1d75a3]">
-          <Link to={`/clubProfile/${clubId}/overview`}>
+          <Link to={`/clubProfile/${clubId}/overview/2024`}>
             <div className="font-bold">{data.club.name}</div>
           </Link>
           {type === "search" ? (

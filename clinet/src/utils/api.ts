@@ -183,16 +183,16 @@ export const fetchDataOfOneClubProfile = async (
 
 export const fetchDataOfSquadFromClub = async (
   id: string,
-  domain: string = "com",
-  saison_id: string = "2025"
+  saison_id: string | undefined,
+  domain: string = "com"
 ): Promise<SquadFromClub> => {
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/clubs/get-squad`,
     params: {
-      domain,
       id,
       saison_id,
+      domain,
     },
     headers: {
       "x-rapidapi-key": RAPIDAPI_KEY,
