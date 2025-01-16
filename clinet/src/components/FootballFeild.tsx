@@ -1,5 +1,6 @@
 import React from "react";
 import { TbPlayFootball } from "react-icons/tb";
+import { IoMdFootball } from "react-icons/io";
 
 interface PlayerPosition {
   top: string;
