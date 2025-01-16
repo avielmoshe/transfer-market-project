@@ -7,6 +7,8 @@ import {
   clubsDataFromCom,
   DataStructure,
   DataType,
+  GameListData,
+  GamePlanData,
   HeroData,
   SquadFromClub,
   TableData,
@@ -236,13 +238,106 @@ export const fetchDataOfClubsFromCom = async (
 export const fetchLiveTable = async (
   id: string | undefined,
   seasonID: String | undefined,
-  domain: string = "com"
+  domain: string = "com",
+  homeAway: string | undefined
 ): Promise<TableData> => {
   
   
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/competitions/get-table`,
+    params: {
+      id,
+      seasonID,
+      domain,
+      homeAway
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+export const getListGamePlan = async (
+  seasonID: String | undefined,
+  leagueID: String | undefined,
+  dayID: String | undefined,
+  domain: string = "com",
+): Promise<GameListData> => {
+  
+  
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/matches/list-by-game-plan`,
+    params: {
+      seasonID,
+      leagueID,
+      dayID,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+export const getGamePlan = async (
+  id: string | undefined,
+  seasonID: String | undefined,
+  domain: string = "com",
+): Promise<GamePlanData> => {
+  
+  
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/competitions/get-game-plan`,
+    params: {
+      id,
+      seasonID,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+export const getTopScorer = async (
+  id: string | undefined,
+  seasonID: String | undefined,
+  domain: string = "com",
+): Promise<GamePlanData> => {
+  
+  
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/competitions/get-game-plan`,
     params: {
       id,
       seasonID,

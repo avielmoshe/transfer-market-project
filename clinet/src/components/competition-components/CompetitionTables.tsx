@@ -6,38 +6,57 @@ import { TbSoccerField } from "react-icons/tb";
 import { ImArrowDown } from "react-icons/im";
 import { ImArrowUp } from "react-icons/im";
 import { FaSquare } from "react-icons/fa";
-interface TableRow {
-  id: string;
-  name: string;
-  country: string;
-  totalMarketValue: number;
-  transfers: number;
-  stadium: string;
-  forum: string;
-}
-
-interface TableData {
-  table: TableRow[];
-}
+import { useState } from "react";
+import CompetitionMatches from "./CompetitionMaches/CompetitionMaches";
 
 function CompetitionTables() {
   const { id } = useParams<Params>();
   const { seasonId } = useParams<Params>();
+  const [homeAway, setHomeAway] = useState<string | undefined>("");
   const { data, error, isLoading } = useQuery({
-    queryKey: ["dataOfLiveTable", { id, seasonId }],
-    queryFn: () => fetchLiveTable(id, seasonId),
+    queryKey: ["dataOfLiveTable", { id, seasonId, homeAway }],
+    queryFn: () => fetchLiveTable(id, seasonId, "com", homeAway),
   });
   if (error) return null;
   if (!data) {
     return null;
   }
-  console.log(data);
-  console.log(456);
+  function handleOnClick(e: React.MouseEvent<HTMLButtonElement>) {
+    const buttonValue = e.currentTarget.innerText.toLowerCase();
+    setHomeAway(buttonValue === "all" ? "" : buttonValue);
+  }
+
   return (
     <div>
       {" "}
       <div>
         <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${seasonId}`}</h2>
+        <div className="flex justify-center gap-[25px]">
+    <button
+      className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
+      transition-colors duration-200 
+      ${homeAway === "" ? "bg-[#00193f]" : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"}`}
+      onClick={handleOnClick}
+    >
+      All
+    </button>
+    <button
+      className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
+      transition-colors duration-200 
+      ${homeAway === "home" ? "bg-[#00193f]" : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"}`}
+      onClick={handleOnClick}
+    >
+      Home
+    </button>
+    <button
+      className={`py-[3px] px-[10px] text-white my-[7px] rounded-sm 
+      transition-colors duration-200 
+      ${homeAway === "away" ? "bg-[#00193f]" : "bg-[rgb(92,166,255)] hover:bg-[#00193f]"}`}
+      onClick={handleOnClick}
+    >
+      Away
+    </button>
+  </div>
         <table className="bg-white table-auto border-collapse w-full mb-4">
           <thead>
             <tr>
@@ -70,18 +89,13 @@ function CompetitionTables() {
           </thead>
           <tbody>
             {data.table.map((club) => (
-              <tr>
+              <tr key={club.id}>
                 <td
                   className="border w-[70px] text-[13px]"
                   style={{ backgroundColor: club.markColor }}
                 >
                   <div className="flex justify-center items-center gap-[7px]">
                     <div className="flex justify-end">{club.rank}</div>
-                    <div>
-                      {club.rank > club.oldRank && <ImArrowUp />}
-                      {club.rank < club.oldRank && <ImArrowDown />}
-                      {club.rank === club.oldRank && <FaSquare className="text-[#cac7c7] border border-[#b8b4b4]"/>}
-                    </div>
                   </div>
                 </td>
                 <td className="border p-1 w-[300px] ">
@@ -126,6 +140,7 @@ function CompetitionTables() {
           </tbody>
         </table>
       </div>
+      <CompetitionMatches/>
     </div>
   );
 }
