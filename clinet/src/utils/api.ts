@@ -236,13 +236,86 @@ export const fetchDataOfClubsFromCom = async (
 export const fetchLiveTable = async (
   id: string | undefined,
   seasonID: String | undefined,
-  domain: string = "com"
+  domain: string = "com",
+  homeAway: string | undefined
 ): Promise<TableData> => {
   
   
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/competitions/get-table`,
+    params: {
+      id,
+      seasonID,
+      domain,
+      homeAway
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+interface GamePlanPlayDay {
+  id: string; // The unique identifier of the play day
+  name: string; // The name of the play day (e.g., "1.", "2.", etc.)
+  description: string; // A description of the play day (e.g., "1.Spieltag")
+  dateString: string; // The date range as a string (e.g., "12.09.20 - 20.01.21")
+}
+interface GamePlanData {
+  gamePlanPlayDays: GamePlanPlayDay[]; // Array of play days
+}
+
+export const getListGamePlan = async (
+  seasonID: String | undefined,
+  leagueID: String | undefined,
+  dayID: String | undefined,
+  domain: string = "com",
+): Promise<GamePlanData> => {
+  
+  
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/competitions/list-by-game-plan`,
+    params: {
+      seasonID,
+      leagueID,
+      dayID,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+export const getGamePlan = async (
+  id: string | undefined,
+  seasonID: String | undefined,
+  domain: string = "com",
+): Promise<GamePlanData> => {
+  
+  
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/competitions/get-game-plan`,
     params: {
       id,
       seasonID,
