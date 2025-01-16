@@ -11,6 +11,7 @@ import {
   GamePlanData,
   HeroData,
   PlayerProfile,
+  PlayerProfileInfo,
   SquadFromClub,
   TableData,
   User,
@@ -326,7 +327,7 @@ export const getGamePlan = async (
 export const getPlayerProfile = async (
   id: number | undefined,
   domain: string = "com"
-): Promise<PlayerProfile> => {
+): Promise<PlayerProfileInfo> => {
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/players/get-profile`,
