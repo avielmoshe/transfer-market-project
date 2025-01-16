@@ -220,3 +220,54 @@ export interface ClubProfile {
   };
   successes: SuccessData[]; // Optional property for successes, if it exists
 }
+
+interface ResultObject {
+  result: string; // "1:0"
+  goalsHome: string; // "1"
+  goalsAway: string; // "0"
+  minute: number; // 0
+  state: string; // "100"
+  destinationValue: number; // 2
+  destinationDescription: string; // "Spielbericht"
+}
+
+interface PlayDayMatch {
+  id: string; // "4361460"
+  scoreradarID: string | null; // יכול להיות null
+  competitionID: string; // "GB1"
+  competitionName: string; // "Premier League"
+  competitionImage: string; // URL לתמונת לוגו
+  tournamentFlag: string; // "0"
+  round: string; // ""
+  group: string; // ""
+  matchDay: string; // "15"
+  matchDate: string; // "Dec 7, 2024"
+  fullMatchDate: string; // "Saturday, December 7, 2024"
+  matchTime: string; // "4:00 PM"
+  timestamp: number; // 1733583600
+  homeClubID: string; // "405"
+  homeClubName: string; // "Aston Villa"
+  homeClubImage: string; // URL לתמונת הקבוצה הביתית
+  awayClubID: string; // "180"
+  awayClubName: string; // "Southampton"
+  awayClubImage: string; // URL לתמונת הקבוצה האורחת
+  result: string; // "1:0"
+  postponed: boolean; // false
+  nextRound: string; // ""
+  resultObject: ResultObject; // אובייקט תוצאה
+}
+
+export interface GameListData {
+  playDayMatches: PlayDayMatch[]; // מערך משחקים של היום
+}
+
+
+interface GamePlanPlayDay {
+  id: string; // The unique identifier of the play day
+  name: string; // The name of the play day (e.g., "1.", "2.", etc.)
+  description: string; // A description of the play day (e.g., "1.Spieltag")
+  dateString: string; // The date range as a string (e.g., "12.09.20 - 20.01.21")
+}
+export interface GamePlanData {
+  gamePlanPlayDays: GamePlanPlayDay[]; // Array of play days
+}

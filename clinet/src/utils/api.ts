@@ -7,6 +7,8 @@ import {
   clubsDataFromCom,
   DataStructure,
   DataType,
+  GameListData,
+  GamePlanData,
   HeroData,
   SquadFromClub,
   TableData,
@@ -264,27 +266,18 @@ export const fetchLiveTable = async (
     throw error; // Rethrow the error for the caller to handle
   }
 };
-interface GamePlanPlayDay {
-  id: string; // The unique identifier of the play day
-  name: string; // The name of the play day (e.g., "1.", "2.", etc.)
-  description: string; // A description of the play day (e.g., "1.Spieltag")
-  dateString: string; // The date range as a string (e.g., "12.09.20 - 20.01.21")
-}
-interface GamePlanData {
-  gamePlanPlayDays: GamePlanPlayDay[]; // Array of play days
-}
 
 export const getListGamePlan = async (
   seasonID: String | undefined,
   leagueID: String | undefined,
   dayID: String | undefined,
   domain: string = "com",
-): Promise<GamePlanData> => {
+): Promise<GameListData> => {
   
   
   const options = {
     method: "GET",
-    url: `https://${RAPIDAPI_HOST}/competitions/list-by-game-plan`,
+    url: `https://${RAPIDAPI_HOST}/matches/list-by-game-plan`,
     params: {
       seasonID,
       leagueID,

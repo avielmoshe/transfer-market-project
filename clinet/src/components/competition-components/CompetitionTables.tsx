@@ -96,13 +96,6 @@ function CompetitionTables() {
                 >
                   <div className="flex justify-center items-center gap-[7px]">
                     <div className="flex justify-end">{club.rank}</div>
-                    <div>
-                      {club.rank > club.oldRank && <ImArrowUp />}
-                      {club.rank < club.oldRank && <ImArrowDown />}
-                      {club.rank === club.oldRank && (
-                        <FaSquare className="text-[#cac7c7] border border-[#b8b4b4]" />
-                      )}
-                    </div>
                   </div>
                 </td>
                 <td className="border p-1 w-[300px] ">
@@ -147,7 +140,7 @@ function CompetitionTables() {
           </tbody>
         </table>
       </div>
-      {/* <CompetitionMatches/> */}
+      <CompetitionMatches/>
     </div>
   );
 }
