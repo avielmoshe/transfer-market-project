@@ -93,39 +93,39 @@ function App() {
           element: <ClubPage />,
           children: [
             {
-              path: "history",
+              path: "history/:seasonId",
               element: <ClubHistory />,
             },
             {
-              path: "overview",
+              path: "overview/:seasonId",
               element: <ClubOverview />,
             },
             {
-              path: "fixtures",
+              path: "fixtures/:seasonId",
               element: <ClubFixtures />,
             },
             {
-              path: "forum",
+              path: "forum/:seasonId",
               element: <ClubForum />,
             },
             {
-              path: "news",
+              path: "news/:seasonId",
               element: <ClubNews />,
             },
             {
-              path: "squad",
+              path: "squad/:seasonId",
               element: <ClubSquad />,
             },
             {
-              path: "stadium",
+              path: "stadium/:seasonId",
               element: <ClubStadium />,
             },
             {
-              path: "transfersRumours",
+              path: "transfersRumours/:seasonId",
               element: <ClubTransfersRumours />,
             },
             {
-              path: "informationFacts",
+              path: "informationFacts/:seasonId",
               element: <ClubInformationFacts />,
             },
           ],
