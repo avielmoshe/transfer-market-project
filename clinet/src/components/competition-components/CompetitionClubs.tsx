@@ -5,10 +5,7 @@ import { useParams } from "react-router-dom";
 import InputSeason from "../InputSeason";
 
 function CompetitionClubs() {
-  const { competitionId, seasonId } = useParams<{
-    competitionId: string;
-    seasonId: string;
-  }>();
+  const { id, seasonId } = useParams<{ id: string; seasonId: string }>();
 
   if (!competitionId) {
     return <p className="text-red-500">Error: Competition ID is required.</p>;
@@ -47,7 +44,7 @@ function CompetitionClubs() {
 
   return (
     <div>
-      <InputSeason category={"clubs"} profile={"competitionProfile"} />
+      <InputSeason category={"overview"} />
       <div>
         <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${cleanedTitle} ${seasonId}`}</h2>
         <table className="bg-white table-auto border-collapse w-full mb-4">
