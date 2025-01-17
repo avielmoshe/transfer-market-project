@@ -307,6 +307,67 @@ export interface DataStructure {
   share: Share;
   table: TableItem[];
 }
+export interface ClubsTransfers {
+  currentSeason: {
+    transferArrivals: Array<any>;
+    transferDepartures: Array<any>;
+  };
+}
+export interface historyTransfers {
+  transferHistory: Array<TransferDetails>;
+}
+
+export interface PlayerMarket {
+  share: {
+    title: string;
+  };
+  marketValueDevelopment: Array<any>;
+}
+export interface TransferDetails {
+  countryID: string; // The ID of the country
+  countryImage: string; // URL for the country flag image
+  date: string; // Date of the transfer
+  loan: string; // Indicates if the transfer is a loan (e.g., "ist")
+  newClubCountryImage: string; // URL for the new club's country flag image
+  newClubCountryName: string; // Name of the new club's country
+  newClubID: string; // The ID of the new club
+  newClubImage: string; // URL for the new club's logo
+  newClubName: string; // Name of the new club
+  oldClubID: string; // The ID of the old club
+  oldClubImage: string; // URL for the old club's logo
+  oldClubName: string; // Name of the old club
+  playerID: string; // The ID of the player
+  playerImage: string; // URL for the player's image
+  playerName: string; // Name of the player
+  season: string; // The season during which the transfer occurred
+  transferFeeCurrency: string; // Currency of the transfer fee
+  transferFeeNumeral: string | number; // Numerical value of the transfer fee
+  transferFeeValue: string | number; // Combined value of the transfer fee, can be empty
+}
+export interface PlayerTransfer {
+  fromClubID: string; // The ID of the club the player is transferring from
+  fromCompetitionID: string; // The ID of the competition the player is transferring from
+  id: string; // Unique identifier for the transfer
+  isLoan: boolean | null; // Indicates if the transfer is a loan
+  playerID: string; // The ID of the player
+  season: string; // The season of the transfer
+  toClubID: string; // The ID of the club the player is transferring to
+  toCompetitionID: string; // The ID of the competition the player is transferring to
+  transferFee: {
+    value: string | number; // Transfer fee value, can be '?' or a number
+    currency: string; // Currency of the transfer fee
+  };
+  transferMarketValue: {
+    value: number; // Market value of the player
+    currency: string; // Currency of the market value
+    progression: number | null; // Progression in market value
+  };
+  transferredAt: number; // Unix timestamp of the transfer date
+  wasLoan: boolean | null; // Indicates if the player was previously on loan
+}
+export interface Transfers {
+  player: Array<PlayerTransfer>;
+}
 
 export interface DataForNavSearch extends Array<NavCategory> {}
 

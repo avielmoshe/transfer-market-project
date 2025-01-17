@@ -137,7 +137,7 @@ const DynamicHeader = ({ dataForHeader }: DynamicHeaderProp) => {
       {dataForHeader.type !== "competition" &&
         dataForHeader.successesData &&
         dataForHeader.successesData.length > 0 && (
-          <div className="min-h-[80px] bg-white flex">
+          <div className="min-h-[80px] bg-white flex overflow-x-auto">
             {dataForHeader.successesData.map((success, index) => (
               <TrophyCom
                 key={index}

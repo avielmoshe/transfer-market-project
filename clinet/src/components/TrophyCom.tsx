@@ -35,10 +35,11 @@ function TrophyCom({ successData, type }: TrophyComProp) {
   const trophyImg = data.competition.trophy;
   const name = data.competition.competitionNameEN;
   return (
-    <div className="flex items-end relative p-2">
+    <div className="flex items-end relative p-2 min-w-[120px]">
+      {/* Ensure a minimum width */}
       <HoverCard>
         <HoverCardTrigger>
-          <img src={trophyImg} alt="trophyImg" />
+          <img src={trophyImg} alt="trophyImg" className="w-[100px] h-[80px]" />
         </HoverCardTrigger>
         <HoverCardContent className="text-[12px] p-2 bg-black text-white">
           {name}

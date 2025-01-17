@@ -5,16 +5,20 @@ import {
   ClubData,
   ClubProfile,
   clubsDataFromCom,
+  ClubsTransfers,
   DataStructure,
   DataType,
   gameListData,
   GameListData,
   GamePlanData,
   HeroData,
+  historyTransfers,
+  PlayerMarket,
   PlayerProfile,
   PlayerProfileInfo,
   SquadFromClub,
   TableData,
+  Transfers,
   User,
   userLogin,
 } from "../types/types";
@@ -162,7 +166,7 @@ export const fetchDataOfClubsTransfers = async (
   id: string | undefined,
   seasonID: string | undefined,
   domain: string = "com"
-): Promise<DataStructure> => {
+): Promise<ClubsTransfers> => {
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/transfers/list-by-club`,
@@ -170,6 +174,88 @@ export const fetchDataOfClubsTransfers = async (
       id,
       domain,
       seasonID,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+export const fetchDataOfTransfers = async (
+  competitionID: string | undefined,
+  limit: string = "30",
+  offset: string = "0",
+  domain: string = "com"
+): Promise<Transfers> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/transfers/list`,
+    params: {
+      competitionID,
+      limit,
+      offset,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+export const fetchDataOfTransferHistory = async (
+  id: string | undefined,
+  domain: string = "com"
+): Promise<historyTransfers> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/players/get-transfer-history`,
+    params: {
+      id,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+export const fetchDataOfPlayerMarket = async (
+  id: string | undefined,
+  domain: string = "com"
+): Promise<PlayerMarket> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/players/get-market-value`,
+    params: {
+      id,
+      domain,
     },
     headers: {
       "x-rapidapi-key": RAPIDAPI_KEY,
@@ -213,7 +299,7 @@ export const fetchDataOfOneClubProfile = async (
 };
 
 export const fetchDataOfSquadFromClub = async (
-  id: string,
+  id: string | undefined,
   saison_id: string | undefined,
   domain: string = "com"
 ): Promise<SquadFromClub> => {

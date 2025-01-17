@@ -5,20 +5,27 @@ import { useParams } from "react-router-dom";
 import InputSeason from "../InputSeason";
 
 function CompetitionClubs() {
-  const { id, seasonId } = useParams<{ id: string; seasonId: string }>();
+  const { competitionId, seasonId } = useParams<{
+    competitionId: string;
+    seasonId: string;
+  }>();
 
-  if (!id) {
+  if (!competitionId) {
     return <p className="text-red-500">Error: Competition ID is required.</p>;
   }
 
   const { data, error, isLoading } = useQuery({
-    queryKey: ["fetchDataOfClubsFromTable", { id, seasonId }],
-    queryFn: () => fetchDataOfClubsFromTable(id, seasonId),
+    queryKey: ["fetchDataOfClubsFromTable", { competitionId, seasonId }],
+    queryFn: () => fetchDataOfClubsFromTable(competitionId, seasonId),
   });
 
   if (error) {
     console.error(error);
-    return <p className="text-red-500">Failed to load data. Please try again later.</p>;
+    return (
+      <p className="text-red-500">
+        Failed to load data. Please try again later.
+      </p>
+    );
   }
 
   if (isLoading) {
@@ -40,7 +47,7 @@ function CompetitionClubs() {
 
   return (
     <div>
-      <InputSeason category={"overview"} />
+      <InputSeason category={"clubs"} profile={"competitionProfile"} />
       <div>
         <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${cleanedTitle} ${seasonId}`}</h2>
         <table className="bg-white table-auto border-collapse w-full mb-4">

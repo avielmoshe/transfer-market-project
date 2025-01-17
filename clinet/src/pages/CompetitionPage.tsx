@@ -74,12 +74,7 @@ function CompetitionPage() {
         navigate(`/competitionProfile/${competitionId}/transfers/2024`);
       },
     },
-    {
-      name: "MARKET VALUES",
-      onClick: () => {
-        navigate(`/competitionProfile/${competitionId}/marketValues/2024`);
-      },
-    },
+
     {
       name: "PLAYERS",
       onClick: () => {
