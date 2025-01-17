@@ -66,6 +66,7 @@ const Filter = () => {
     setCompetitionId(competition.id);
 
     const data = await fetchDataOfClubsFromCom(competition.id);
+
     setClubs(data.clubs);
   };
 

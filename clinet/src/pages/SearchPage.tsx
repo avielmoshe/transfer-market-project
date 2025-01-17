@@ -38,7 +38,7 @@ const SearchPage: React.FC = () => {
   return (
     <div>
       <div>
-        {data.players?.length > 0 ? (
+        {data.players ? (
           <div className=" mr-2 ml-1">
             <h2 className="bg-[#00193f] text-white px-2 font-bold">{` SEARCH RESULTS FOR PLAYERS  - ${data.count.players} HITS`}</h2>
             <table className="bg-white table-auto border-collapse w-full mb-4">
@@ -78,7 +78,7 @@ const SearchPage: React.FC = () => {
       </div>
 
       <div>
-        {data.clubs?.length > 0 ? (
+        {data.clubs ? (
           <div>
             <h2 className="bg-[#00193f] text-white px-2 font-bold">{` SEARCH RESULTS FOR CLUBS - ${data.count.clubs} HITS`}</h2>
             <table className="bg-white table-auto border-collapse w-full mb-4">
@@ -116,7 +116,7 @@ const SearchPage: React.FC = () => {
       </div>
 
       <div>
-        {data.competitions?.length > 0 ? (
+        {data.competitions ? (
           <div>
             <h2 className="bg-[#00193f] text-white px-2 font-bold">{` SEARCH RESULTS FOR COMPETITIONS - ${data.count.competitions} HITS`}</h2>
             <table className="bg-white table-auto border-collapse w-full mb-4">
@@ -157,7 +157,7 @@ const SearchPage: React.FC = () => {
       </div>
 
       <div>
-        {data.coaches?.length > 0 ? (
+        {data.coaches ? (
           <div>
             <h2 className="bg-[#00193f] text-white px-2 font-bold">{` SEARCH RESULTS MANAGERS & OFFICIALS - ${data.count.coaches} HITS`}</h2>
             <table className="bg-white table-auto border-collapse w-full mb-4">
@@ -194,7 +194,7 @@ const SearchPage: React.FC = () => {
       </div>
 
       <div>
-        {data.referees?.length > 0 ? (
+        {data.referees ? (
           <div>
             <h2 className="bg-[#00193f] text-white px-2 font-bold">{` SEARCH RESULTS FOR REFEREES- ${data.count.referees} HITS`}</h2>
             <table className="bg-white table-auto border-collapse w-full mb-4">
