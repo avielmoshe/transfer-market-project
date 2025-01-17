@@ -50,9 +50,10 @@ const years: Year[] = [
 ];
 interface InputSeasonProp {
   category: string;
-  profile: string;
+  profile: string | undefined;
 }
-export default function InputSeason({ category, profile }: InputSeasonProp) {
+
+export default function  InputSeason({ category, profile }: InputSeasonProp): JSX.Element {
   const navigate = useNavigate();
   const { competitionId, clubId, id } = useParams<Params>();
   const { seasonId } = useParams<Params>();

@@ -40,7 +40,7 @@ function CompetitionClubs() {
 
   return (
     <div>
-      <InputSeason category={"overview"} />
+      <InputSeason category={"overview"}  profile = {""}/>
       <div>
         <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Clubs - ${cleanedTitle} ${seasonId}`}</h2>
         <table className="bg-white table-auto border-collapse w-full mb-4">
