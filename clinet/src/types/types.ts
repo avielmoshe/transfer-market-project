@@ -182,6 +182,29 @@ export interface PlayerProfileInfo {
   playerProfile: PlayerProfile;
 }
 
+
+export interface AdditionalData {
+  clubID: string;
+  competitionID: string;
+  competitionTypeID: string;
+  countryID: string | null;
+  cycle: string;
+  seasonID: string;
+  type: string;
+}
+
+export interface Achievement {
+  achievementID: string;
+  additionalData: AdditionalData[];
+  title: string;
+  value: string;
+}
+
+export interface Achievements {
+  achievements: Achievement[];
+}
+
+
 export interface PlayerProfile {
   playerID: string;
   playerImage: string;
@@ -495,3 +518,4 @@ export interface DeliveredSeason {
   deliveredSeasonID: string;
   competitionPerformanceSummery: CompetitionPerformanceSummary[];
 }
+

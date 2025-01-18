@@ -3,6 +3,7 @@ import { Params } from "../InputSeason";
 import { useQuery } from "@tanstack/react-query";
 import { getPlayerProfile } from "@/utils/api";
 import FootballField from "../FootballFeild";
+import PlayerStats from "./PlayerStats";
 
 const PlayerProfile = () => {
   const { id } = useParams<Params>();
@@ -21,6 +22,7 @@ const PlayerProfile = () => {
   const towCategoryCss = "flex gap-[7px] justify-center items-center";
   return (
     <div>
+      <PlayerStats/>
       <h2 className="bg-[#00193f] text-white px-2 font-bold">PLAYER DATA</h2>
       <div className="p-[10px] bg-white flex flex-col sm:flex-row">
         <div className={`flex flex-col p-[20px] bg-[#cccc] `}>
