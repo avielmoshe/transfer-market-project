@@ -10,7 +10,7 @@ interface PlayerPosition {
 interface PlayerProfile {
   name: string;
   position: string;
-  image: string
+  image?: string
 }
 
 const positions: Record<string, PlayerPosition> = {
@@ -70,8 +70,8 @@ const MostValuableFeild: React.FC<MostValuableFieldProps> = ({
       key={index} 
     >
       <div className="flex flex-col">
-        <div className="flex justify-center"><img src={player.image} alt="" className="w-[50px] p-0 m-0"/></div>
-        <div className="text-[13px] flex justify-center">{player.name}</div>
+        <div className="flex justify-center"><img src={player.image} alt="" className="w-[55px] h-[55px] rounded-full border-[1.5px] border-black"/></div>
+        <div className="text-[13px] flex justify-center font-bold">{player.name}</div>
       </div>
     </div>
   );
