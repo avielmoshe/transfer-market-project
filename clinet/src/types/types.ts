@@ -328,6 +328,115 @@ export interface NewsByCompetition {
     title: string;
   };
 }
+interface MarketValue {
+  value: string;
+  currency: string;
+  numeral: string;
+  progression?: any; // Could be a specific type if details are available
+  unformatted?: any; // Could be a specific type if details are available
+}
+
+interface TransferExpenditure {
+  value: string;
+  currency: string;
+  numeral: string;
+}
+
+interface ClubComparison {
+  id: string;
+  name: string;
+  fullName?: string;
+  image: string;
+  nationalTeam?: any; // Could be a specific type if details are available
+  mainCompetition: {
+    id: string;
+    image: string;
+    isTournament?: any; // Could be a specific type if details are available
+    leagueLevel: string;
+    name: string;
+    shortName?: string;
+  };
+  coachName: string;
+  flag?: any; // Could be a specific type if details are available
+  marketValue: MarketValue;
+  transferExpenditure: TransferExpenditure;
+}
+
+interface CustomLinkBox {
+  headline: string;
+  url: string;
+  text: string;
+}
+
+interface GalleryImage {
+  url: string;
+  caption?: string;
+}
+
+interface Gallery {
+  id: string;
+  url: string;
+  title: string;
+  images: GalleryImage[];
+}
+
+interface PlayerPerformance {
+  player: {
+    id: string;
+    name: string;
+    position: string;
+    image: string;
+  };
+  club: {
+    id: string;
+    name: string;
+    image: string;
+  };
+  competition: {
+    id: string;
+    name: string;
+    image: string;
+  };
+  performance: {
+    games: number;
+    goals: number;
+    assists: number;
+  };
+  season: {
+    id: string;
+    name: string;
+  };
+}
+
+export interface NewsData {
+  adFlag: string;
+  author: string;
+  categoryID: string;
+  categoryTag: string;
+  categoryTagEN: string;
+  countReplies: number | null;
+  firstImage: string;
+  headline: string;
+  heroImage: string;
+  heroImageSource: string;
+  id: string;
+  secondImage: string;
+  source: string;
+  text: Record<string, string>; // Keys like text-0, text-1
+  threadUrl: string;
+  timestamp: number;
+  timestamp_updated: number;
+  trackingCompetitions: string;
+  transferFlag: string;
+  updateFlag: string;
+  widgetData: {
+    clubComparison_1934497067: ClubComparison[];
+    customLinkBox_2029678016: CustomLinkBox;
+    gallery_892040392: Gallery;
+    playerPerformanceValueBox_19335831: PlayerPerformance;
+    playerPerformanceValueBox_1170933375: PlayerPerformance;
+  };
+}
 
 export interface NewsItem {
   fullNewsDate: string; // Full formatted date, e.g., "Friday, January 10, 2025"
@@ -350,6 +459,9 @@ export interface NewsItem {
   newsUpdateFlag: string; // Update flag, e.g., "1" (could use a boolean if appropriate)
   spotlightPriority: string; // Priority for spotlighting the news (can be empty)
   timestamp: number; // Unix timestamp, e.g., 1736544748
+}
+export interface news {
+  news: NewsData;
 }
 export interface DataStructure {
   legend: LegendItem[];

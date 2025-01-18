@@ -42,6 +42,8 @@ import MarketValuePage from "./pages/MarketValuePage.js";
 import CommunityPage from "./pages/CommunityPage.js";
 import GamingPage from "./pages/GamingPage.js";
 import NewsPage from "./pages/NewsPage.js";
+import LoginPage from "./pages/LoginPage.js";
+import SignupPage from "./pages/SignupPage.js";
 
 function App() {
   const router = createBrowserRouter([
@@ -187,6 +189,8 @@ function App() {
         { path: "/statistics", element: <StatisticsPage /> },
         { path: "/community", element: <CommunityPage /> },
         { path: "/gaming", element: <GamingPage /> },
+        { path: "/signup", element: <SignupPage /> },
+        { path: "/login", element: <LoginPage /> },
         { path: "/news/:newsId", element: <NewsPage /> },
         { path: "/about", element: <AboutPage /> },
       ],

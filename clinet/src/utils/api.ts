@@ -15,7 +15,9 @@ import {
   GamePlanData,
   HeroData,
   historyTransfers,
+  news,
   NewsByCompetition,
+  NewsData,
   PlayerMarket,
   PlayerProfile,
   PlayerProfileInfo,
@@ -684,6 +686,32 @@ export const fetchDataOfNewsByPlayer = async (
   const options = {
     method: "GET",
     url: `https://${RAPIDAPI_HOST}/news/list-by-player`,
+    params: {
+      id,
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+export const fetchDataOfNewsDetail = async (
+  id: string | undefined,
+  domain: string = "com"
+): Promise<news> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/news/detail`,
     params: {
       id,
       domain,
