@@ -53,12 +53,7 @@ function PlayerPage() {
         navigate(`/playerProfile/${id}/transfers`);
       },
     },
-    {
-      name: "RUMOURS",
-      onClick: () => {
-        navigate(`/playerProfile/${id}/rumours`);
-      },
-    },
+
     {
       name: "NATIONAL TEAM",
       onClick: () => {
@@ -75,12 +70,6 @@ function PlayerPage() {
       name: "ACHIEVEMENTS",
       onClick: () => {
         navigate(`/playerProfile/${id}/achievements`);
-      },
-    },
-    {
-      name: "CAREER",
-      onClick: () => {
-        navigate(`/playerProfile/${id}/career`);
       },
     },
   ];

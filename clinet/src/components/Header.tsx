@@ -30,6 +30,7 @@ const Header = () => {
       return;
     }
     navigate(`/SearchPage?query=${searchTerm}`);
+    setSearchTerm("");
   };
 
   return (

@@ -115,12 +115,6 @@ function ClubPage() {
         navigate(`/clubProfile/${clubId}/news/2024`);
       },
     },
-    {
-      name: "FORUM",
-      onClick: () => {
-        navigate(`/clubProfile/${clubId}/forum/2024`);
-      },
-    },
   ];
   return (
     <>
