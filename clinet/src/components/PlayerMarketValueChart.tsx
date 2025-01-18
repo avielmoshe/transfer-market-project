@@ -31,14 +31,14 @@ const PlayerMarketValueChart: React.FC<PlayerMarketValueChartProps> = ({
   const yData = marketValueDevelopment.map(
     (entry) => entry.marketValueUnformatted
   );
-  const clubImages = marketValueDevelopment.map((entry) => entry.clubImage);
 
   return (
-    <div className="flex flex-col items-center">
-      <h2 className=" mt-4 bg-[#00193f] text-white px-2 font-bold mb-4 rounded-full text-center ">
+    <div className="flex flex-col items-center w-full">
+      <h2 className="mt-4 bg-[#00193f] text-white px-4 py-2 font-bold mb-4 rounded-full text-center">
         Current Market Value: {formatNumber(yData[0])}
       </h2>
       <LineChart
+        margin={{ left: 100 }}
         width={800}
         height={400}
         xAxis={[
@@ -46,6 +46,14 @@ const PlayerMarketValueChart: React.FC<PlayerMarketValueChartProps> = ({
             data: xData,
             scaleType: "time",
             label: "Date",
+            labelStyle: { fontSize: "14px", fill: "#333" },
+          },
+        ]}
+        yAxis={[
+          {
+            data: yData,
+            label: "Market Value (€)",
+            labelStyle: { fontSize: "14px", fill: "#333" },
           },
         ]}
         series={[
@@ -54,67 +62,10 @@ const PlayerMarketValueChart: React.FC<PlayerMarketValueChartProps> = ({
             type: "line",
             label: "Market Value (€)",
             area: true,
-            showMark: true, // Enable dots on the line
-            markOptions: {
-              render: (pointIndex, { x, y }) => {
-                const entry = marketValueDevelopment[pointIndex];
-                return (
-                  <>
-                    {/* Render Club Image */}
-                    <image
-                      key={`club-logo-${pointIndex}`}
-                      href={entry.clubImage}
-                      x={x - 15} // Adjust for center alignment
-                      y={y - 30} // Position above the point
-                      height="25"
-                      width="25"
-                      preserveAspectRatio="xMidYMid meet"
-                    />
-                    {/* Render Hoverable Tooltip */}
-                    <foreignObject
-                      key={`tooltip-${pointIndex}`}
-                      x={x - 50}
-                      y={y - 100}
-                      width={120}
-                      height={80}
-                    >
-                      <div
-                        style={{
-                          display: "none",
-                          background: "white",
-                          border: "1px solid #ccc",
-                          borderRadius: "5px",
-                          padding: "5px",
-                          fontSize: "12px",
-                          textAlign: "center",
-                          boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.2)",
-                        }}
-                        className={`tooltip-${pointIndex}`}
-                      >
-                        <p>
-                          <strong>{entry.clubName}</strong>
-                        </p>
-                        <p>Date: {entry.date}</p>
-                        <p>
-                          Market Value: €
-                          {entry.marketValueUnformatted / 1000000}m
-                        </p>
-                      </div>
-                    </foreignObject>
-                  </>
-                );
-              },
-            },
+            showMark: true,
           },
         ]}
       />
-      {/* <style>
-        {`
-          svg image:hover ~ foreignObject .tooltip-${"{index}"} {
-            display: block !important;
-          }
-        `}
-      </style> */}
     </div>
   );
 };
