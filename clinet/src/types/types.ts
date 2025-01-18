@@ -552,3 +552,37 @@ export interface DeliveredSeason {
   deliveredSeasonID: string;
   competitionPerformanceSummery: CompetitionPerformanceSummary[];
 }
+
+export interface Player {
+  clubID: string;
+  clubName: string;
+  clubShortName: string;
+  clubImage: string;
+  id: string;
+  playerImage: string;
+  playerName: string;
+  firstName: string;
+  lastName: string;
+  alias: string;
+  personID: string;
+  currentPositionShort: string;
+  currentPosition: string;
+  mainPositionShort: string;
+  mainPosition: string;
+  secondaryPosition1Short: string;
+  secondaryPosition1: string;
+  secondaryPosition2Short: string;
+  secondaryPosition2: string;
+  age: string;
+  birthday: string;
+  marketValue: string;
+  marketValueCurrency: string;
+  marketValueNumeral: string;
+  marketValueUnformatted: number;
+  shirtNumber: string;
+  countryImage: string;
+}
+
+export interface Players {
+  players : Player[]
+}
