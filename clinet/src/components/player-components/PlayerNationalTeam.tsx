@@ -5,13 +5,13 @@ import { useParams } from "react-router-dom";
 const PlayerNationalTeam = () => {
   const { id } = useParams<{ id?: string }>();
   const { data, error } = useQuery({
-    queryKey: ["achievementsData", { id }],
+    queryKey: ["playerData", { id }],
     queryFn: () => getPlayerProfile(Number(id)),
   });
+  console.log(data);
 
   if (error instanceof Error) return <p>Error loading achievements.</p>;
   if (!data) return <p>No achievements data found.</p>;
-  console.log(data);
 
   
 const nationalDate = data.playerProfile
@@ -22,7 +22,7 @@ const nationalDate = data.playerProfile
        <div className="flex flex-col gap-[15px] justify-center p-[10px]">
         <div className="flex gap-[13px] items-center ">
           <div className="text-[#00193f] font-bold">Country:</div>
-          <div>{nationalDate.country}</div>
+          <div>{nationalDate.club}</div>
         </div>
         <div className="flex gap-[13px] items-center ">
           <div className="text-[#00193f] font-bold">Country Short Name:</div>
@@ -31,7 +31,7 @@ const nationalDate = data.playerProfile
 
         <div className="flex gap-[20px] items-center">
           <div className="text-[#00193f] font-bold">Country Image:</div>
-          <div className=""> <img src={nationalDate.countryImage} alt="" /></div>
+          <div className=""> <img src={nationalDate.countryImage} alt="" className="h-[25px] w-[30px]"/></div>
         </div>
         <div className="flex gap-[13px] items-center">
           <div className="text-[#00193f] font-bold">International Games:</div>
@@ -54,7 +54,7 @@ const nationalDate = data.playerProfile
            <div>{nationalDate.internationalValueRank}</div>
         </div>
        </div>
-        <img src={nationalDate.internationalTeamImage} alt="" className="w-[55%]"/>
+        <img src={nationalDate.internationalTeamImage} alt="" className="w-[50%] h-[90%]"/>
      </div>
   </div>
 };
