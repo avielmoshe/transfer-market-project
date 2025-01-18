@@ -41,6 +41,7 @@ import StatisticsPage from "./pages/StatisticsPage.js";
 import MarketValuePage from "./pages/MarketValuePage.js";
 import CommunityPage from "./pages/CommunityPage.js";
 import GamingPage from "./pages/GamingPage.js";
+import NewsPage from "./pages/NewsPage.js";
 
 function App() {
   const router = createBrowserRouter([
@@ -186,6 +187,7 @@ function App() {
         { path: "/statistics", element: <StatisticsPage /> },
         { path: "/community", element: <CommunityPage /> },
         { path: "/gaming", element: <GamingPage /> },
+        { path: "/news/:newsId", element: <NewsPage /> },
         { path: "/about", element: <AboutPage /> },
       ],
     },

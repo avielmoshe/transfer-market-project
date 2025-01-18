@@ -322,7 +322,35 @@ interface TableItem {
   name: string;
   [key: string]: any; // Additional dynamic properties if needed
 }
+export interface NewsByCompetition {
+  news: Array<NewsItem>;
+  share: {
+    title: string;
+  };
+}
 
+export interface NewsItem {
+  fullNewsDate: string; // Full formatted date, e.g., "Friday, January 10, 2025"
+  id: string; // Unique identifier for the news item
+  newsAdFlag: string; // Ad flag, e.g., "0" (could use a boolean if appropriate)
+  newsCategoryID: string; // ID for the news category
+  newsCategoryTag: string; // Tag for the news category
+  newsDate: string; // Date of the news in a shorter format, e.g., "Jan 10, 2025"
+  newsFirstImage: string; // URL for the first news image
+  newsHeadline: string; // Headline of the news article
+  newsSecondImage: string; // URL for the second news image
+  newsShortMessageFlag: string | null; // Short message flag, nullable
+  newsSource: string; // Source of the news, e.g., "Transfermarkt"
+  newsSpotlightFirstImage: string; // Spotlight first image URL (can be empty)
+  newsSpotlightSecondImage: string; // Spotlight second image URL (can be empty)
+  newsStartPageFlag: string | null; // Start page flag, nullable
+  newsTeaser: string; // Teaser for the news article, e.g., "Announced"
+  newsTickerFlag: string; // Ticker flag, e.g., "1" (could use a boolean if appropriate)
+  newsTime: string; // Time of the news, e.g., "22:32"
+  newsUpdateFlag: string; // Update flag, e.g., "1" (could use a boolean if appropriate)
+  spotlightPriority: string; // Priority for spotlighting the news (can be empty)
+  timestamp: number; // Unix timestamp, e.g., 1736544748
+}
 export interface DataStructure {
   legend: LegendItem[];
   share: Share;

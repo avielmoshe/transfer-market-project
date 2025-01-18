@@ -30,12 +30,12 @@ function CompetitionsPage() {
             key={Competition.id}
             to={`/competitionProfile/${Competition.id}/overview/2024`}
           >
-            <div className="">
-              <div className="bg-white  w-[90px] h-[90px] p-3 flex justify-center rounded-xl">
+            <div className="group">
+              <div className="bg-white w-[90px] h-[90px] p-3 flex justify-center rounded-xl overflow-hidden">
                 <img
                   src={Competition.image}
                   alt="Competition.image"
-                  className="w-[50px] h-[65px]"
+                  className="w-[50px] h-[65px] transition-transform duration-300 ease-in-out group-hover:scale-110"
                 />
               </div>
               <p className="text-white text-[12px] w-[90px] font-bold text-center mt-2">
