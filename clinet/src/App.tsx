@@ -44,8 +44,28 @@ import GamingPage from "./pages/GamingPage.js";
 import NewsPage from "./pages/NewsPage.js";
 import LoginPage from "./pages/LoginPage.js";
 import SignupPage from "./pages/SignupPage.js";
+import { useEffect } from "react";
+import { isUserValid } from "./utils/api.js";
+import { useAuth } from "./providers/auth-provider.js";
 
 function App() {
+  const { setUser, user } = useAuth();
+  useEffect(() => {
+    (async () => {
+      const dataAuth = await isUserValid();
+      if (dataAuth) {
+        setUser({
+          id: dataAuth.id,
+          username: dataAuth.username,
+          email: dataAuth.email,
+        });
+      } else {
+        setUser(null);
+      }
+    })();
+  }, []);
+  console.log(user);
+
   const router = createBrowserRouter([
     {
       element: <Layout />,
