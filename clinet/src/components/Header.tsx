@@ -80,7 +80,9 @@ const Header = () => {
           <div>
             <FaUser className="text-white" />
           </div>
-          <div className="text-white text-[10px]">LOG IN</div>
+          <Link to={"/login"}>
+            <div className="text-white text-[10px]">LOG IN</div>
+          </Link>
         </button>
       </div>
     </div>
