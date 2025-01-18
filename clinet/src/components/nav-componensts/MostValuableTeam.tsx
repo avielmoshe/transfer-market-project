@@ -7,7 +7,7 @@ import MostValuableClubs from "./MostValuableClubs";
 
 const MostValuableTeam = () => {
   const { data, error, isLoading } = useQuery({
-    queryKey: ["achievementsData"],
+    queryKey: ["TeamData"],
     queryFn: () => getMostValuableTeam(),
   });
 
@@ -18,9 +18,9 @@ const MostValuableTeam = () => {
   useEffect(() => {
     if (data) {
       const positions = data.players.map((player: any) => ({
-          name: player.playerName,
-          position: player.mainPosition,
-          image: player.playerImage
+        name: player.playerName,
+        position: player.mainPosition,
+        image: player.playerImage,
       }));
       setPlayerPositions(positions);
     }
@@ -31,78 +31,98 @@ const MostValuableTeam = () => {
   if (!data) return <p>No data found.</p>;
 
   const mostData = data.players;
-  console.log(playerPositions);
   return (
     <div className="p-[50px]">
       <h2 className="bg-white text-[#00193f] px-2 font-bold flex justify-center">{`Most Valuable Team`}</h2>
-          <div className="flex justify-center p-[10px]">
-              <MostValuableFeild playerPositions={playerPositions}/>
-          </div>
-      <table className="bg-white table-auto border-collapse w-full mb-4">
-        <thead>
-          <tr>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Name</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2] flex justify-center items-center">Player Image</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Club</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Club Image</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Position</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Value</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Age</th>
-          </tr>
-        </thead>
-        <tbody>
-          {mostData.map((player: any) => (
-            <tr key={player.id}>
-              <td className="border w-[150px] text-[13px]">
-                <div className="flex items-center p-[5px] text-[#1d75a3] font-bold">
-                  <Link to={`/clubProfile/${player.id}/overview/2024`}>
-                    <div className="flex justify-end">{player.playerName}</div>
-                  </Link>
-                </div>
-              </td>
-              <td className="border p-1 w-[100px]">
-                <div className="flex p-[5px] gap-[15px] items-center justify-center">
-                  <img
-                    className="w-[40px] h-[40px]"
-                    src={player.playerImage}
-                    alt="logoImage"
-                  />
-                </div>
-              </td>
-              <td className="border p-1 w-[150px]">
-                <div>
-                  <Link to={`/clubProfile/${player.clubID}/overview/2024`}>
-                    <div className="ml-2 text-[12px] text-[#1d75a3] font-bold">{player.clubName}</div>
-                  </Link>
-                </div>
-              </td>
-              <td className="border p-1 w-13 text-[12px]">
-                <div className="flex justify-center">
-                  <img className="w-[30px] h-[35px]" src={player.clubImage} alt="logoImage" />
-                </div>
-              </td>
-              <td className="border p-1 w-[170px] text-[12px]">
-                <div className="flex justify-center">{player.mainPosition}</div>
-              </td>
-              <td className="border p-1 w-[170px] text-[12px]">
-                <div className="flex justify-center">
-                  {player.marketValue} mil {player.marketValueCurrency}
-                </div>
-              </td>
-              <td className="border p-1 w-13 text-[12px]">
-                <div className="flex justify-center">{player.age}</div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
       <div>
-      <h2 className="bg-white text-[#00193f] px-2 font-bold flex justify-center">{`Most Valuable Clubs`}</h2>
-        <MostValuableClubs/>
+        <div className="flex justify-center p-[10px]">
+          <MostValuableFeild playerPositions={playerPositions} />
+        </div>
+        <table className="bg-white table-auto border-collapse w-full mb-4">
+          <thead>
+            <tr>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Name
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2] flex justify-center items-center">
+                Player Image
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Club
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Club Image
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Position
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Value
+              </th>
+              <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+                Age
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {mostData.map((player: any) => (
+              <tr key={player.id}>
+                <td className="border w-[150px] text-[13px]">
+                  <div className="flex items-center p-[5px] text-[#1d75a3] font-bold">
+                    <Link to={`/clubProfile/${player.id}/overview/2024`}>
+                      <div className="flex justify-end">
+                        {player.playerName}
+                      </div>
+                    </Link>
+                  </div>
+                </td>
+                <td className="border p-1 w-[100px]">
+                  <div className="flex p-[5px] gap-[15px] items-center justify-center">
+                    <img
+                      className="w-[40px] h-[40px]"
+                      src={player.playerImage}
+                      alt="logoImage"
+                    />
+                  </div>
+                </td>
+                <td className="border p-1 w-[150px]">
+                  <div>
+                    <Link to={`/clubProfile/${player.clubID}/overview/2024`}>
+                      <div className="ml-2 text-[12px] text-[#1d75a3] font-bold">
+                        {player.clubName}
+                      </div>
+                    </Link>
+                  </div>
+                </td>
+                <td className="border p-1 w-13 text-[12px]">
+                  <div className="flex justify-center">
+                    <img
+                      className="w-[30px] h-[35px]"
+                      src={player.clubImage}
+                      alt="logoImage"
+                    />
+                  </div>
+                </td>
+                <td className="border p-1 w-[170px] text-[12px]">
+                  <div className="flex justify-center">
+                    {player.mainPosition}
+                  </div>
+                </td>
+                <td className="border p-1 w-[170px] text-[12px]">
+                  <div className="flex justify-center">
+                    {player.marketValue} mil {player.marketValueCurrency}
+                  </div>
+                </td>
+                <td className="border p-1 w-13 text-[12px]">
+                  <div className="flex justify-center">{player.age}</div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
-  
 };
 
 export default MostValuableTeam;
