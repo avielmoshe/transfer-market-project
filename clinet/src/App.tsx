@@ -34,6 +34,13 @@ import PlayerNews from "./components/player-components/PlayerNews.js";
 import PlayerRumours from "./components/player-components/PlayerRumours.js";
 import PlayerStats from "./components/player-components/PlayerStats.js";
 import PlayerTransfers from "./components/player-components/PlayerTransfers.js";
+import CompetitionsPage from "./pages/CompetitionsPage.js";
+import TransfersPage from "./pages/TransfersPage.js";
+import MarketValue from "./pages/MarketValuePage.js";
+import StatisticsPage from "./pages/StatisticsPage.js";
+import MarketValuePage from "./pages/MarketValuePage.js";
+import CommunityPage from "./pages/CommunityPage.js";
+import GamingPage from "./pages/GamingPage.js";
 
 function App() {
   const router = createBrowserRouter([
@@ -173,6 +180,12 @@ function App() {
           ],
         },
         { path: "/refereeProfile/:id", element: <RefereePage /> },
+        { path: "/competitions", element: <CompetitionsPage /> },
+        { path: "/transfers", element: <TransfersPage /> },
+        { path: "/marketValues", element: <MarketValuePage /> },
+        { path: "/statistics", element: <StatisticsPage /> },
+        { path: "/community", element: <CommunityPage /> },
+        { path: "/gaming", element: <GamingPage /> },
         { path: "/about", element: <AboutPage /> },
       ],
     },

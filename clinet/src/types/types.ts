@@ -182,7 +182,6 @@ export interface PlayerProfileInfo {
   playerProfile: PlayerProfile;
 }
 
-
 export interface AdditionalData {
   clubID: string;
   competitionID: string;
@@ -203,7 +202,6 @@ export interface Achievement {
 export interface Achievements {
   achievements: Achievement[];
 }
-
 
 export interface PlayerProfile {
   playerID: string;
@@ -329,6 +327,14 @@ export interface DataStructure {
   legend: LegendItem[];
   share: Share;
   table: TableItem[];
+}
+export interface BestCompetitions {
+  defaultCompetitions: Array<defaultCompetitions>;
+}
+export interface defaultCompetitions {
+  id: string;
+  image: string;
+  title: string;
 }
 export interface ClubsTransfers {
   currentSeason: {
@@ -518,4 +524,3 @@ export interface DeliveredSeason {
   deliveredSeasonID: string;
   competitionPerformanceSummery: CompetitionPerformanceSummary[];
 }
-

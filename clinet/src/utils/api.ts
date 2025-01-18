@@ -2,6 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import {
   achievementData,
+  BestCompetitions,
   ClubData,
   ClubProfile,
   clubsDataFromCom,
@@ -573,6 +574,30 @@ export const fetchDataOfOneComRow = async (
   }
 };
 
+export const fetchDataOfBestCompetitions = async (
+  domain: string = "com"
+): Promise<BestCompetitions> => {
+  const options = {
+    method: "GET",
+    url: `https://${RAPIDAPI_HOST}/competitions/list-default`,
+    params: {
+      domain,
+    },
+    headers: {
+      "x-rapidapi-key": RAPIDAPI_KEY,
+      "x-rapidapi-host": RAPIDAPI_HOST,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data; // Return the data to the caller
+  } catch (error: any) {
+    console.error("Error fetching data:", error.message || error);
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
 export const fetchDataOfOneCoachRow = async (
   id: string,
   domain: string = "com"
@@ -664,44 +689,44 @@ export const toggleBusinessInSaved = async (
   }
 };
 
-  interface Competition {
-    id: string;
-    name: string;
-    shortName: string;
-    image: string;
-    leagueLevel: string | null;
-    isTournament: boolean | null;
-  }
-  
-  interface Performance {
-    ownGoals: string;
-    yellowCards: string;
-    yellowRedCards: string;
-    redCards: string;
-    minutesPlayed: number;
-    penaltyGoals: string;
-    minutesPerGoal: number;
-    matches: string;
-    goals: string;
-    assists: string;
-    toNil: number;
-    concededGoals: number;
-    isGoalkeeper: boolean | null;
-  }
-  
-  interface Club {
-    id: string;
-    name: string;
-    fullName: string;
-    image: string;
-    nationalTeam: string;
-    flag: string | null;
-    marketValue: string | null;
-    mainCompetition: string | null;
-  }
-  
-  export interface CompetitionPerformanceSummary {
-    competition: Competition;
-    performance: Performance;
-    clubs: Club[];
-  }
+interface Competition {
+  id: string;
+  name: string;
+  shortName: string;
+  image: string;
+  leagueLevel: string | null;
+  isTournament: boolean | null;
+}
+
+interface Performance {
+  ownGoals: string;
+  yellowCards: string;
+  yellowRedCards: string;
+  redCards: string;
+  minutesPlayed: number;
+  penaltyGoals: string;
+  minutesPerGoal: number;
+  matches: string;
+  goals: string;
+  assists: string;
+  toNil: number;
+  concededGoals: number;
+  isGoalkeeper: boolean | null;
+}
+
+interface Club {
+  id: string;
+  name: string;
+  fullName: string;
+  image: string;
+  nationalTeam: string;
+  flag: string | null;
+  marketValue: string | null;
+  mainCompetition: string | null;
+}
+
+export interface CompetitionPerformanceSummary {
+  competition: Competition;
+  performance: Performance;
+  clubs: Club[];
+}
