@@ -448,3 +448,50 @@ interface GamePlanPlayDay {
 export interface GamePlanData {
   gamePlanPlayDays: GamePlanPlayDay[]; // Array of play days
 }
+
+interface Competition {
+  id: string;
+  name: string;
+  shortName: string;
+  image: string;
+  leagueLevel: string | null;
+  isTournament: boolean | null;
+}
+
+interface Performance {
+  ownGoals: string;
+  yellowCards: string;
+  yellowRedCards: string;
+  redCards: string;
+  minutesPlayed: number;
+  penaltyGoals: string;
+  minutesPerGoal: number;
+  matches: string;
+  goals: string;
+  assists: string;
+  toNil: number;
+  concededGoals: number;
+  isGoalkeeper: boolean | null;
+}
+
+interface Club {
+  id: string;
+  name: string;
+  fullName: string;
+  image: string;
+  nationalTeam: string;
+  flag: string | null;
+  marketValue: string | null;
+  mainCompetition: string | null;
+}
+
+interface CompetitionPerformanceSummary {
+  competition: Competition;
+  performance: Performance;
+  clubs: Club[];
+}
+
+export interface DeliveredSeason {
+  deliveredSeasonID: string;
+  competitionPerformanceSummery: CompetitionPerformanceSummary[];
+}
