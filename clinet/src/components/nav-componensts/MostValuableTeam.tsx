@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import MostValuableFeild from "../MostValubleFeild";
+import MostValuableClubs from "./MostValuableClubs";
 
 const MostValuableTeam = () => {
   const { data, error, isLoading } = useQuery({
@@ -32,8 +33,8 @@ const MostValuableTeam = () => {
   const mostData = data.players;
   console.log(playerPositions);
   return (
-    <div className="p-[10px]">
-      <h2 className="bg-[#00193f] text-white px-2 font-bold">{`Most Valuable Team`}</h2>
+    <div className="p-[50px]">
+      <h2 className="bg-white text-[#00193f] px-2 font-bold flex justify-center">{`Most Valuable Team`}</h2>
           <div className="flex justify-center p-[10px]">
               <MostValuableFeild playerPositions={playerPositions}/>
           </div>
@@ -95,6 +96,10 @@ const MostValuableTeam = () => {
           ))}
         </tbody>
       </table>
+      <div>
+      <h2 className="bg-white text-[#00193f] px-2 font-bold flex justify-center">{`Most Valuable Clubs`}</h2>
+        <MostValuableClubs/>
+      </div>
     </div>
   );
   

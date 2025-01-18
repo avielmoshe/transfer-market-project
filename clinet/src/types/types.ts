@@ -698,3 +698,26 @@ export interface Player {
 export interface Players {
   players : Player[]
 }
+
+interface Team {
+  number: number;
+  id: string; 
+  countryName: string; 
+  countryImage: string; 
+  competitionID: string; 
+  competitionName: string; 
+  clubName: string; 
+  clubImage: string; 
+  avgAge: string; 
+  marketValue: string; 
+  marketValueCurrency: string; 
+  marketValueNumeral: string;
+  marketValueUnformatted: number; 
+  progression: number; 
+}
+
+export interface Teams {
+  teams : Team[]
+}
+
+
