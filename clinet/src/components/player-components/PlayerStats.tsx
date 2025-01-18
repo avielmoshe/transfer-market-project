@@ -73,9 +73,7 @@ const PlayerStats = () => {
     }
   };
   
-  console.log((Number(selectedLeague?.performance.goals)));
-  console.log(Number(selectedLeague?.performance.matches));
-  console.log(100*(Number(selectedLeague?.performance.goals))/ Number(selectedLeague?.performance.matches));
+  
   
   if (!id) {
     return <p className="text-red-500">Invalid player ID.</p>;
