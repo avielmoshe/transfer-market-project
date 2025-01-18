@@ -47,6 +47,7 @@ import SignupPage from "./pages/SignupPage.js";
 import { useEffect } from "react";
 import { isUserValid } from "./utils/api.js";
 import { useAuth } from "./providers/auth-provider.js";
+import ProfilePage from "./pages/ProfilePage.js";
 
 function App() {
   const { setUser, user } = useAuth();
@@ -64,7 +65,6 @@ function App() {
       }
     })();
   }, []);
-  console.log(user);
 
   const router = createBrowserRouter([
     {
@@ -212,6 +212,7 @@ function App() {
         { path: "/signup", element: <SignupPage /> },
         { path: "/login", element: <LoginPage /> },
         { path: "/news/:newsId", element: <NewsPage /> },
+        { path: "/profile/:userId", element: <ProfilePage /> },
         { path: "/about", element: <AboutPage /> },
       ],
     },

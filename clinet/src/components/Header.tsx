@@ -6,8 +6,12 @@ import { FaUser } from "react-icons/fa";
 import { MdPersonSearch } from "react-icons/md";
 import { GoSearch } from "react-icons/go";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/providers/auth-provider";
+import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
+  const { user } = useAuth();
+
   const [searchTerm, setSearchTerm] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
@@ -76,14 +80,22 @@ const Header = () => {
         <button className="bg-white p-[6px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
           <BiSolidShieldPlus className="text-[#00193f] text-[18px] transition-all duration-300 group-hover:text-white" />
         </button>
-        <button className="bg-[rgb(92,166,255)] flex items-center gap-[5px] rounded-[4px] p-[7px] w-auto hover:bg-[#00193f] hover:w-[calc(32%+1px)] transition-all duration-300 ease-in-out">
-          <div>
-            <FaUser className="text-white" />
-          </div>
-          <Link to={"/login"}>
-            <div className="text-white text-[10px]">LOG IN</div>
+        {user ? (
+          <Link to={`/profile/${user.id}`}>
+            <button className="bg-white flex items-center gap-[5px] rounded-[4px] p-[7px] w-auto hover:bg-[#00193f] hover:text-white ">
+              <CgProfile />
+            </button>
           </Link>
-        </button>
+        ) : (
+          <button className="bg-[rgb(92,166,255)] flex items-center gap-[5px] rounded-[4px] p-[7px] w-auto hover:bg-[#00193f] hover:w-[calc(32%+1px)] transition-all duration-300 ease-in-out">
+            <div>
+              <FaUser className="text-white" />
+            </div>
+            <Link to={"/login"}>
+              <div className="text-white text-[10px]">LOG IN</div>
+            </Link>
+          </button>
+        )}
       </div>
     </div>
   );
