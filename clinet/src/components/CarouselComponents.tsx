@@ -60,8 +60,8 @@ const CarouselComponents: React.FC<CarouselComponentsProps> = ({ items }) => {
                         <div className="bg-[rgb(92,166,255)] absolute bottom-20 left-0  text-[15px] text-white font-bold mb-[5px] p-[5px] inline-block">
                           {item.newsTeaser}
                         </div>
-                        <div className="bg-[#00193f] bg-opacity-80 p-4 text-white">
-                          <div className="flex">
+                        <div className="bg-[#00193f] bg-opacity-80 p-4 text-[17px] text-white hover:text-[rgb(92,166,255)]">
+                          <div className="flex"> 
                             <img
                               src={item.newsFirstImage}
                               alt=""
