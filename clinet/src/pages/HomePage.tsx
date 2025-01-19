@@ -2,6 +2,9 @@ import CarouselComponents from "@/components/CarouselComponents";
 import MostValuableFeild from "@/components/MostValubleFeild";
 import MostTenValuableClubs from "@/components/nav-componensts/MostTenValubleClubs";
 import MostValuableTeam from "@/components/nav-componensts/MostValuableTeam";
+import BestPlayet from "@/components/nav-componensts/statistic/BestPlayet";
+import FifaRankings from "@/components/nav-componensts/statistic/FifaRankings";
+import TopScore from "@/components/nav-componensts/statistic/TopScore";
 import { getLatestNews } from "@/utils/homeApi";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
@@ -50,8 +53,18 @@ const HomePage = () => {
     </div>
     <div className="flex flex-col justify-center items-center lg:items-start lg:flex-row">
       <div className="w-[600px]"><MostValuableTeam/></div>
-      <div><MostTenValuableClubs/></div>
+      <div>
+        <div><MostTenValuableClubs/></div>
+        <div>
+          <FifaRankings type = {"home"}/>
+          </div>
+      </div>
     </div>
+    <div className="flex ">
+      <div><BestPlayet type = {"home"}/></div>
+      <div><TopScore type = {"home"}/></div>
+    </div>
+ 
   </div>;
 };
 
