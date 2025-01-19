@@ -745,3 +745,99 @@ export interface NewsItem {
 export interface NewsItems {
   news: NewsItem[];
 }
+<<<<<<< HEAD
+
+export interface TeamWorld {
+  id: number;
+  countryImage: string;
+  countryName: string;
+  totalPoints: number;
+  confederation: string;
+  rank: number;
+}
+
+export interface TeamsWorld {
+  teams : TeamWorld[]
+}
+export interface TeamsWorldArr {
+  teams : TeamsWorld[]
+}
+
+interface TeamFive {
+  id: string;
+  countryImage: string;
+  countryName: string;
+  totalPoints: number;
+  points2024: number;
+  points2023: number;
+  points2022: number;
+  points2021: number;
+  points2020: number;
+  totalTeams: number;
+  teamsCl: number;
+  teamsEl: number;
+}
+
+export interface TeamsFive {
+  teams : TeamFive[]
+}
+
+interface BestPlayer {
+  year: number;
+  playerName: string;
+  firstName: string;
+  lastName: string;
+  alias: string;
+  clubID: string;
+  clubName: string;
+  clubImage: string;
+  id: string;
+  playerImage: string;
+  mainPositionID: string;
+  mainPosition: string;
+  countryID: string;
+  countryImage: string;
+  ageAtThisTime: string;
+  marketValueAtThisTime: string;
+  marketValueAtThisTimeCurrency: string;
+  marketValueAtThisTimeNumeral: string;
+}
+
+export interface BestPlayers {
+  player : BestPlayer[]
+}
+
+interface PlayerStats {
+  id: string;
+  seasonID: string;
+  clubID: string;
+  matches: string;
+  points: string;
+  goals: string;
+  goalsPerMatch: string;
+  factor: string;
+  cycle: string;
+  competitionID: string;
+  competitionCountryID: string;
+  clubs: string;
+  playerName: string;
+  firstName: string;
+  lastName: string;
+  alias: string;
+  playerAge: string;
+  playerImage: string;
+  mainPositionID: string;
+  mainPosition: string;
+  countryID: number;
+  countryImage: string;
+  clubName: string;
+  clubImage: string;
+}
+
+export interface PlayersStats {
+  player : PlayerStats[]
+}
+
+
+=======
+>>>>>>> e015c771fe784a3741dffc66d4062ab15df41b6a

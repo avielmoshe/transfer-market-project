@@ -35,7 +35,7 @@ const MostValuableTeam = () => {
     <div className="p-[50px]">
       <h2 className="bg-white text-[#00193f] px-2 font-bold flex justify-center">{`Most Valuable Team`}</h2>
       <div>
-        <div className="flex justify-center p-[10px]">
+        <div className="flex justify-center p-[5px]">
           <MostValuableFeild playerPositions={playerPositions} />
         </div>
         <table className="bg-white table-auto border-collapse w-full mb-4">

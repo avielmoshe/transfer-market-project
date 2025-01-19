@@ -21,7 +21,7 @@ const MostValuableClubs = () => {
   return (
     <div className="p-[50px]">
       <h2 className="bg-white text-[#00193f] px-2 font-bold flex justify-center">
-        Most Valuable Team
+        Most Valuable Clubs
       </h2>
       <table className="bg-white table-auto border-collapse w-full mb-4">
         <thead>
