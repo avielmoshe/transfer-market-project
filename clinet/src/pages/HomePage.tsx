@@ -60,7 +60,7 @@ const HomePage = () => {
           </div>
       </div>
     </div>
-    <div className="flex ">
+    <div className="flex flex-col justify-center items-center lg:items-start lg:flex-row">
       <div><TopScore type = {"home"}/></div>
       <div><BestPlayet type = {"home"}/></div>
     </div>
