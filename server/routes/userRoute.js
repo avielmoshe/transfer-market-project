@@ -7,6 +7,7 @@ import {
   TokenValid,
   toggleItemInSavedList,
   getSavedList,
+  getUser,
 } from "../controllers/userController.js";
 
 import { verifyToken } from "../middleware/auth.js";
@@ -15,6 +16,8 @@ const router = express.Router();
 router.get("/validateToken", verifyToken, TokenValid);
 
 router.get("/getSavedList", verifyToken, getSavedList);
+
+router.get("/getUser", verifyToken, getUser);
 
 router.post("/signup", createNewUser);
 

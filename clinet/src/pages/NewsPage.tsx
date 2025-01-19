@@ -2,8 +2,46 @@ import { fetchDataOfNewsDetail } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
+// Define types for the data structure
+interface PlayerPerformanceData {
+  player: {
+    name: string;
+    position: string;
+    image: string;
+  };
+  performance: {
+    games: string;
+    goals: string;
+    assists: string;
+  };
+}
+
+interface Club {
+  name: string;
+  image: string;
+  marketValue?: {
+    value: number;
+    currency: string;
+  };
+}
+
+interface WidgetData {
+  [key: string]: any; // Add more specific types for widgetData as needed
+}
+
+interface NewsData {
+  heroImage: string;
+  heroImageSource: string;
+  headline: string;
+  author: string;
+  timestamp: number;
+  source: string;
+  widgetData: WidgetData;
+  text: Record<string, string>; // 'text-' keys containing HTML content
+}
+
 function NewsPage() {
-  const { newsId } = useParams();
+  const { newsId } = useParams<{ newsId: string }>();
   const { data, error, isLoading } = useQuery({
     queryKey: ["fetchDataOfNewsDetail", { newsId }],
     queryFn: () => fetchDataOfNewsDetail(newsId),
@@ -12,7 +50,8 @@ function NewsPage() {
   if (error) return <div>Error loading news data.</div>;
   if (!data || isLoading) return <div>Loading...</div>;
 
-  const dataNews = data.news;
+  const dataNews = data.news as NewsData;
+  console.log(dataNews);
 
   // Extract dynamic fields
   const galleryKey = Object.keys(dataNews.widgetData).find((key) =>
@@ -28,7 +67,7 @@ function NewsPage() {
   return (
     <div className="p-6 bg-gray-100">
       <HeroSection data={dataNews} />
-      <TextSection data={dataNews} />
+      <TextSection data={dataNews.text} />
       {clubComparisonKey && (
         <ClubComparison data={dataNews.widgetData[clubComparisonKey]} />
       )}
@@ -41,7 +80,7 @@ function NewsPage() {
   );
 }
 
-const HeroSection = ({ data }) => (
+const HeroSection = ({ data }: { data: NewsData }) => (
   <section className="mb-8">
     <img
       src={data.heroImage}
@@ -62,7 +101,7 @@ const HeroSection = ({ data }) => (
   </section>
 );
 
-const TextSection = ({ data }) => (
+const TextSection = ({ data }: { data: Record<string, string> }) => (
   <section className="mb-8 space-y-6">
     {Object.keys(data)
       .filter((key) => key.startsWith("text-"))
@@ -76,7 +115,7 @@ const TextSection = ({ data }) => (
   </section>
 );
 
-const ClubComparison = ({ data }) => (
+const ClubComparison = ({ data }: { data: Club[] }) => (
   <section className="mb-8">
     <h2 className="text-2xl font-bold text-gray-900 mb-4">Club Comparison</h2>
     <div className="grid grid-cols-2 gap-4">
@@ -97,7 +136,7 @@ const ClubComparison = ({ data }) => (
   </section>
 );
 
-const PlayerPerformance = ({ data }) => {
+const PlayerPerformance = ({ data }: { data: WidgetData }) => {
   const performanceKeys = Object.keys(data).filter((key) =>
     key.startsWith("playerPerformanceValueBox")
   );
@@ -106,7 +145,7 @@ const PlayerPerformance = ({ data }) => {
     <section className="mb-8">
       <h2 className="text-2xl font-bold text-gray-900 mb-4">Player Stats</h2>
       {performanceKeys.map((key) => {
-        const playerData = data[key];
+        const playerData = data[key] as PlayerPerformanceData;
         return (
           <div key={key} className="p-4 bg-white shadow-md rounded-lg mb-4">
             <div className="flex items-center">
@@ -141,7 +180,7 @@ const PlayerPerformance = ({ data }) => {
   );
 };
 
-const RelatedLinks = ({ data }) => (
+const RelatedLinks = ({ data }: { data: { url: string; text: string } }) => (
   <section className="mb-8">
     <h2 className="text-2xl font-bold text-gray-900 mb-4">Related Links</h2>
     <a
@@ -155,7 +194,11 @@ const RelatedLinks = ({ data }) => (
   </section>
 );
 
-const GallerySection = ({ data }) => (
+const GallerySection = ({
+  data,
+}: {
+  data: { title: string; images: { url: string; caption?: string }[] };
+}) => (
   <section className="mb-8">
     <h2 className="text-2xl font-bold text-gray-900 mb-4">{data.title}</h2>
     <div className="grid grid-cols-3 gap-4">

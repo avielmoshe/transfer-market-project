@@ -45,6 +45,23 @@ export const getSavedList = async (req, res) => {
       .send({ error: "Something went wrong. Please try again later." });
   }
 };
+export const getUser = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).send({ error: "User not found." });
+    }
+    res.status(200).send({
+      user,
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .send({ error: "Something went wrong. Please try again later." });
+  }
+};
 
 export const createNewUser = async (req, res) => {
   try {
@@ -142,7 +159,14 @@ export const singInUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-    const { newUsername, newEmail, newPassword, newPhone } = req.body;
+    const {
+      newLastName,
+      newFirstName,
+      newUsername,
+      newEmail,
+      newPassword,
+      newPhone,
+    } = req.body;
 
     const existingUser = await User.findOne({
       $or: [{ username: newUsername }, { email: newEmail }],
@@ -159,6 +183,8 @@ export const updateUser = async (req, res) => {
     if (newEmail) updateData.email = newEmail;
     if (newPassword) updateData.password = newPassword;
     if (newPhone) updateData.Phone = newPhone;
+    if (newFirstName) updateData.firstName = newFirstName;
+    if (newLastName) updateData.lastName = newLastName;
 
     const updatedUser = await User.findByIdAndUpdate(id, updateData, {
       new: true,

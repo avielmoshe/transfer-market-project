@@ -766,6 +766,60 @@ export const isUserValid = async () => {
   }
 };
 
+export const getUser = async () => {
+  try {
+    const jwt = Cookies.get("jwt");
+    const response = await axios.get(`${base_url}/api/user/getUser`, {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    });
+
+    return response.data;
+  } catch (error: any) {
+    return null;
+  }
+};
+
+export const updateUser = async (updateUser: any) => {
+  try {
+    const jwt = Cookies.get("jwt");
+    const response = await axios.patch(
+      `${base_url}/api/user/updateUser`,
+      updateUser,
+      {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+        withCredentials: true,
+      }
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    return {
+      success: false,
+      error: error.response?.data || error.message,
+    };
+  }
+};
+
+export const deleteUser = async () => {
+  try {
+    const jwt = Cookies.get("jwt");
+    const response = await axios.delete(`${base_url}/api/user/deleteUser`, {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const deleteCookie = async () => {
   try {
     Cookies.remove("jwt");
