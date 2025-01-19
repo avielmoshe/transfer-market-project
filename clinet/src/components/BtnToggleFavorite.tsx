@@ -70,7 +70,7 @@ function BtnToggleFavorite({ id, type }: BtnToggleFavoriteProps) {
   return (
     <div>
       <button
-        className="text-[11px] bg-yellow-500 p-3 rounded-full font-bold"
+        className="text-[6px] bg-yellow-500 p-3 rounded-full font-bold sm:text-[12px]"
         onClick={handleToggleFavorite}
       >
         {inFavorite

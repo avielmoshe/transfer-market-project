@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { formatNumber } from "@/utils/function.service";
+import BigLoader from "../BigLoader";
 
 const PlayerMarketValue = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,7 +20,7 @@ const PlayerMarketValue = () => {
   });
 
   if (error) return <p>Error loading market value data.</p>;
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <BigLoader />;
   if (!data || !data.marketValueDevelopment) {
     return <p>No data available.</p>;
   }
