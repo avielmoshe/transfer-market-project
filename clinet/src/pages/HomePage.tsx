@@ -61,8 +61,8 @@ const HomePage = () => {
       </div>
     </div>
     <div className="flex ">
-      <div><BestPlayet type = {"home"}/></div>
       <div><TopScore type = {"home"}/></div>
+      <div><BestPlayet type = {"home"}/></div>
     </div>
  
   </div>;
