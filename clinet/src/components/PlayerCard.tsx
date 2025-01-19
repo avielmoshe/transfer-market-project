@@ -1,16 +1,13 @@
 import React from "react";
 import BigLoader from "@/components/BigLoader";
-import {
-  fetchDataOfOnePlayerForRow,
-  fetchDataOfPlayerMarket,
-} from "@/utils/api";
+import { fetchDataOfOnePlayerForRow } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { parseMarketValue, removeAfterComma } from "@/utils/function.service";
 
 interface PlayerCardProps {
   playerId: string | null;
   side: "left" | "right";
-  setMarketValue: React.Dispatch<React.SetStateAction<null>>;
+  setMarketValue: React.Dispatch<React.SetStateAction<number | null>>;
   bgColor: string;
 }
 
@@ -27,24 +24,24 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
     isLoading,
   } = useQuery({
     queryKey: ["dataOfOnePlayer", { playerId }],
-    queryFn: () => fetchDataOfOnePlayerForRow(playerId),
+    queryFn: () =>
+      playerId ? fetchDataOfOnePlayerForRow(playerId) : Promise.resolve(null),
+    enabled: !!playerId, // Only fetch if playerId exists
   });
-  console.log(playerData);
 
   if (isLoading) return <BigLoader />;
   if (error || !playerData) return <BigLoader />;
+
   const marketValue =
     playerData?.playerProfile?.marketValue +
-    playerData.playerProfile?.marketValueNumeral;
-  setMarketValue(parseMarketValue(marketValue));
+    playerData?.playerProfile?.marketValueNumeral;
 
-  console.log(removeAfterComma(playerData?.playerProfile?.marketValue));
+  // Update the market value in the parent component
+  setMarketValue(parseMarketValue(marketValue));
 
   // Styling based on the side (left or right)
   const alignment = side === "left" ? "items-start" : "items-end";
   const textAlignment = side === "left" ? "text-left" : "text-right";
-  console.log(playerData);
-  console.log();
 
   return (
     <div

@@ -1,14 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import imgGaming from "../assets/img/12121212.png";
-import BigLoader from "@/components/BigLoader";
-import {
-  fetchDataOfOnePlayerForRow,
-  fetchDataOfPlayerMarket,
-} from "@/utils/api";
-import { useQuery } from "@tanstack/react-query";
+
 import PlayerCard from "@/components/PlayerCard";
-import { FaCaretDown } from "react-icons/fa";
-import { FaCaretUp } from "react-icons/fa";
+import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 
 const player_ids = [
   "14555",
@@ -219,45 +213,34 @@ const GamingPage: React.FC = () => {
   const [currentLeftId, setCurrentLeftId] = useState<string | null>(null);
   const [currentRightId, setCurrentRightId] = useState<string | null>(null);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [leftMarketValue, setLeftMarketValue] = useState<null | number>(null);
-  const [rightMarketValue, setRightMarketValue] = useState<null | number>(null);
+  const [leftMarketValue, setLeftMarketValue] = useState<number | null>(null);
+  const [rightMarketValue, setRightMarketValue] = useState<number | null>(null);
   const [bgColor, setBgColor] = useState<string>("white");
   const [score, setScore] = useState<number>(0);
 
-  // Helper to get a random player ID
   const getRandomId = (): string | null => {
-    if (remainingIds.length === 0) {
-      return null;
-    }
+    if (remainingIds.length === 0) return null;
     const randomIndex = Math.floor(Math.random() * remainingIds.length);
     const selectedId = remainingIds[randomIndex];
     setRemainingIds((prev) => prev.filter((id) => id !== selectedId));
     return selectedId;
   };
-  // Start the game
+
   const handleStartGame = () => {
-    const leftId = getRandomId();
-    const rightId = getRandomId();
-    setCurrentLeftId(leftId);
-    setCurrentRightId(rightId);
+    setCurrentLeftId(getRandomId());
+    setCurrentRightId(getRandomId());
     setIsGameOver(false);
   };
 
-  // Handle user guess
-  const handleGuess = async (guess: "higher" | "lower") => {
+  const handleGuess = (guess: "higher" | "lower") => {
     if (!currentLeftId || !currentRightId) return;
 
-    // Fetch market values for the current players
-
-    // Compare market values based on the user's guess
     const isCorrect =
-      (guess === "higher" && rightMarketValue > leftMarketValue) ||
-      (guess === "lower" && rightMarketValue < leftMarketValue);
+      (guess === "higher" && rightMarketValue! > leftMarketValue!) ||
+      (guess === "lower" && rightMarketValue! < leftMarketValue!);
 
     if (isCorrect) {
-      // Shift the right player to the left and get a new right player
       setBgColor("green-400");
-
       setScore((prev) => prev + 1);
       setTimeout(() => {
         setCurrentLeftId(currentRightId);
@@ -265,17 +248,14 @@ const GamingPage: React.FC = () => {
         setBgColor("white");
       }, 3000);
     } else {
-      // If the guess is incorrect, end the game
       setBgColor("red-600");
       setTimeout(() => {
         setIsGameOver(true);
         setBgColor("white");
         setScore(0);
       }, 3000);
-      console.log("gameover");
     }
   };
-
   return (
     <div>
       {!currentLeftId || isGameOver ? (
