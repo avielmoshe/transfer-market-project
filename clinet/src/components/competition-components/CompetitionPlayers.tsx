@@ -5,6 +5,7 @@ import { fetchDataOfSquadFromClub } from "@/utils/api";
 import InputSeason from "../InputSeason";
 import InputClubs from "./InputClubs";
 import { useState } from "react";
+import SmallLoader from "../SmallLoader";
 
 const CompetitionPlayers = () => {
   const { seasonId } = useParams<Params>();
@@ -34,11 +35,7 @@ const CompetitionPlayers = () => {
         clubId={clubId || ""}
       />
       {isLoading && <p>Loading squad data...</p>}
-      {!data && !isLoading && (
-        <p className="text-gray-500">
-          No data available. Please select a club.
-        </p>
-      )}
+      {!data && !isLoading && <SmallLoader />}
       {data && (
         <div className="mr-2 ml-1">
           <h2 className="bg-[#00193f] text-white px-2 font-bold">{` Squad Detailed`}</h2>

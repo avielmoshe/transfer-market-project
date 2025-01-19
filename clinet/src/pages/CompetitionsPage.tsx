@@ -1,3 +1,4 @@
+import BigLoader from "@/components/BigLoader";
 import { fetchDataOfBestCompetitions } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
@@ -8,6 +9,8 @@ function CompetitionsPage() {
     queryFn: () => fetchDataOfBestCompetitions(),
   });
   if (error) return null;
+  if (isLoading) return <BigLoader />;
+
   if (!data) {
     return null;
   }

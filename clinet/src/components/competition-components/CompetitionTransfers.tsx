@@ -2,6 +2,7 @@ import { fetchDataOfTransfers } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { Params, useParams } from "react-router-dom";
 import TransferRow from "../TransferRow";
+import BigLoader from "../BigLoader";
 
 function CompetitionTransfers() {
   const { competitionId } = useParams<Params>();
@@ -16,9 +17,10 @@ function CompetitionTransfers() {
     console.error(error);
     return null;
   }
+  if (isLoading) return <BigLoader />;
 
-  if (!data || isLoading) {
-    return <p>Loading...</p>;
+  if (!data) {
+    return null;
   }
 
   return (

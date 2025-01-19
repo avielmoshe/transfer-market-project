@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import MostValuableFeild from "../MostValubleFeild";
 import MostValuableClubs from "./MostValuableClubs";
+import BigLoader from "../BigLoader";
 
 const MostValuableTeam = () => {
   const { data, error, isLoading } = useQuery({
@@ -27,7 +28,7 @@ const MostValuableTeam = () => {
   }, [data]);
 
   if (error instanceof Error) return <p>Error loading.</p>;
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <BigLoader />;
   if (!data) return <p>No data found.</p>;
 
   const mostData = data.players;

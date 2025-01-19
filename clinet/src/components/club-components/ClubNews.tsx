@@ -2,6 +2,7 @@ import { fetchDataOfNewsByClub } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { Link, Params, useParams } from "react-router-dom";
 import NewsCard from "../NewsCard";
+import BigLoader from "../BigLoader";
 
 function ClubNews() {
   const { clubId } = useParams<Params>();
@@ -10,6 +11,8 @@ function ClubNews() {
     queryFn: () => fetchDataOfNewsByClub(clubId),
   });
   if (error) return null;
+  if (isLoading) return <BigLoader />;
+
   if (!data) {
     return null;
   }

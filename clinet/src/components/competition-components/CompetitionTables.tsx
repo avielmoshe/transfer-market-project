@@ -8,6 +8,7 @@ import { ImArrowUp } from "react-icons/im";
 import { FaSquare } from "react-icons/fa";
 import { useState } from "react";
 import CompetitionMatches from "./CompetitionMaches/CompetitionMaches";
+import BigLoader from "../BigLoader";
 interface CompetitionTablesProps {
   competition?: string;
 }
@@ -27,6 +28,8 @@ function CompetitionTables({ competition }: CompetitionTablesProps) {
     queryFn: () => fetchLiveTable(competition_Id, seasonId, "com", homeAway),
   });
   if (error) return null;
+  if (isLoading) return <BigLoader />;
+
   if (!data) {
     return null;
   }

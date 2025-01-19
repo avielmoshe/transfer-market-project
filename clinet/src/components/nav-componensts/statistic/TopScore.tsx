@@ -1,3 +1,4 @@
+import BigLoader from "@/components/BigLoader";
 import { getTopScorer } from "@/utils/homeApi";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
@@ -9,15 +10,14 @@ const TopScore = ({ type }: { type: string }) => {
     queryFn: () => getTopScorer(),
   });
   if (error instanceof Error) return <p>Error loading.</p>;
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <BigLoader />;
   if (!data) return <p>No data found.</p>;
-  const playerData =type === 'home' ?data.player.slice(0, 10) : data.player; 
+  const playerData = type === "home" ? data.player.slice(0, 10) : data.player;
   return (
-    <div className={`p-[50px] ${type === "home"&& "w-[560px]"}`}>
-                     <h2 className="bg-white text-[#00193f] mb-[7px] px-2 font-bold flex justify-center">
+    <div className={`p-[50px] ${type === "home" && "w-[560px]"}`}>
+      <h2 className="bg-white text-[#00193f] mb-[7px] px-2 font-bold flex justify-center">
         Top Scorer
-      </h2>
-      {" "}
+      </h2>{" "}
       <table className="bg-white table-auto border-collapse w-full mb-4">
         <thead>
           <tr>
@@ -40,12 +40,13 @@ const TopScore = ({ type }: { type: string }) => {
           </tr>
         </thead>
         <tbody>
-          {playerData.map((player , index) => (
+          {playerData.map((player, index) => (
             <tr key={player.id}>
-              <td
-                className="border w-[60px] text-[13px]" >
+              <td className="border w-[60px] text-[13px]">
                 <div className="flex justify-center items-center gap-[7px]">
-                  <div className="flex justify-end text-[#00193f] font-bold">{index + 1}</div>
+                  <div className="flex justify-end text-[#00193f] font-bold">
+                    {index + 1}
+                  </div>
                 </div>
               </td>
               <td className="border p-1 w-[170px] ">

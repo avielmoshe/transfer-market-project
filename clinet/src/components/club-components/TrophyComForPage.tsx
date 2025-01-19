@@ -7,6 +7,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { Link } from "react-router-dom";
+import SmallLoader from "../SmallLoader";
 
 interface TrophyComProp {
   successData: SuccessData;
@@ -29,6 +30,8 @@ function TrophyComForPage({ successData, type }: TrophyComProp) {
   });
 
   if (error instanceof Error) return null;
+  if (isLoading) return <SmallLoader />;
+
   if (!data) {
     return null;
   }

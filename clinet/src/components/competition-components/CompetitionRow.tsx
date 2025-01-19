@@ -4,6 +4,7 @@ import { competitions } from "../../types/types";
 import { Link } from "react-router-dom";
 import { fetchDataOfOneComRow } from "@/utils/api";
 import BtnToggleFavorite from "../BtnToggleFavorite";
+import SmallLoader from "../SmallLoader";
 
 interface CompetitionRowProps {
   competition?: competitions;
@@ -27,6 +28,8 @@ function CompetitionRow({ competition, competitionID }: CompetitionRowProps) {
   });
 
   if (error instanceof Error) return null;
+  if (isLoading) return <SmallLoader />;
+
   if (!data) {
     return null;
   }

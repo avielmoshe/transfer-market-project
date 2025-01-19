@@ -3,6 +3,7 @@ import { Params } from "@/components/InputSeason";
 import { getMatchesbyClub } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
+import BigLoader from "../BigLoader";
 
 const CompetitionMatches = () => {
   const { seasonId } = useParams<Params>();
@@ -20,6 +21,8 @@ const CompetitionMatches = () => {
   });
 
   if (gameListError) return null;
+  if (isGameListLoading) return <BigLoader />;
+
   if (!gameListData) {
     return null;
   }

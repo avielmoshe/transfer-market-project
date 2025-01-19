@@ -10,6 +10,7 @@ import {
   HoverCardTrigger,
 } from "@radix-ui/react-hover-card";
 import BtnToggleFavorite from "../BtnToggleFavorite";
+import SmallLoader from "../SmallLoader";
 
 interface PlayerRowProp {
   player?: players;
@@ -35,6 +36,9 @@ function PlayerRow({ player, from, playerID }: PlayerRowProp) {
   });
 
   if (error instanceof Error) return null;
+  if (isLoading) {
+    return <SmallLoader />;
+  }
   if (!data) {
     return null;
   }

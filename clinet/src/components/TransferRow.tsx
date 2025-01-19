@@ -9,6 +9,7 @@ import {
 } from "@radix-ui/react-hover-card";
 import { players, PlayerTransfer } from "@/types/types";
 import { fetchDataOfTransferHistory } from "@/utils/api";
+import SmallLoader from "./SmallLoader";
 
 interface TransferRowProp {
   player: PlayerTransfer;
@@ -24,6 +25,8 @@ function TransferRow({ player, from }: TransferRowProp) {
   });
 
   if (error instanceof Error) return null;
+  if (isLoading) return <SmallLoader />;
+
   if (!data) {
     return null;
   }

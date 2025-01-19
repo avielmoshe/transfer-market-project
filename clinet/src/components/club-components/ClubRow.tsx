@@ -5,6 +5,7 @@ import { MdStadium } from "react-icons/md";
 import { BiTransfer } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import BtnToggleFavorite from "../BtnToggleFavorite";
+import SmallLoader from "../SmallLoader";
 
 interface ClubRowProps {
   clubId: string | undefined;
@@ -18,6 +19,8 @@ function ClubRow({ clubId, type }: ClubRowProps) {
   });
 
   if (error instanceof Error) return null;
+  if (isLoading) return <SmallLoader />;
+
   if (!data) {
     return null;
   }

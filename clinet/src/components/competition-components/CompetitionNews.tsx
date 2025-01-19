@@ -2,6 +2,7 @@ import { fetchDataOfNewsByCompetition } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { Link, Params, useParams } from "react-router-dom";
 import NewsCard from "../NewsCard";
+import BigLoader from "../BigLoader";
 
 function CompetitionNews() {
   const { competitionId } = useParams<Params>();
@@ -10,6 +11,8 @@ function CompetitionNews() {
     queryFn: () => fetchDataOfNewsByCompetition(competitionId),
   });
   if (error) return null;
+  if (isLoading) return <BigLoader />;
+
   if (!data) {
     return null;
   }

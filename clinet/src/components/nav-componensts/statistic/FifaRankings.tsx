@@ -1,19 +1,20 @@
-import { getWorldRank } from '@/utils/homeApi';
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import BigLoader from "@/components/BigLoader";
+import { getWorldRank } from "@/utils/homeApi";
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const FifaRankings = ({ type }: { type: string }) => {
   const { data, error, isLoading } = useQuery({
-    queryKey: ['getWorldRank'],
+    queryKey: ["getWorldRank"],
     queryFn: () => getWorldRank(),
   });
 
   if (error instanceof Error) return <p>Error loading.</p>;
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <BigLoader />;
   if (!data) return <p>No data found.</p>;
 
-  const countryData = type === 'home' ? data.teams.slice(0, 10) : data.teams;
+  const countryData = type === "home" ? data.teams.slice(0, 10) : data.teams;
 
   return (
     <div className="p-[50px]">
@@ -23,10 +24,18 @@ const FifaRankings = ({ type }: { type: string }) => {
       <table className="bg-white table-auto border-collapse w-full mb-4">
         <thead>
           <tr>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">#</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Country</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Confederation</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Total Points</th>
+            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+              #
+            </th>
+            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+              Country
+            </th>
+            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+              Confederation
+            </th>
+            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+              Total Points
+            </th>
           </tr>
         </thead>
         <tbody>

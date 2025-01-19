@@ -2,6 +2,7 @@ import { fetchDataOfClubsTransfers } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { Params, useParams } from "react-router-dom";
 import TransferTable from "./TransferTable ";
+import BigLoader from "../BigLoader";
 
 const ClubTransfersRumours = () => {
   const { clubId } = useParams<Params>();
@@ -17,9 +18,10 @@ const ClubTransfersRumours = () => {
     console.error(error);
     return null;
   }
+  if (isLoading) return <BigLoader />;
 
-  if (!data || isLoading) {
-    return <p>Loading...</p>;
+  if (!data) {
+    return null;
   }
   console.log(data.currentSeason);
 

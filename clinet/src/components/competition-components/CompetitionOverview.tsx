@@ -7,6 +7,7 @@ import CompetitionLiveTableRow from "./CompetitionLiveRow";
 import InputSeason from "../InputSeason";
 import CompetitionTables from "./CompetitionTables";
 import CompetitionMatches from "./CompetitionMaches/CompetitionMaches";
+import BigLoader from "../BigLoader";
 
 const CompetitionOverview = () => {
   const { competitionId } = useParams<Params>();
@@ -28,9 +29,10 @@ const CompetitionOverview = () => {
     console.error(error);
     return null;
   }
+  if (isLoading) return <BigLoader />;
 
-  if (!data || isLoading) {
-    return <p>Loading...</p>;
+  if (!data) {
+    return null;
   }
 
   const competitionName = data.share.title;

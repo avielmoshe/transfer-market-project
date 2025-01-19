@@ -9,6 +9,7 @@ import redYellowCard from "../../assets/img/yellowRedCard.svg";
 import redCard from "../../assets/img/redCard.svg";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import BigLoader from "../BigLoader";
 
 const PlayerStats = () => {
   const { id } = useParams<{ id?: string }>();
@@ -38,10 +39,13 @@ const PlayerStats = () => {
     )
   );
   const [percentGoalPerMatch, setPercentPercentGoalPerMatch] = useState(
-    Number(selectedLeague?.performance.goals) === 0 || !selectedLeague?.performance.matches
+    Number(selectedLeague?.performance.goals) === 0 ||
+      !selectedLeague?.performance.matches
       ? 0
       : Math.round(
-          100 * (Number(selectedLeague?.performance.goals) / Number(selectedLeague?.performance.matches))
+          100 *
+            (Number(selectedLeague?.performance.goals) /
+              Number(selectedLeague?.performance.matches))
         )
   );
 
@@ -52,7 +56,7 @@ const PlayerStats = () => {
       );
       if (league) {
         setSelectedLeague(league);
-  
+
         const percentMinutes = Math.round(
           100 *
             ((league.performance.minutesPlayed ?? 0) /
@@ -61,20 +65,18 @@ const PlayerStats = () => {
         );
         setPercentMinutes(percentMinutes);
 
-  
         const percentGoalPerMatch = Math.round(
-          Number(league.performance.goals) === 0 ||
-          !league.performance.matches
+          Number(league.performance.goals) === 0 || !league.performance.matches
             ? 0
-            : 100 * (Number(league.performance.goals) / Number(league.performance.matches))
+            : 100 *
+                (Number(league.performance.goals) /
+                  Number(league.performance.matches))
         );
         setPercentPercentGoalPerMatch(percentGoalPerMatch);
       }
     }
   };
-  
-  
-  
+
   if (!id) {
     return <p className="text-red-500">Invalid player ID.</p>;
   }
@@ -86,9 +88,8 @@ const PlayerStats = () => {
       </p>
     );
   }
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
+  if (isLoading) return <BigLoader />;
+
   if (!data) {
     return <p>No data available for the selected competition.</p>;
   }
@@ -109,12 +110,11 @@ const PlayerStats = () => {
             ))}
           </div>
           <h2 className="text-xl font-bold mb-2 text-[rgb(92,166,255)]">
-              {selectedLeague?.competition.name}
-            </h2>
+            {selectedLeague?.competition.name}
+          </h2>
         </div>
         {selectedLeague ? (
           <div className="p-3 border border-gray-300 rounded-md bg-white w-full max-w-md">
-
             <div className="flex justify-between">
               <div>
                 <div className="flex text-[13px]">
@@ -207,7 +207,7 @@ const PlayerStats = () => {
               <div className="flex items-center  gap-[5px]">
                 {" "}
                 <div className="w-[60px]">
-                <CircularProgressbar
+                  <CircularProgressbar
                     value={percentMinutes}
                     text={`${percentMinutes}%`}
                     styles={buildStyles({
@@ -217,24 +217,26 @@ const PlayerStats = () => {
                       textSize: "20px",
                     })}
                   />
-              </div>
+                </div>
                 <div className="text-[13px]  text-[#00193f]">Minutes</div>
               </div>
-                    <div className="flex items-center gap-[5px] ">
-                    <div className="w-[60px]">
-                      <CircularProgressbar
-                          value={percentGoalPerMatch}
-                          text={`${percentGoalPerMatch}%`}
-                          styles={buildStyles({
-                            textColor: "#00193f", // צבע הטקסט
-                            pathColor: "#00193f", // צבע המעגל
-                            trailColor: "#d6d6d6", // צבע השביל
-                            textSize: "20px",
-                          })}
-                        />
-                    </div>
-                      <div className="text-[13px]  text-[#00193f] ">Goal Per Match</div>
-                    </div>
+              <div className="flex items-center gap-[5px] ">
+                <div className="w-[60px]">
+                  <CircularProgressbar
+                    value={percentGoalPerMatch}
+                    text={`${percentGoalPerMatch}%`}
+                    styles={buildStyles({
+                      textColor: "#00193f", // צבע הטקסט
+                      pathColor: "#00193f", // צבע המעגל
+                      trailColor: "#d6d6d6", // צבע השביל
+                      textSize: "20px",
+                    })}
+                  />
+                </div>
+                <div className="text-[13px]  text-[#00193f] ">
+                  Goal Per Match
+                </div>
+              </div>
             </div>
           </div>
         ) : (

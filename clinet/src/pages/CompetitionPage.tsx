@@ -4,6 +4,7 @@ import { fetchDataOfOneComRow } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import NavSearch from "../components/NavSearch";
+import BigLoader from "@/components/BigLoader";
 
 function CompetitionPage() {
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ function CompetitionPage() {
   });
 
   if (error instanceof Error) return null;
+  if (isLoading) return <BigLoader />;
+
   if (!data) {
     return null;
   }

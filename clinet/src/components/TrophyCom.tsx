@@ -6,6 +6,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import SmallLoader from "./SmallLoader";
 
 interface TrophyComProp {
   successData: SuccessData;
@@ -28,6 +29,8 @@ function TrophyCom({ successData, type }: TrophyComProp) {
   });
 
   if (error instanceof Error) return null;
+  if (isLoading) return <SmallLoader />;
+
   if (!data) {
     return null;
   }

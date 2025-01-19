@@ -3,6 +3,7 @@ import PlayerRow from "../player-components/PlayerRow";
 import { useQuery } from "@tanstack/react-query";
 import { fetchDataOfSquadFromClub } from "@/utils/api";
 import InputSeason from "../InputSeason";
+import BigLoader from "../BigLoader";
 
 const ClubOverview = () => {
   const { clubId } = useParams<Params>();
@@ -21,9 +22,10 @@ const ClubOverview = () => {
     console.error(error);
     return null;
   }
+  if (isLoading) return <BigLoader />;
 
-  if (!data || isLoading) {
-    return <p>Loading...</p>;
+  if (!data) {
+    return null;
   }
 
   return (

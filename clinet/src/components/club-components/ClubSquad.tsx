@@ -2,6 +2,7 @@ import { fetchDataOfSquadFromClub } from "@/utils/api";
 import { Params, useParams } from "react-router-dom";
 import InputSeason from "../InputSeason";
 import { useQuery } from "@tanstack/react-query";
+import BigLoader from "../BigLoader";
 
 const ClubSquad = () => {
   const { clubId } = useParams<Params>();
@@ -20,9 +21,10 @@ const ClubSquad = () => {
     console.error(error);
     return null;
   }
+  if (isLoading) return <BigLoader />;
 
-  if (!data || isLoading) {
-    return <p>Loading...</p>;
+  if (!data) {
+    return null;
   }
 
   return (

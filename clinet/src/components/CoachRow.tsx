@@ -4,6 +4,7 @@ import {
   fetchDataOfOneCoachRow,
   fetchDataOfOnePlayerForRow,
 } from "../utils/api";
+import SmallLoader from "./SmallLoader";
 
 interface CoachRowProp {
   coach: coaches;
@@ -17,6 +18,8 @@ function CoachRow({ coach }: CoachRowProp) {
   });
 
   if (error instanceof Error) return null;
+  if (isLoading) return <SmallLoader />;
+
   if (!data) {
     return null;
   }

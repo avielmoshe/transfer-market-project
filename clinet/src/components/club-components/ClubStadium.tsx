@@ -1,14 +1,17 @@
 import { fetchDataOfOneClubProfile } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
+import BigLoader from "../BigLoader";
 
 const ClubStadium = () => {
   const { clubId } = useParams();
 
-  const { data: profileData } = useQuery({
+  const { data: profileData, isLoading } = useQuery({
     queryKey: ["dataOfClubProfile", { clubId }],
     queryFn: () => fetchDataOfOneClubProfile(clubId),
   });
+  if (isLoading) return <BigLoader />;
+
   if (!profileData) {
     return null;
   }

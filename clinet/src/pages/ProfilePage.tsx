@@ -15,6 +15,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { FaUser } from "react-icons/fa";
+import BigLoader from "@/components/BigLoader";
 
 export default function ProfilePage() {
   const { userId } = useParams<{ userId?: string }>();
@@ -70,7 +71,7 @@ export default function ProfilePage() {
   });
 
   if (error instanceof Error) return <div>Error loading profile data.</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <BigLoader />;
 
   const currentUser = data?.user;
   if (!user) {

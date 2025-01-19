@@ -3,6 +3,7 @@ import ClubRow from "../club-components/ClubRow";
 import { fetchDataOfClubsFromTable } from "@/utils/api";
 import { useParams } from "react-router-dom";
 import InputSeason from "../InputSeason";
+import BigLoader from "../BigLoader";
 
 function CompetitionClubs() {
   const { competitionId, seasonId } = useParams<{
@@ -28,9 +29,7 @@ function CompetitionClubs() {
     );
   }
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
+  if (isLoading) return <BigLoader />;
 
   if (!data) {
     return <p>No data available for the selected competition.</p>;

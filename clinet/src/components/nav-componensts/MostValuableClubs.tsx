@@ -1,6 +1,7 @@
 import { getMostValuableClub } from "@/utils/homeApi";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import BigLoader from "../BigLoader";
 
 const MostValuableClubs = () => {
   const { data, error, isLoading } = useQuery({
@@ -11,12 +12,12 @@ const MostValuableClubs = () => {
 
   // טיפול בשגיאות ובנתונים חסרים
   if (error) return <p>Error loading data.</p>;
-  if (isLoading) return <p>Loading...</p>;
+
+  if (isLoading) return <BigLoader />;
   if (!data || !data.teams || data.teams.length === 0)
     return <p>No data available.</p>;
 
   const mostData = data.teams;
-  
 
   return (
     <div className="p-[50px]">
@@ -51,7 +52,7 @@ const MostValuableClubs = () => {
             <tr key={club.id}>
               <td className="border w-[150px] text-[13px]">
                 <div className="flex items-center justify-center p-[5px] text-[#1d75a3] font-bold">
-                    <div className="flex justify-center">{club.number}</div>
+                  <div className="flex justify-center">{club.number}</div>
                 </div>
               </td>
               <td className="border w-[150px] text-[13px]">

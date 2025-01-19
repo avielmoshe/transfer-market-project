@@ -12,7 +12,6 @@ const ClubHistory = () => {
   if (!profileData) {
     return null;
   }
-  console.log(profileData.historicImages);
 
   return (
     <div>

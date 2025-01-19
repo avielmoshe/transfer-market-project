@@ -2,14 +2,16 @@ import { fetchDataOfOneClubProfile } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import TrophyComForPage from "./TrophyComForPage";
+import BigLoader from "../BigLoader";
 
 function ClubInformationFacts() {
   const { clubId } = useParams();
 
-  const { data: profileData } = useQuery({
+  const { data: profileData, isLoading } = useQuery({
     queryKey: ["dataOfClubProfile", { clubId }],
     queryFn: () => fetchDataOfOneClubProfile(clubId),
   });
+  if (isLoading) return <BigLoader />;
 
   if (!profileData) {
     return null;

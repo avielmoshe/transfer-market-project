@@ -1,3 +1,4 @@
+import BigLoader from "@/components/BigLoader";
 import DynamicHeader from "@/components/HeaderForProfile";
 import NavSearch from "@/components/NavSearch";
 import { DataForHeader, DataForNavSearch } from "@/types/types";
@@ -21,6 +22,8 @@ function PlayerPage() {
   });
 
   if (error instanceof Error) return null;
+  if (isLoading) return <BigLoader />;
+
   if (!data) {
     return null;
   }

@@ -1,6 +1,7 @@
 import { getMostValuableClub } from "@/utils/homeApi";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import BigLoader from "../BigLoader";
 
 const MostTenValuableClubs = () => {
   const { data, error, isLoading } = useQuery({
@@ -9,7 +10,7 @@ const MostTenValuableClubs = () => {
   });
   console.log(data);
   if (error) return <p>Error loading data.</p>;
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <BigLoader />;
   if (!data || !data.teams || data.teams.length === 0)
     return <p>No data available.</p>;
 
@@ -17,19 +18,31 @@ const MostTenValuableClubs = () => {
   const top10Clubs = mostData.slice(0, 10);
 
   return (
-    <div className="p-[50px] flex flex-col gap-[10px]" >
+    <div className="p-[50px] flex flex-col gap-[10px]">
       <h2 className="bg-white text-[#00193f] px-2 font-bold flex justify-center">
         Most Valuable Clubs
       </h2>
       <table className="bg-white table-auto border-collapse w-full mb-4 ">
         <thead>
           <tr>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Number</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Club Name</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Club Image</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Country</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Country Image</th>
-            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Value</th>
+            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+              Number
+            </th>
+            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+              Club Name
+            </th>
+            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+              Club Image
+            </th>
+            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+              Country
+            </th>
+            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+              Country Image
+            </th>
+            <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">
+              Value
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -82,7 +95,6 @@ const MostTenValuableClubs = () => {
           ))}
         </tbody>
       </table>
-    
     </div>
   );
 };

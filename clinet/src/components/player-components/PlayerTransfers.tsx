@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Params, useParams } from "react-router-dom";
 import TransferRow from "../TransferRow";
 import TransferRowPlayer from "./TransferRowPlayer";
+import BigLoader from "../BigLoader";
 
 function PlayerTransfers() {
   const { id } = useParams<Params>();
@@ -17,9 +18,10 @@ function PlayerTransfers() {
     console.error(error);
     return null;
   }
+  if (isLoading) return <BigLoader />;
 
-  if (!data || isLoading) {
-    return <p>Loading...</p>;
+  if (!data) {
+    return null;
   }
   console.log(data);
 

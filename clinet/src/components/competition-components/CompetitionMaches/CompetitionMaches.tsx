@@ -9,6 +9,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import SmallLoader from "@/components/SmallLoader";
 
 interface GamePlanPlayDay {
   id: string;
@@ -30,6 +31,8 @@ const CompetitionMatches = ({ competition }: CompetitionMatchesProps) => {
   });
 
   if (error instanceof Error) return null;
+  if (isLoading) return <SmallLoader />;
+
   if (!data) {
     return null;
   }

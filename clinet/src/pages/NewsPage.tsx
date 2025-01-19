@@ -1,3 +1,4 @@
+import BigLoader from "@/components/BigLoader";
 import { fetchDataOfNewsDetail } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
@@ -48,7 +49,7 @@ function NewsPage() {
   });
 
   if (error) return <div>Error loading news data.</div>;
-  if (!data || isLoading) return <div>Loading...</div>;
+  if (!data || isLoading) return <BigLoader />;
 
   const dataNews = data.news as NewsData;
   console.log(dataNews);

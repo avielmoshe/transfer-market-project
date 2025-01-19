@@ -10,6 +10,7 @@ import RefereeRow from "../components/RefereeRow";
 import Pagination from "@/components/Pagination";
 import PaginationCard from "@/components/PaginationCard";
 import { count } from "@/types/types";
+import BigLoader from "@/components/BigLoader.tsx";
 
 const SearchPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -21,7 +22,7 @@ const SearchPage: React.FC = () => {
     queryFn: () => fetchTransferMarketData(search, page.toString()),
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <BigLoader />;
   if (error instanceof Error) return <div>Error: {error.message}</div>;
   if (!data) {
     return null;
