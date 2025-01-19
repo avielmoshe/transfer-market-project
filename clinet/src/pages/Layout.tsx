@@ -24,14 +24,14 @@ const Layout = () => {
     <>
       <div>
         <div
-          className={`fixed top-0 z-50 max-w-[1030px]  transition-all duration-300 `}
+          className={`sm:fixed top-0 z-50 max-w-[1030px]  transition-all duration-300 `}
         >
           <Header />
           <NavBar />
         </div>
         <div
           className={` ${
-            isScrolled ? " mt-[146px] " : " mt-[146px]"
+            isScrolled ? " sm:mt-[146px] " : " sm:mt-[146px]"
           }  transition-all duration-300  ease-in-out`}
         >
           <Filter />

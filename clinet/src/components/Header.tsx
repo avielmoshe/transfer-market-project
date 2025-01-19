@@ -41,25 +41,26 @@ const Header = () => {
     <div
       className={`bg-[rgb(233,233,233)] ${
         isScrolled ? "h-[55px] p-[5px]" : "h-[92px] p-[15px]"
-      } grid grid-cols-[1fr_2fr_1fr] items-center gap-[5px] transition-all duration-300 ease-in-out`}
+      } lg:grid lg:grid-cols-[1fr_2fr_1fr] flex justify-between items-center transition-all duration-300 ease-in-out`}
     >
-      <Link to="/">
-        <img
-          className={`${
-            isScrolled ? "h-[35px] w-[90px]" : "h-[58px] w-[140px]"
-          } flex items-center justify-center transition-all duration-300 ease-in-out`}
-          src={logo}
-          alt="Logo"
-        />
-      </Link>
-      <div className="h-[35px] ml-[95px] gap-[5px] flex items-center justify-center">
+  <Link to="/">
+    <img
+      className={`${
+        isScrolled ? "h-[35px] w-[90px]" : "h-[58px] w-[140px]"
+      } flex items-center justify-center transition-all duration-300 ease-in-out 
+      hidden md:block`}
+      src={logo}
+      alt="Logo"
+    />
+  </Link>
+      <div className="h-[35px] lg:ml-[95px] gap-[5px] flex items-center justify-center md:ml-[0px]">
         <form
           className="flex bg-white p-[5px] rounded-[4px] w-[100%] h-[100%]"
           onSubmit={handleSubmit}
         >
           <input
             className={`text-[13px] font-bold ${
-              isScrolled ? "w-[370px] ml-[1px]" : "w-[320px] ml-[4.5px]"
+              isScrolled ? "lg:w-[370px] sm:w-[250px] ml-[1px]" : "lg:w-[320px] sm:w-[250px] ml-[4.5px]"
             } h-[100%] transition-all duration-300 ease-in-out`}
             placeholder="Enter your search term"
             value={searchTerm}
@@ -73,12 +74,17 @@ const Header = () => {
           <MdPersonSearch className="text-[#00193f] text-[20px] transition-all duration-300 group-hover:text-white" />
         </button>
       </div>
-      <div className="ml-[28px] gap-[7px] rounded-[4px] flex items-center justify-center">
+
+
+
+
+
+        <div className="lg:ml-[28px] sm:ml-[2px] gap-[7px] rounded-[4px] flex items-center justify-center">
         {user ? (
           <Link to={`/favorite/${user?.id}`}>
-            <button className="bg-white p-[6px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
-              <BsBookmarkStarFill className="text-[#00193f] text-[18px] transition-all duration-300 group-hover:text-white" />
-            </button>
+        <button className="bg-white p-[6px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
+          <BsBookmarkStarFill className="text-[#00193f] text-[18px] transition-all duration-300 group-hover:text-white" />
+        </button>
           </Link>
         ) : (
           <Link to={`/favorite/user-logout`}>
@@ -98,7 +104,7 @@ const Header = () => {
             </button>
           </Link>
         ) : (
-          <button className="bg-[rgb(92,166,255)] flex items-center gap-[5px] rounded-[4px] p-[7px] w-auto hover:bg-[#00193f] hover:w-[calc(32%+1px)] transition-all duration-300 ease-in-out">
+          <button className="bg-[rgb(92,166,255)] flex items-center gap-[5px] rounded-[4px]  p-[7px] w-auto hover:bg-[#00193f] transition-all duration-300 ease-in-out">
             <div>
               <FaUser className="text-white" />
             </div>
