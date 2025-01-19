@@ -829,11 +829,9 @@ export const deleteCookie = async () => {
 };
 
 export const toggleItemInSavedList = async (saved: {
-  itemId: string;
-  listType: string;
+  itemId: string | undefined;
+  listType: string | undefined;
 }): Promise<string> => {
-  console.log(saved);
-
   const jwt = Cookies.get("jwt");
   try {
     const response = await axios.post(

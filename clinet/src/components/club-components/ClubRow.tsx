@@ -4,6 +4,7 @@ import { fetchDataOfOneClubRow } from "../../utils/api";
 import { MdStadium } from "react-icons/md";
 import { BiTransfer } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import BtnToggleFavorite from "../BtnToggleFavorite";
 
 interface ClubRowProps {
   clubId: string | undefined;
@@ -66,7 +67,11 @@ function ClubRow({ clubId, type }: ClubRowProps) {
       <td className="border p-2 flex justify-center  font-bold text-[#57585a]">
         <MdStadium className="text-[29px] " />
       </td>
-      <td className="border p-2 text-center text-[12px] text-[#57585a]">{}</td>
+      {type === "favorite" ? (
+        <td className="border p-2 text-center text-[12px] w-[300px]">
+          <BtnToggleFavorite id={clubId} type={"club"} />
+        </td>
+      ) : null}{" "}
     </tr>
   );
 }

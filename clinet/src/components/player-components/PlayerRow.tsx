@@ -9,14 +9,26 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@radix-ui/react-hover-card";
+import BtnToggleFavorite from "../BtnToggleFavorite";
 
 interface PlayerRowProp {
-  player: players;
+  player?: players;
   from?: string;
+  playerID?: string;
 }
 
-function PlayerRow({ player, from }: PlayerRowProp) {
-  const playerId = player.id;
+function PlayerRow({ player, from, playerID }: PlayerRowProp) {
+  let playerId: string;
+  if (playerID) {
+    playerId = playerID;
+  } else {
+    if (player) {
+      playerId = player.id;
+    } else {
+      return;
+    }
+  }
+
   const { data, error, isLoading } = useQuery({
     queryKey: ["dataOfOnePlayer", { playerId }],
     queryFn: () => fetchDataOfOnePlayerForRow(playerId),
@@ -36,16 +48,16 @@ function PlayerRow({ player, from }: PlayerRowProp) {
           alt="playerImage"
         />
         <div className="ml-1 flex flex-col justify-center text-[12px] text-[#1d75a3]">
-          <Link to={`/playerProfile/${player.id}/profile`}>
+          <Link to={`/playerProfile/${playerId}/profile`}>
             <div className="font-bold">{data.playerProfile.playerName}</div>
           </Link>
 
           <Link to={`/clubProfile/${data.playerProfile.clubID}/overview/2024`}>
-            <div>{player.club}</div>
+            <div>{data.playerProfile.club}</div>
           </Link>
         </div>
         {from === "clubProfile" ? (
-          player.captain ? (
+          player?.captain ? (
             <div className="flex items-center ml-2">
               <HoverCard>
                 <HoverCardTrigger>
@@ -63,7 +75,7 @@ function PlayerRow({ player, from }: PlayerRowProp) {
           ) : null
         ) : null}
         {from === "clubProfile" ? (
-          player.suspension ? (
+          player?.suspension ? (
             <div className="flex items-center ml-2">
               <HoverCard>
                 <HoverCardTrigger>
@@ -81,7 +93,7 @@ function PlayerRow({ player, from }: PlayerRowProp) {
           ) : null
         ) : null}
         {from === "clubProfile" ? (
-          player.injury ? (
+          player?.injury ? (
             <div className="flex items-center ml-2">
               <HoverCard>
                 <HoverCardTrigger>
@@ -124,7 +136,7 @@ function PlayerRow({ player, from }: PlayerRowProp) {
         </div>
       </td>
       <td className="border p-2 text-center text-[12px] font-bold text-[#57585a]">
-        {from === "clubProfile"
+        {from === "clubProfile" && player
           ? formatNumber(player.marketValue.value)
           : data.playerProfile.marketValue > 0
           ? data.playerProfile.marketValueCurrency +
@@ -135,6 +147,11 @@ function PlayerRow({ player, from }: PlayerRowProp) {
       <td className="border p-2 text-center text-[12px] text-[#1d75a3]">
         {data.playerProfile.agent}
       </td>
+      {playerID ? (
+        <td className="border p-2 text-center text-[12px] w-[300px]">
+          <BtnToggleFavorite id={playerID} type={"player"} />
+        </td>
+      ) : null}
     </tr>
   );
 }

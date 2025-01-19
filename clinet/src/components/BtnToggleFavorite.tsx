@@ -4,7 +4,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState, useMemo } from "react";
 
 interface BtnToggleFavoriteProps {
-  id: string;
+  id: string | undefined;
   type: string;
 }
 
@@ -58,7 +58,6 @@ function BtnToggleFavorite({ id, type }: BtnToggleFavoriteProps) {
 
   const favoriteArray = data.user[listType];
   const inFavorite = favoriteArray?.includes(id);
-  console.log(favoriteArray);
 
   const handleToggleFavorite = async () => {
     try {
@@ -71,7 +70,7 @@ function BtnToggleFavorite({ id, type }: BtnToggleFavoriteProps) {
   return (
     <div>
       <button
-        className="text-[12px] bg-yellow-500 p-3 rounded-full"
+        className="text-[11px] bg-yellow-500 p-3 rounded-full font-bold"
         onClick={handleToggleFavorite}
       >
         {inFavorite
