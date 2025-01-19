@@ -48,6 +48,7 @@ import { useEffect } from "react";
 import { isUserValid } from "./utils/api.js";
 import { useAuth } from "./providers/auth-provider.js";
 import ProfilePage from "./pages/ProfilePage.js";
+import FavoritePage from "./pages/FavoritePage.js";
 
 function App() {
   const { setUser, user } = useAuth();
@@ -213,6 +214,7 @@ function App() {
         { path: "/login", element: <LoginPage /> },
         { path: "/news/:newsId", element: <NewsPage /> },
         { path: "/profile/:userId", element: <ProfilePage /> },
+        { path: "/favorite/:userId", element: <FavoritePage /> },
         { path: "/about", element: <AboutPage /> },
       ],
     },
