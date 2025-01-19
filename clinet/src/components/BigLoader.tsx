@@ -17,5 +17,3 @@ function BigLoader() {
 }
 
 export default BigLoader;
-if (isLoading) return <BigLoader />;
-if (isLoading) return <SmallLoader />;
