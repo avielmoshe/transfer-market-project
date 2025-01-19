@@ -11,6 +11,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
 import { itemsType } from "@/pages/TransfersPage";
+import { Link } from "react-router-dom";
 
 const subCarouselImages = [
   unnamedImage,
@@ -41,33 +42,36 @@ const CarouselComponents: React.FC<CarouselComponentsProps> = ({ items }) => {
           <CarouselContent>
             {items.map((item, index) => {
               if (!item.newsSpotlightFirstImage) {
-                return null; // אם אין תמונה, לא לרנדר את ה-CarouselItem
+                return null; 
               }
               return (
                 <CarouselItem key={index} className="relative">
-                  <div
-                    className="h-[400px] relative"
-                    style={{
-                      backgroundImage: `url(${item.newsSpotlightFirstImage})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  >
-                      <div className="bg-[rgb(92,166,255)] absolute bottom-20 left-0  text-[15px] text-white font-bold mb-[5px] p-[5px] inline-block">
-                        {item.newsTeaser}
-                      </div>
-                    <div className="flex flex-col absolute bottom-0 left-0 right-0">
-                      <div className="bg-[#00193f] bg-opacity-80 p-4 text-white">
-                        <div className="flex">
-                          <img
-                            src={item.newsFirstImage}
-                            alt=""
-                            className="w-[50px] h-[50px] object-cover rounded-full mr-2"
-                          />
-                          <div>{item.newsHeadline}</div>
+                  <div  className="h-[400px] relative"
+                      style={{
+                        backgroundImage: `url(${item.newsSpotlightFirstImage})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}>
+                    <Link
+                     
+                      to={`news/${item.id}`}
+                    >
+                      <div className="flex flex-col absolute bottom-0 left-0 right-0">
+                        <div className="bg-[rgb(92,166,255)] absolute bottom-20 left-0  text-[15px] text-white font-bold mb-[5px] p-[5px] inline-block">
+                          {item.newsTeaser}
+                        </div>
+                        <div className="bg-[#00193f] bg-opacity-80 p-4 text-white">
+                          <div className="flex">
+                            <img
+                              src={item.newsFirstImage}
+                              alt=""
+                              className="w-[50px] h-[50px] object-cover rounded-full mr-2"
+                            />
+                            <div>{item.newsHeadline}</div>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 </CarouselItem>
               );
