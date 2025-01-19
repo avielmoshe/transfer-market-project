@@ -125,6 +125,7 @@ export type achievementData = {
 };
 export interface ClubData {
   club: {
+    id:string
     countryImage: string;
     marketValueCurrency: string;
     marketValue: string;
@@ -280,6 +281,7 @@ export interface PlayerProfile {
 }
 
 export interface DataForHeader {
+  id:string
   type: string;
   title: string;
   frontImg: string;

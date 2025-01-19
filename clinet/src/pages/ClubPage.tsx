@@ -32,6 +32,8 @@ function ClubPage() {
 
   const dataForHeader: DataForHeader = {
     type: "club",
+    id: data.club.id,
+
     title: data.club.clubnameEN,
     frontImg: data.club.image,
     secondImg: data.club.leagueImage,

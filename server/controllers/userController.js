@@ -229,7 +229,10 @@ export const updateUser = async (req, res) => {
 
 export const toggleItemInSavedList = async (req, res) => {
   try {
-    const { itemId, listType } = req.body;
+    const { itemId, listType } = req.body.saved;
+    console.log(itemId);
+    console.log(listType);
+
     const userId = req.user.id;
 
     const validLists = ["savedPlayers", "savedClubs", "savedLiga"];

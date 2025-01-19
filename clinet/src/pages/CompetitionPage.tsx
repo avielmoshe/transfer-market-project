@@ -20,6 +20,7 @@ function CompetitionPage() {
   }
   const dataForHeader: DataForHeader = {
     type: "competition",
+    id: data.competition.id,
     title: data.competition.competitionName,
     frontImg: data.competition.competitionImage,
     secondImg: data.competition.competitionCountryImage,
