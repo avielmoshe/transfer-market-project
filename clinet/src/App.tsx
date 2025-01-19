@@ -48,6 +48,7 @@ import { useEffect } from "react";
 import { isUserValid } from "./utils/api.js";
 import { useAuth } from "./providers/auth-provider.js";
 import ProfilePage from "./pages/ProfilePage.js";
+import FilterResponsive from "./pages/FilterResponsive.js";
 
 function App() {
   const { setUser, user } = useAuth();
@@ -72,6 +73,7 @@ function App() {
       children: [
         { path: "/", element: <HomePage /> },
         { path: "/SearchPage", element: <SearchPage /> },
+        { path: "/FilterPage", element: <FilterResponsive /> },
         {
           path: "/competitionProfile/:competitionId",
           element: <CompetitionPage />,

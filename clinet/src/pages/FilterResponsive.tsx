@@ -16,7 +16,7 @@ import {
 } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
-const Filter = () => {
+const FilterResponsive = () => {
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [isCompetitionOpen, setIsCompetitionOpen] = useState(false);
   const [isClubsOpen, setIsClubsOpen] = useState(false);
@@ -384,14 +384,11 @@ const Filter = () => {
   };
 
   return (
-    <div className="bg-[#fff] h-[55px] p-[10px] hidden sm:flex">
-      <div className="flex gap-[18px] item-center">
-        <button
-          className="h-[35px] w-[35px] bg-[#e9e9e9] flex justify-center items-center"
-          onClick={() => navigate(`/`)}
-        >
-          <ImHome className="text-[#00193f] text-[20px]" />
-        </button>
+    <div className="bg-[#fff] p-[10px] flex justify-center" style={{
+        background:
+          "repeating-linear-gradient(135deg, #00173d 0.625rem, #00193f 1.5625rem)",
+      }}>
+      <div className="flex flex-col gap-[18px] item-center justify-center bg-white p-[10px]">
         <div className="flex relative">
           <div className="bg-[#00193f] h-[35px] w-[35px] text-[#fff] flex justify-center items-center">
             <img src={flag} alt="player" />
@@ -707,4 +704,4 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+export default FilterResponsive;
