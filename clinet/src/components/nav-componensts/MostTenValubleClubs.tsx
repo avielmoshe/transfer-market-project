@@ -17,11 +17,11 @@ const MostTenValuableClubs = () => {
   const top10Clubs = mostData.slice(0, 10);
 
   return (
-    <div className="p-[50px]">
+    <div className="p-[50px] flex flex-col gap-[10px]" >
       <h2 className="bg-white text-[#00193f] px-2 font-bold flex justify-center">
         Most Valuable Team
       </h2>
-      <table className="bg-white table-auto border-collapse w-full mb-4">
+      <table className="bg-white table-auto border-collapse w-full mb-4 ">
         <thead>
           <tr>
             <th className="border p-2 text-center text-[12px] bg-[#f2f2f2]">Number</th>

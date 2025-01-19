@@ -721,3 +721,30 @@ export interface Teams {
 }
 
 
+export interface NewsItem {
+  id: string;
+  newsHeadline: string;
+  timestamp: number;
+  newsSecondImage: string;
+  newsDate: string;
+  fullNewsDate: string;
+  newsTime: string;
+  newsSource: string;
+  newsStartPageFlag: string | null;
+  newsShortMessageFlag: string | null;
+  newsTeaser: string;
+  newsFirstImage: string;
+  newsSpotlightFirstImage: string;
+  newsSpotlightSecondImage: string;
+  newsCategoryID: string;
+  newsCategoryTag: string;
+  newsTickerFlag: string;
+  newsUpdateFlag: string;
+  newsAdFlag: string;
+}
+
+export interface NewsItems {
+  news : NewsItem[]
+}
+
+

@@ -1,4 +1,4 @@
-import { Player, Players, Teams } from "@/types/types";
+import { NewsItems, Player, Players, Teams } from "@/types/types";
 import axios from "axios";
 const RAPIDAPI_HOST = "transfermarket.p.rapidapi.com";
 const RAPIDAPI_KEY = "33cb9405dbmsh9f8f012503ce134p146775jsn436ccb2ae8b5";
@@ -48,3 +48,31 @@ export const getMostValuableClub = async (
     throw error; // Rethrow the error for the caller to handle
   }
 };
+
+
+///////////////////////////////////NEWS/////////////////////////////////////////////// 
+
+
+export const getLatestNews = async (
+    domain: string = "com"
+  ): Promise<NewsItems> => {
+    const options = {
+      method: "GET",
+      url: `https://${RAPIDAPI_HOST}/news/list-latest`,
+      params: {
+        domain : "com",
+      },
+      headers: {
+        "x-rapidapi-key": RAPIDAPI_KEY,
+        "x-rapidapi-host": RAPIDAPI_HOST,
+      },
+    };
+    try {
+      const response = await axios.request(options);
+      return response.data; // Return the data to the caller
+    } catch (error: any) {
+      console.error("Error fetching data:", error.message || error);
+      throw error; // Rethrow the error for the caller to handle
+    }
+  };
+  
