@@ -12,3 +12,27 @@ export function formatNumber(value: number) {
 
   return `€${formattedValue}${symbols[power]}`;
 }
+
+export const parseMarketValue = (valueString: string): number => {
+  // Remove spaces and convert to lowercase for easier processing
+  const cleanString = valueString.trim().toLowerCase();
+
+  // Check if the string ends with "mil" or "k" and parse accordingly
+  if (cleanString.endsWith("mil.")) {
+    return parseFloat(cleanString.replace("mil", "")) * 1_000_000;
+  } else if (cleanString.endsWith("k")) {
+    return parseFloat(cleanString.replace("k", "")) * 1_000;
+  } else {
+    // If there's no symbol, just return the parsed number
+    return parseFloat(cleanString);
+  }
+};
+
+export const removeAfterComma = (value: string | number): number => {
+  // Convert the input to a string
+  const cleanValue = value.toString();
+  // Split by the comma and take the first part
+  const [integerPart] = cleanValue.split(",");
+  // Convert back to a number
+  return parseInt(integerPart, 10);
+};

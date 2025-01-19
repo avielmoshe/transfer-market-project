@@ -62,7 +62,7 @@ export const fetchTransferMarketData = async (
 };
 
 export const fetchDataOfOnePlayerForRow = async (
-  id: string | undefined,
+  id: string | undefined | null,
   domain: string = "com"
 ): Promise<HeroData> => {
   const options = {
@@ -252,7 +252,7 @@ export const fetchDataOfTransferHistory = async (
 };
 
 export const fetchDataOfPlayerMarket = async (
-  id: string | undefined,
+  id: string | undefined | null,
   domain: string = "com"
 ): Promise<PlayerMarket> => {
   const options = {
