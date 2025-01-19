@@ -23,6 +23,29 @@ export const TokenValid = async (req, res) => {
   }
 };
 
+export const getSavedList = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(
+      userId,
+      "savedPlayers savedClubs savedLiga"
+    );
+
+    if (!user) {
+      return res.status(404).send({ error: "User not found." });
+    }
+    res.status(200).send({
+      savedPlayers: user.savedPlayers,
+      savedClubs: user.savedClubs,
+      savedLiga: user.savedLiga,
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .send({ error: "Something went wrong. Please try again later." });
+  }
+};
+
 export const createNewUser = async (req, res) => {
   try {
     const { username, email, password, firstName, lastName, phone } = req.body;
