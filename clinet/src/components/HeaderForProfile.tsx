@@ -1,5 +1,6 @@
 import { DataForHeader } from "@/types/types";
 import TrophyCom from "./TrophyCom";
+import BtnToggleFavorite from "./BtnToggleFavorite";
 
 interface DynamicHeaderProp {
   dataForHeader: DataForHeader;
@@ -19,7 +20,7 @@ const DynamicHeader = ({ dataForHeader }: DynamicHeaderProp) => {
   return (
     <div>
       <div className="relative bg-white">
-        <div className="shadow bg-[linear-gradient(to_bottom,_#fff_0%,_#ddd_60%)]  font-bold h-[150px]">
+        <div className="shadow bg-[linear-gradient(to_bottom,_#fff_0%,_#ddd_60%)]  font-bold h-[190px]">
           <div className="p-1 flex justify-between  ">
             <div className="flex">
               {dataForHeader.type === "player" ? (
@@ -31,34 +32,40 @@ const DynamicHeader = ({ dataForHeader }: DynamicHeaderProp) => {
                 {dataForHeader.title}
               </h1>
             </div>
-            <div className="bg-white flex shadow">
-              <div className="px-2 ">
-                <img
-                  src={dataForHeader.secondImg}
-                  alt="secondImg"
-                  className={` rounded-full ${secondImgClassName}`}
-                />
-              </div>
-              <div className="px-2">
-                <a className="text-[#1d75a3] text-[16px]">
-                  {dataForHeader.secondTitle}
-                </a>
-                <div>
-                  {dataForHeader.firstData.map(
-                    (item: object, index: number) => {
-                      const [key, value] = Object.entries(item)[0];
-                      return (
-                        <div key={index} className=" text-[12px]">
-                          <span className="text-[#645d5d]">
-                            {formatKey(key)}:
-                          </span>{" "}
-                          {value || "N/A"}
-                        </div>
-                      );
-                    }
-                  )}
+            <div className="bg-white flex flex-col shadow p-2 items-center">
+              <div className="flex">
+                <div className="px-2 ">
+                  <img
+                    src={dataForHeader.secondImg}
+                    alt="secondImg"
+                    className={` rounded-full ${secondImgClassName}`}
+                  />
+                </div>
+                <div className="px-2">
+                  <a className="text-[#1d75a3] text-[16px]">
+                    {dataForHeader.secondTitle}
+                  </a>
+                  <div>
+                    {dataForHeader.firstData.map(
+                      (item: object, index: number) => {
+                        const [key, value] = Object.entries(item)[0];
+                        return (
+                          <div key={index} className=" text-[12px]">
+                            <span className="text-[#645d5d]">
+                              {formatKey(key)}:
+                            </span>{" "}
+                            {value || "N/A"}
+                          </div>
+                        );
+                      }
+                    )}
+                  </div>
                 </div>
               </div>
+              <BtnToggleFavorite
+                id={dataForHeader.id}
+                type={dataForHeader.type}
+              />
             </div>
           </div>
         </div>

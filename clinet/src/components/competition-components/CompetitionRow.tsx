@@ -3,13 +3,24 @@ import { competitions } from "../../types/types";
 
 import { Link } from "react-router-dom";
 import { fetchDataOfOneComRow } from "@/utils/api";
+import BtnToggleFavorite from "../BtnToggleFavorite";
 
 interface CompetitionRowProps {
-  competition: competitions;
+  competition?: competitions;
+  competitionID?: string;
 }
 
-function CompetitionRow({ competition }: CompetitionRowProps) {
-  const competitionId = competition.id;
+function CompetitionRow({ competition, competitionID }: CompetitionRowProps) {
+  let competitionId: string;
+  if (competitionID) {
+    competitionId = competitionID;
+  } else {
+    if (competition) {
+      competitionId = competition.id;
+    } else {
+      return;
+    }
+  }
   const { data, error, isLoading } = useQuery({
     queryKey: ["DataOfOneCom", { competitionId }],
     queryFn: () => fetchDataOfOneComRow(competitionId),
@@ -25,13 +36,13 @@ function CompetitionRow({ competition }: CompetitionRowProps) {
       <td className="border p-1 w-10">
         <img
           className="w-[25px] h-[34px]"
-          src={competition.competitionImage}
+          src={data.competition.competitionImage}
           alt="logoImage"
         />
       </td>
       <td className="border p-1 w-13 text-[12px] text-[#1d75a3]">
-        <Link to={`/competitionProfile/${competition.id}/overview/2024`}>
-          {competition.competitionName}
+        <Link to={`/competitionProfile/${competitionId}/overview/2024`}>
+          {data.competition.competitionName}
         </Link>
       </td>
       <td className="border p-1 text-center ">
@@ -67,8 +78,13 @@ function CompetitionRow({ competition }: CompetitionRowProps) {
           data.competition.marketValueNumeral}
       </td>
       <td className="border p-2 text-center text-[12px] text-[#57585a]">
-        {competition.id}
+        {competitionId}
       </td>
+      {competitionID ? (
+        <td className="border p-2 text-center text-[12px] w-[300px] ">
+          <BtnToggleFavorite id={competitionID} type={"competition"} />
+        </td>
+      ) : null}
     </tr>
   );
 }

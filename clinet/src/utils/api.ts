@@ -828,14 +828,17 @@ export const deleteCookie = async () => {
   }
 };
 
-export const toggleBusinessInSaved = async (
-  businessId: string
-): Promise<string> => {
+export const toggleItemInSavedList = async (saved: {
+  itemId: string | undefined;
+  listType: string | undefined;
+}): Promise<string> => {
   const jwt = Cookies.get("jwt");
   try {
     const response = await axios.post(
-      `${base_url}/api/user/add-business`,
-      { businessId }, // This is the request body
+      `${base_url}/api/user/toggle-saved`,
+      {
+        saved,
+      }, // This is the request body
       {
         headers: {
           Authorization: `Bearer ${jwt}`,
@@ -846,10 +849,10 @@ export const toggleBusinessInSaved = async (
 
     return response.data.message; // Return the success message
   } catch (error: any) {
+    console.error("Error in API call:", error);
     throw error.response?.data || error.message;
   }
 };
-
 interface Competition {
   id: string;
   name: string;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuth } from "@/providers/auth-provider";
 import { deleteCookie, deleteUser, getUser, updateUser } from "@/utils/api";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,6 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { FaUser } from "react-icons/fa";
 
 export default function ProfilePage() {
   const { userId } = useParams<{ userId?: string }>();
@@ -74,7 +75,17 @@ export default function ProfilePage() {
   const currentUser = data?.user;
   if (!user) {
     return (
-      <div>ERROR 404: ONLY SIGNUP/LOGIN USER CAN SEE THE PROFILE PAGE</div>
+      <div className="p-6 text-center flex flex-col items-center">
+        ERROR 404: ONLY SIGNUP/LOGIN USER CAN SEE THE PROFILE PAGE
+        <button className="mt-3 bg-[rgb(92,166,255)] flex items-center justify-center gap-[5px] rounded-[4px] p-[7px] w-[150px] hover:bg-[#00193f] ">
+          <div>
+            <FaUser className="text-white" />
+          </div>
+          <Link to={"/login"}>
+            <div className="text-white text-[10px]">LOG IN NOW</div>
+          </Link>
+        </button>
+      </div>
     );
   }
 

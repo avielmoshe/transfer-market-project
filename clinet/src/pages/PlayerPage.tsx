@@ -73,8 +73,10 @@ function PlayerPage() {
       },
     },
   ];
+
   const dataForHeader: DataForHeader = {
     type: "player",
+    id: data.playerProfile.playerID,
     num: data.playerProfile.playerShirtNumber,
     title: data.playerProfile.playerName,
     frontImg: data.playerProfile.playerImage,

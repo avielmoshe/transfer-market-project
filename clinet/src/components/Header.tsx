@@ -74,13 +74,31 @@ const Header = () => {
           <MdPersonSearch className="text-[#00193f] text-[20px] transition-all duration-300 group-hover:text-white" />
         </button>
       </div>
+<<<<<<< HEAD
       <div className="lg:ml-[28px] sm:ml-[2px] gap-[7px] rounded-[4px] flex items-center justify-center">
         <button className="bg-white p-[6px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
           <BsBookmarkStarFill className="text-[#00193f] text-[18px] transition-all duration-300 group-hover:text-white" />
         </button>
+=======
+      <div className="ml-[28px] gap-[7px] rounded-[4px] flex items-center justify-center">
+        {user ? (
+          <Link to={`/favorite/${user?.id}`}>
+            <button className="bg-white p-[6px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
+              <BsBookmarkStarFill className="text-[#00193f] text-[18px] transition-all duration-300 group-hover:text-white" />
+            </button>
+          </Link>
+        ) : (
+          <Link to={`/favorite/user-logout`}>
+            <button className="bg-white p-[6px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
+              <BsBookmarkStarFill className="text-[#00193f] text-[18px] transition-all duration-300 group-hover:text-white" />
+            </button>
+          </Link>
+        )}
+>>>>>>> 9fa548c3bccc78cd494733b3f48a5d30909ec94f
         <button className="bg-white p-[6px] rounded-[4px] flex items-center justify-center transition-all duration-300 hover:bg-[#00193f] group">
           <BiSolidShieldPlus className="text-[#00193f] text-[18px] transition-all duration-300 group-hover:text-white" />
         </button>
+
         {user ? (
           <Link to={`/profile/${user.id}`}>
             <button className="bg-white flex items-center gap-[5px] rounded-[4px] p-[7px] w-auto hover:bg-[#00193f] hover:text-white ">
