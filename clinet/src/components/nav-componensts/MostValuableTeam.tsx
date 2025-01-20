@@ -70,7 +70,7 @@ const MostValuableTeam = () => {
               <tr key={player.id}>
                 <td className="border w-[150px] text-[13px]">
                   <div className="flex items-center p-[5px] text-[#1d75a3] font-bold">
-                    <Link to={`/clubProfile/${player.id}/overview/2024`}>
+                    <Link to={`/PlayerProfile/${player.id}/profile`}>
                       <div className="flex justify-end">
                         {player.playerName}
                       </div>

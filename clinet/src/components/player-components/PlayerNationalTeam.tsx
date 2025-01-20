@@ -24,7 +24,7 @@ const PlayerNationalTeam = () => {
         <div className="flex flex-col gap-[15px] justify-center p-[10px]">
           <div className="flex gap-[13px] items-center ">
             <div className="text-[#00193f] font-bold">Country:</div>
-            <div>{nationalDate.club}</div>
+            <div>{nationalDate.country}</div>
           </div>
           <div className="flex gap-[13px] items-center ">
             <div className="text-[#00193f] font-bold">Country Short Name:</div>
