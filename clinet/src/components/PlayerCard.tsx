@@ -78,7 +78,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
               playerData.playerProfile.marketValueNumeral}
           </p>
         </div>
-      ) : bgColor === "red-600" || bgColor === "green-400" ? (
+      ) : bgColor === "red-600" || bgColor === "green-500" ? (
         <div className="relative z-100 flex flex-col items-center">
           <p className={`font-bold text-[14px] ${textAlignment}`}>
             MARKET VALUE

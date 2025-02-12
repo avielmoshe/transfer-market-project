@@ -240,7 +240,7 @@ const GamingPage: React.FC = () => {
       (guess === "lower" && rightMarketValue! < leftMarketValue!);
 
     if (isCorrect) {
-      setBgColor("green-400");
+      setBgColor("green-500");
       setScore((prev) => prev + 1);
       setTimeout(() => {
         setCurrentLeftId(currentRightId);
