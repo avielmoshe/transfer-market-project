@@ -75,10 +75,6 @@ const Header = () => {
         </button>
       </div>
 
-
-
-
-
         <div className="lg:ml-[28px] sm:ml-[2px] gap-[7px] rounded-[4px] flex items-center justify-center">
         {user ? (
           <Link to={`/favorite/${user?.id}`}>
