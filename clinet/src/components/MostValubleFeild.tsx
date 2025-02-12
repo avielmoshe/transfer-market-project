@@ -14,7 +14,7 @@ interface PlayerProfile {
 }
 
 const positions: Record<string, PlayerPosition> = {
-  Goalkeeper: { top: "93%", left: "50%" },
+  "Goalkeeper": { top: "93%", left: "50%" },
   "Centre-Back": { top: "80%", left: "30%" },
   "Right-Back": { top: "70%", left: "90%" },
   "Left-Back": { top: "70%", left: "10%" },

@@ -48,13 +48,6 @@ const Filter = () => {
     queryFn: () => fetchTransferMarketData(selectedCountry, "1"),
   });
 
-  function useClubs(compId: String) {
-    return useQuery({
-      queryKey: ["transferMarketClubsData", { compId }],
-      queryFn: () => fetchDataOfClubsFromCom(compId),
-    });
-  }
-
   if (data) {
     data.competitions?.map((comp) =>
       competitionsNames.push({ name: comp.competitionName, id: comp.id })
@@ -346,6 +339,8 @@ const Filter = () => {
   const filteredPlayers = players?.filter((player) =>
     player.name.toLowerCase().includes(searchPlayerTerm.toLowerCase())
   );
+console.log(players);
+console.log(clubs);
 
   const toggleDropdown = () => {
     setIsCountryOpen(!isCountryOpen);

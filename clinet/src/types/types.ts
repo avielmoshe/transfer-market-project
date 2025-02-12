@@ -143,8 +143,11 @@ export interface ClubData {
 }
 
 export type clubsDataFromCom = {
-  clubs: Array<any>;
+  clubs: Array<{ id: string;
+    image: string;
+    name: string;}>;
 };
+
 interface TableRow {
   id: string; // Unique identifier for the club
   clubName: string; // Name of the club
@@ -747,7 +750,6 @@ export interface NewsItem {
 export interface NewsItems {
   news: NewsItem[];
 }
-<<<<<<< HEAD
 
 export interface TeamWorld {
   id: number;
@@ -840,5 +842,4 @@ export interface PlayersStats {
   player : PlayerStats[]
 }
 
-=======
->>>>>>> 
+
