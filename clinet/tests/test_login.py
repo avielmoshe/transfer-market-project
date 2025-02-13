@@ -29,7 +29,6 @@ def test_btn_signup():
     wait.until(EC.presence_of_element_located((By.XPATH, "//span[normalize-space()='Sign up']"))).click()
     assert driver.current_url == "http://localhost:5173/signUp"
 
-    
 def test_signup_form_empty_fields():
     wait.until(EC.presence_of_element_located((By.XPATH, "//input[contains(@placeholder,'Email')]"))).send_keys("")    
     wait.until(EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Mobile number']"))).send_keys("")    
@@ -39,7 +38,6 @@ def test_signup_form_empty_fields():
     wait.until(EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Username']"))).send_keys("")    
     wait.until(EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Sign Up']"))).click()  
     assert wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".text-sm.text-center.mb-4.text-red-600"))).text=="All fields are required!"  
-    
     
 def test_signup_form_right_fields():
     wait.until(EC.presence_of_element_located((By.XPATH, "//input[contains(@placeholder,'Email')]"))).send_keys("test@test.com")    
@@ -85,7 +83,6 @@ def test_add_club_to_fav():
     assert btn_add_to_fav.text=="REMOVE CLUB FROM FAVORITE"
     wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1) > button:nth-child(1)"))).click()   
     assert "favorite" in  driver.current_url
-
     
 def test_delete_account(): 
     wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > a:nth-child(3) > button:nth-child(1)"))).click()

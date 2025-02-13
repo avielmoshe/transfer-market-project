@@ -108,7 +108,7 @@ def test_filters():
     except TimeoutException:
         print("❌ Error: Submit button not found")
 
-    time.sleep(3)  # אפשר להחליף ב-wait מתאים
+    time.sleep(3) 
 
     
     
